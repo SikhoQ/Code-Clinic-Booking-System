@@ -9,7 +9,11 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 def authorize_and_authenticate():
     """
     Authorize and initialize the Google Calendar API.
+
+    Returns:
+        An authorized Google Calendar API service.
     """
+
     credentials = None
 
     token_path = os.path.expanduser("~/.google_calendar_token.json")
