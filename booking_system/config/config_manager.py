@@ -34,6 +34,8 @@
 
 import json
 import os
+import config_validator as validator
+
 
 CONFIG_FILE_PATH = os.path.expanduser("~/.booking_system_config.json")
 
@@ -81,7 +83,7 @@ def validate_input(user_email, clinic_calendar_id):
     pass
 
 
-def configure_system():
+def configure_system(service):
     # TODO: add more functionality:
     # set up the initial environment,
     # connect to external services,
@@ -97,12 +99,10 @@ def configure_system():
     # Update the configuration
     config = update_config_file(config, user_email, clinic_calendar_id)
 
+    credentials_path = os.path.expanduser("~/.google_calendar_token.json")
+    validator.verify_google_calendar_connection(credentials_path)
     # Additional configuration settings can be added based on project's needs
 
     # Verify the updated configuration -> validate input, check cal connection
 
     # Write the updated configuration to the file
-    if config_successful:
-        write_config(config)
-
-    print(config_message)
