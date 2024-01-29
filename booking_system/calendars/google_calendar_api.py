@@ -13,6 +13,7 @@ def authorize_and_authenticate():
     credentials = None
 
     token_path = os.path.expanduser("~/.google_calendar_token.json")
+    creds_path = os.path.expanduser("~/.google_calendar_credentials.json")
 
     if os.path.exists(token_path):
         credentials = service = build('calendar', 'v3', credentials=None)
@@ -22,11 +23,12 @@ def authorize_and_authenticate():
             credentials.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                creds_path, SCOPES)
             credentials = flow.run_local_server(port=0)
 
         with open(token_path, 'w') as token:
             token.write(credentials.to_json())
 
     service = build('calendar', 'v3', credentials=credentials)
+
     return service

@@ -34,7 +34,6 @@
 
 import json
 import os
-import requests
 
 CONFIG_FILE_PATH = os.path.expanduser("~/.booking_system_config.json")
 
@@ -54,23 +53,6 @@ def write_config(config):
 
 def invalid_email(user_email):
     return "023@student.wethinkcode.co.za" in user_email
-
-
-def verify_config(config):
-    if not config['clinic_calendar_id']:
-        return False, "Configuration failed. Invalid Clinic Calendar ID."
-    if invalid_email(config['user_email']):
-        return False, "Configuration failed. Invalid user email."
-
-    print("Checking connection to Google Calendar..")
-    response = requests.get("https://calendar.google.com")
-
-    if response.status_code == 200:
-        return True, """Connection to Google Calendar successful.
-"Configuration completed successfully."""
-
-    # TODO: do something about failed connection
-    return False, "Connection to Google Calendar failed."
 
 
 def print_welcome_message(config):
@@ -95,6 +77,10 @@ def update_config_file(config, user_email, clinic_calendar_id):
     return config
 
 
+def validate_input(user_email, clinic_calendar_id):
+    pass
+
+
 def configure_system():
     # TODO: add more functionality:
     # set up the initial environment,
@@ -107,21 +93,16 @@ def configure_system():
 
     # Get user input for configuration settings
     user_email, clinic_calendar_id = get_user_input()
-
+    validate_input(user_email, clinic_calendar_id)
     # Update the configuration
     config = update_config_file(config, user_email, clinic_calendar_id)
 
     # Additional configuration settings can be added based on project's needs
 
     # Verify the updated configuration -> validate input, check cal connection
-    config_successful, config_message = verify_config(config)
 
     # Write the updated configuration to the file
     if config_successful:
         write_config(config)
 
     print(config_message)
-
-
-if __name__ == "__main__":
-    configure_system()
