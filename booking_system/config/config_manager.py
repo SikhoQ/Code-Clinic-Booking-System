@@ -57,15 +57,15 @@ def invalid_email(user_email):
 
 
 def print_welcome_message(config):
-    message_1 = "Welcome to the Coding Clinic Booking System Configuration.\n\n"
+    message_1 = "Welcome to the Coding Clinic Booking System Configuration.\n"
     message_2 = """You do not appear to have a config file defined,\
- so let me ask you some questions\n\n""" if not config else ''
+ so let me ask you some questions\n""" if not config else ''
 
     print(message_1 + message_2)
 
 
 def get_user_input():
-    user_email = input("Enter your WeThinkCode_ email: ").lower()
+    user_email = input("\nEnter your WeThinkCode_ email: ").lower()
     # clinic_calendar_id = input("Enter your Coding Clinic Google Calendar ID: ").lower()
 
     return user_email
@@ -95,11 +95,13 @@ def configure_system():
 
     # Get user input for configuration settings
     user_email = ''
-    while invalid_email(user_email):
-        user_email = get_user_input()
+    if config == {}:
+        while invalid_email(user_email):
+            user_email = get_user_input()
 
     # Update the configuration
     config = update_config_file(config, user_email)
+    write_config(config)
 
     # # credentials_path = os.path.expanduser("~/.google_calendar_token.json")
     # # validator.verify_google_calendar_connection(credentials_path)
