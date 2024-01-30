@@ -34,8 +34,7 @@
 
 import json
 import os
-import config_validator as validator
-
+import create_booking_calendar
 
 CONFIG_FILE_PATH = os.path.expanduser("~/.booking_system_config.json")
 
@@ -54,55 +53,62 @@ def write_config(config):
 
 
 def invalid_email(user_email):
-    return "023@student.wethinkcode.co.za" in user_email
+    return "023@student.wethinkcode.co.za" not in user_email
 
 
 def print_welcome_message(config):
-    message_1 = "Welcome to the Coding Clinic Booking System Configuration."
+    message_1 = "Welcome to the Coding Clinic Booking System Configuration.\n\n"
     message_2 = """You do not appear to have a config file defined,\
- so let me ask you some questions""" if config else ''
+ so let me ask you some questions\n\n""" if not config else ''
 
     print(message_1 + message_2)
 
 
 def get_user_input():
     user_email = input("Enter your WeThinkCode_ email: ").lower()
-    clinic_cal_id = input("Enter Coding Clinic Google Calendar ID: ").lower()
+    # clinic_calendar_id = input("Enter your Coding Clinic Google Calendar ID: ").lower()
 
-    return user_email, clinic_cal_id
+    return user_email
 
 
-def update_config_file(config, user_email, clinic_calendar_id):
+def update_config_file(config, user_email):
     config['user_email'] = user_email
-    config['clinic_calendar_id'] = clinic_calendar_id
+    # config['clinic_calendar_id'] = clinic_calendar_id
 
     return config
 
 
-def validate_input(user_email, clinic_calendar_id):
+def validate_input(user_email):
     pass
 
 
-def configure_system(service):
+def configure_system():
     # TODO: add more functionality:
     # set up the initial environment,
     # connect to external services,
     # ensure app has required settings.
 
-    config = read_config()
+    create_booking_calendar.create_calendar()
 
+    config = read_config()
     print_welcome_message(config)
 
     # Get user input for configuration settings
-    user_email, clinic_calendar_id = get_user_input()
-    validate_input(user_email, clinic_calendar_id)
-    # Update the configuration
-    config = update_config_file(config, user_email, clinic_calendar_id)
+    user_email = ''
+    while invalid_email(user_email):
+        user_email = get_user_input()
 
-    credentials_path = os.path.expanduser("~/.google_calendar_token.json")
-    validator.verify_google_calendar_connection(credentials_path)
+    # Update the configuration
+    config = update_config_file(config, user_email)
+
+    # # credentials_path = os.path.expanduser("~/.google_calendar_token.json")
+    # # validator.verify_google_calendar_connection(credentials_path)
+
     # Additional configuration settings can be added based on project's needs
 
     # Verify the updated configuration -> validate input, check cal connection
 
     # Write the updated configuration to the file
+
+
+configure_system()
