@@ -1,0 +1,4 @@
+lib/python3.11/site-packages
+bin
+pyvenv.cfg
+lib64
