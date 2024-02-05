@@ -5,8 +5,9 @@ import os
 import json
 
 from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from google.auth.transport.requests import Request
 
 
 def authorize_google_calendar(scopes, credentials_file, token_file):
@@ -14,7 +15,8 @@ def authorize_google_calendar(scopes, credentials_file, token_file):
 
     # Check if token file exists and contains valid credentials
     if os.path.exists(token_file):
-        credentials = json.loads(open(token_file, 'r').read())
+        # credentials = json.loads(open(token_file, 'r').read())
+        credentials = Credentials.from_authorized_user_file(token_file, scopes)
 
     # If there are no (valid) credentials available, let the user log in
     if not credentials or not credentials.valid:
@@ -27,14 +29,14 @@ def authorize_google_calendar(scopes, credentials_file, token_file):
         # Save the credentials for the next run
         with open(token_file, 'w') as token:
             # REPLACE WITH FOLLOWING after taking values for config file
-            # token.write(credentials.to_json())
-            token.write(json.dumps({
-                'token': credentials.token,
-                'refresh_token': credentials.refresh_token,
-                'id_token': credentials.id_token,
-                'scopes': credentials.scopes,
-                'expiry': credentials.expiry.strftime("%Y-%m-%d %H:%M:%S")
-            }, indent=2))
+            token.write(credentials.to_json())
+            # token.write(json.dumps({
+            #     'token': credentials.token,
+            #     'refresh_token': credentials.refresh_token,
+            #     'id_token': credentials.id_token,
+            #     'scopes': credentials.scopes,
+            #     'expiry': credentials.expiry.strftime("%Y-%m-%d %H:%M:%S")
+            # }, indent=2))
 
     service = build('calendar', 'v3', credentials=credentials)
 

@@ -22,24 +22,19 @@ Provide Welcome Message or Instructions:
 
 Display a welcome message or instructions to guide the user on how to use the tool."""
 
-import calendar
 import json
+import os
 
 
 def read_config(file_path):
-    """
-    TODO: hide this file and move to home dir
-    """
-
-    try:
+    if os.path.exists(file_path):
         with open(file_path, 'r') as f:
             return json.load(f)
-    except FileNotFoundError:
+    else:
         print("Configuration file not found.")
+        raise FileNotFoundError
 
 
-def write_config(config, file_path):
-    with open(FILE_PATH, 'w') as f:
-        json.dump(config, f, indent=2)
-
-
+def write_config(config_data, file_path):
+    with open(file_path, 'w') as f:
+        json.dump(config_data, f, indent=2)
