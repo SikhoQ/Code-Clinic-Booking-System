@@ -1,0 +1,10 @@
+{
+  "google_calendar": {
+    "credentials": {
+      "client_id": "YOUR_CLIENT_ID",
+      "client_secret": "YOUR_CLIENT_SECRET",
+      "token_file": "TOKEN_FILE_PATH"
+    },
+    "coding_clinic_calendar_id": "CODING_CLINIC_CALENDAR_ID"
+  }
+}
