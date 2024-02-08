@@ -3,3 +3,4 @@ bin
 pyvenv.cfg
 lib64
 something.py
+venv

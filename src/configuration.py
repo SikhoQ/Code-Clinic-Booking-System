@@ -1,8 +1,8 @@
 import json
 import os
 
-TOKEN_FILE_PATH = os.path.expanduser("~/.google_calendar_token.json")
-CONFIG_FILE_PATH = os.path.expanduser("~/.coding_clinic_config.json")
+TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
+CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 
 
 def read_config(file_path):
@@ -30,7 +30,7 @@ def configure_system(credentials, clinic_calendar):
             "credentials": {
                 "client_id": client_id,
                 "client_secret": client_secret,
-                "token_file": TOKEN_FILE_PATH
+                "token_file": TOKEN_FILE
             },
             "coding_clinic_calendar_id": clinic_calendar_id
         },
@@ -43,5 +43,5 @@ def configure_system(credentials, clinic_calendar):
     }
 
     # Save the updated configuration
-    write_config(config_data, CONFIG_FILE_PATH)
+    write_config(config_data, CONFIG_FILE)
     print("Configuration updated successfully.")
