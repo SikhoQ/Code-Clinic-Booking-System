@@ -1,29 +1,8 @@
-"""Configuration Setup:
-
-Initialize and set up the configuration files.
-This might involve creating default configuration files if they don't exist or prompting the user to input initial configuration details.
-OAuth 2.0 Authorization Flow:
-
-If your tool interacts with Google Calendar API or any other external service that requires OAuth 2.0 authentication, the first run might involve initiating the OAuth 2.0 authorization flow.
-This includes obtaining the necessary client ID, client secret, and API key.
-User Consent:
-
-If OAuth 2.0 is used, the user might need to grant consent for the tool to access their Google Calendar or other data.
-This typically involves opening a browser window where the user logs in and provides consent.
-Token Retrieval and Storage:
-
-After the user grants consent, the tool needs to retrieve the access and refresh tokens and store them securely for future use.
-This often involves saving the tokens to a token file.
-Initial Data Setup:
-
-If your tool relies on specific data or files, create or initialize them.
-For example, if your tool uses a local database, tables might need to be created.
-Provide Welcome Message or Instructions:
-
-Display a welcome message or instructions to guide the user on how to use the tool."""
-
 import json
 import os
+
+TOKEN_FILE_PATH = os.path.expanduser("~/.google_calendar_token.json")
+CONFIG_FILE_PATH = os.path.expanduser("~/.coding_clinic_config.json")
 
 
 def read_config(file_path):
@@ -37,3 +16,32 @@ def read_config(file_path):
 def write_config(config_data, file_path):
     with open(file_path, 'w') as f:
         json.dump(config_data, f, indent=2)
+
+
+def configure_system(credentials, clinic_calendar):
+    client_id = credentials.client_id
+    client_secret = credentials.client_secret
+    clinic_calendar_id = clinic_calendar["id"]
+
+    first_name, last_name, campus, student_email = get_student_info()
+
+    config_data = {
+        "google_calendar": {
+            "credentials": {
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "token_file": TOKEN_FILE_PATH
+            },
+            "coding_clinic_calendar_id": clinic_calendar_id
+        },
+        "student_info": {
+            "first_name": first_name,
+            "last_name": last_name,
+            "campus": campus,
+            "student_email": student_email
+        }
+    }
+
+    # Save the updated configuration
+    write_config(config_data, CONFIG_FILE_PATH)
+    print("Configuration updated successfully.")

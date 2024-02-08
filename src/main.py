@@ -4,10 +4,7 @@ import configuration
 import calendars
 
 
-TOKEN_FILE_PATH = os.path.expanduser("~/.google_calendar_token.json")
 CREDS_FILE_PATH = os.path.expanduser("~/.google_calendar_credentials.json")
-CONFIG_FILE_PATH = os.path.expanduser("~/.coding_clinic_config.json")
-
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
@@ -25,35 +22,6 @@ def get_student_info():
     return (first_name, last_name, campus, student_email)
 
 
-def configure_system(credentials, clinic_calendar):
-    client_id = credentials.client_id
-    client_secret = credentials.client_secret
-    clinic_calendar_id = clinic_calendar["id"]
-
-    first_name, last_name, campus, student_email = get_student_info()
-
-    config_data = {
-        "google_calendar": {
-            "credentials": {
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "token_file": TOKEN_FILE_PATH
-            },
-            "coding_clinic_calendar_id": clinic_calendar_id
-        },
-        "student_info": {
-            "first_name": first_name,
-            "last_name": last_name,
-            "campus": campus,
-            "student_email": student_email
-        }
-    }
-
-    # Save the updated configuration
-    configuration.write_config(config_data, CONFIG_FILE_PATH)
-    print("Configuration updated successfully.")
-
-
 def first_run_setup(credentials, clinic_calendar):
     # Check if configuration file exists
     try:
@@ -61,7 +29,7 @@ def first_run_setup(credentials, clinic_calendar):
         print("Configuration already exists. No setup needed.")
     except FileNotFoundError:
         print("Configuration file not found. Starting configuration...")
-        configure_system(credentials, clinic_calendar)
+        configuration.configure_system(credentials, clinic_calendar)
 
 
 def load_client_credentials():
@@ -92,5 +60,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# TODO: download creds file from API
