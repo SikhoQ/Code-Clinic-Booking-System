@@ -4,7 +4,6 @@ import configuration
 import calendars
 import calendar_api
 from InquirerPy import inquirer
-from prompt_questions import questions
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -27,7 +26,8 @@ def get_student_info():
 
 
 def first_run_setup(credentials, clinic_calendar):
-    # Check if configuration file exists
+    print_welcome()
+
     try:
         config_data = configuration.read_config(CONFIG_FILE)
         print("Configuration already exists. No setup needed.")
@@ -45,15 +45,11 @@ def load_client_credentials():
 
 
 def main():
-    print_welcome()
 
-    credentials, service = calendar_api.authorize_google_calendar(SCOPES,
+    credentials, service = calendar_api.authorise_google_calendar(SCOPES,
                                                                   CREDS_FILE,
                                                                   TOKEN_FILE)
 
-    # TODO: properly handle exception in function below
-    #       and change something about calendar creation,
-    #       for when it already exists
     clinic_calendar = calendars.create_coding_clinic_calendar(service)
 
     connection_successful = calendars.verify_calendar_connection(service)
@@ -61,7 +57,7 @@ def main():
     if not connection_successful:
         print("Connection to Google Calendar failed. Please try again.")
 
-    first_run_setup(credentials, clinic_calendar)
+    first_run_setup()
 
 
 if __name__ == "__main__":

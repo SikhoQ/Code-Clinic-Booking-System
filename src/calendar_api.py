@@ -3,9 +3,15 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 import os
+from InquirerPy import inquirer
 
 
-def authorize_google_calendar(scopes, credentials_file, token_file):
+TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
+CREDS_FILE = os.path.expanduser("~/.google_calendar_credentials.json")
+SCOPES = ["https://www.googleapis.com/auth/calendar"]
+
+
+def authorise_google_calendar(scopes, credentials_file, token_file):
     credentials = None
 
     # Check if token file exists and contains valid credentials
@@ -18,8 +24,9 @@ def authorize_google_calendar(scopes, credentials_file, token_file):
         if credentials and credentials.expired and credentials.refresh_token:
             credentials.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(credentials_file, scopes)
-            credentials = flow.run_local_server(port=0)
+            if inquirer.confirm(message="Continue to Google Calendar OAuth 2.0 authentication and authorisation?").execute():
+                flow = InstalledAppFlow.from_client_secrets_file(credentials_file, scopes)
+                credentials = flow.run_local_server(port=0)
 
         # Save the credentials for the next run
         with open(token_file, 'w') as token_file:
