@@ -3,6 +3,7 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 import os
+import sys
 from InquirerPy import inquirer
 
 
@@ -24,9 +25,15 @@ def authorise_google_calendar(scopes, credentials_file, token_file):
         if credentials and credentials.expired and credentials.refresh_token:
             credentials.refresh(Request())
         else:
-            if inquirer.confirm(message="Continue to Google Calendar OAuth 2.0 authentication and authorisation?").execute():
+            # Save the original standard output
+            original_stdout = sys.stdout
+            # Redirect standard output to a null device (a place where output is discarded)
+            # This is to remove the "please visit this URL..." output while running program
+            with open(os.devnull, 'w') as null_device:
+                sys.stdout = null_device
                 flow = InstalledAppFlow.from_client_secrets_file(credentials_file, scopes)
                 credentials = flow.run_local_server(port=0)
+            sys.stdout = original_stdout
 
         # Save the credentials for the next run
         with open(token_file, 'w') as token_file:

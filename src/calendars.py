@@ -1,6 +1,7 @@
 import datetime
 import json
 from googleapiclient.errors import HttpError
+from InquirerPy import inquirer
 
 
 def download_calendar_data(start_date, end_date):
@@ -26,7 +27,6 @@ def create_coding_clinic_calendar(service):
         calendars = service.calendarList().list().execute()
         for calendar in calendars['items']:
             if calendar['summary'] == "Coding Clinic":
-                print("Coding Clinic Calendar already exists.")
                 return calendar
         print("Coding Clinic Calendar not found. Creating...\n")
     except HttpError as e:
@@ -55,6 +55,6 @@ def verify_calendar_connection(service):
         print("Connection to Google Calendar successful")
         return True
 
-    except HttpError as error:
-        print(f"Error connecting to Google Calendar: {error}")
+    except HttpError as e:
+        print(f"Error connecting to Google Calendar: {e}")
         return False

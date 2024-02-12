@@ -1,55 +1,32 @@
 import json
 import os
+from InquirerPy import inquirer
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 
 
-
-def load_config():
-    try:
-        with open('config/config.json', 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print("Configuration file not found.")
-        return None
-
-def save_config(config):
-    with open('config/config.json', 'w') as f:
-        json.dump(config, f, indent=2)
+def print_welcome():
+    print("\nWelcome to the Coding Clinic Booking System")
+    print("You do not appear to have a config file defined, so let me ask you some questions\n\n")
 
 
+def get_student_info():
+    first_name = inquirer.text(message="First name: ").execute()
+    last_name = inquirer.text(message="Last name: ").execute()
+    campus = inquirer.select(message="Select your campus:",
+                             choices=["CPT", "DBN", "JHB"]).execute()
+    student_email = inquirer.text(message="username: ").execute()
+
+    return (first_name, last_name, campus, student_email)
 
 
-def read_config(file_path):
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as f:
-            return json.load(f)
-    else:
-        raise FileNotFoundError
-
-
-def write_config(config_data, file_path):
-    with open(file_path, 'w') as f:
-        json.dump(config_data, f, indent=2)
-
-
-def configure_system(credentials, clinic_calendar):
-    client_id = credentials.client_id
-    client_secret = credentials.client_secret
-    clinic_calendar_id = clinic_calendar["id"]
+def first_run_setup():
+    print_welcome()
 
     first_name, last_name, campus, student_email = get_student_info()
 
     config_data = {
-        "google_calendar": {
-            "credentials": {
-                "client_id": client_id,
-                "client_secret": client_secret,
-                "token_file": TOKEN_FILE
-            },
-            "coding_clinic_calendar_id": clinic_calendar_id
-        },
         "student_info": {
             "first_name": first_name,
             "last_name": last_name,
@@ -58,50 +35,70 @@ def configure_system(credentials, clinic_calendar):
         }
     }
 
-    # Save the updated configuration
     write_config(config_data, CONFIG_FILE)
-    print("Configuration updated successfully.")
 
 
-
-
-###############################################################
-###############################################################
-
-
-import json
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-
-def load_config():
-    try:
-        with open('config/config.json', 'r') as f:
+def read_config(CONFIG_FILE):
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, 'r') as f:
             return json.load(f)
+    else:
+        raise FileNotFoundError
+
+
+def write_config(config_data, CONFIG_FILE):
+    with open(CONFIG_FILE, 'w') as f:
+        json.dump(config_data, f, indent=2)
+
+
+def configure_system(credentials, clinic_calendar):
+    try:
+        config_data = read_config(CONFIG_FILE)
+        print("Configuration already exists. No setup needed.")
     except FileNotFoundError:
-        print("Configuration file not found.")
-        return None
+        print("Configuration file not found. Starting configuration...")
+        configure_system(credentials, clinic_calendar)
 
-def save_config(config):
-    with open('config/config.json', 'w') as f:
-        json.dump(config, f, indent=2)
+    client_id = credentials.client_id
+    client_secret = credentials.client_secret
+    clinic_calendar_id = clinic_calendar["id"]
 
-def configure_system():
-    # Load existing configuration
-    config = load_config() or {}
 
-    # Google Calendar API setup
-    flow = InstalledAppFlow.from_client_secrets_file(
-        'path/to/client_secret.json',  # Path to your client_secret.json file
-        ['https://www.googleapis.com/auth/calendar']
-    )
 
-    credentials = flow.run_local_server(port=0)
-    config['google_calendar_api_key'] = credentials.token
-    config['google_calendar_id'] = 'primary'  # Assuming the clinic calendar is added to the user's primary calendar
+def main():
+    pass
 
-    # Save configuration
-    save_config(config)
-    print("Configuration completed successfully.")
 
 if __name__ == "__main__":
-    configure_system()
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# "google_calendar": {
+#             "credentials": {
+#                 "client_id": client_id,
+#                 "client_secret": client_secret,
+#                 "token_file": TOKEN_FILE
+#             }
+#         }

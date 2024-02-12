@@ -3,37 +3,11 @@ import os.path
 import configuration
 import calendars
 import calendar_api
-from InquirerPy import inquirer
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 CREDS_FILE = os.path.expanduser("~/.google_calendar_credentials.json")
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
-
-
-def print_welcome():
-    print("\nWelcome to the Coding Clinic Booking System")
-
-
-def get_student_info():
-    first_name = inquirer.text(message="First name: ").title()
-    last_name = inquirer.text(message="Last name: ").title()
-    campus = inquirer.select(message="Select your campus:",
-                             choices=["CPT", "DBN", "JHB"])
-    student_email = inquirer.text(message="username: ")
-
-    return (first_name, last_name, campus, student_email)
-
-
-def first_run_setup(credentials, clinic_calendar):
-    print_welcome()
-
-    try:
-        config_data = configuration.read_config(CONFIG_FILE)
-        print("Configuration already exists. No setup needed.")
-    except FileNotFoundError:
-        print("Configuration file not found. Starting configuration...")
-        configuration.configure_system(credentials, clinic_calendar)
 
 
 def load_client_credentials():
@@ -45,19 +19,22 @@ def load_client_credentials():
 
 
 def main():
+    # If no config file found, assume 1st run
+    if not os.path.exists(CONFIG_FILE):
+        configuration.first_run_setup()
 
     credentials, service = calendar_api.authorise_google_calendar(SCOPES,
                                                                   CREDS_FILE,
                                                                   TOKEN_FILE)
-
-    clinic_calendar = calendars.create_coding_clinic_calendar(service)
+    try:
+        clinic_calendar = calendars.create_coding_clinic_calendar(service)
+    except Exception as e:
+        print(f"An error was encountered while creating calendar\n{e}")
 
     connection_successful = calendars.verify_calendar_connection(service)
 
     if not connection_successful:
         print("Connection to Google Calendar failed. Please try again.")
-
-    first_run_setup()
 
 
 if __name__ == "__main__":
