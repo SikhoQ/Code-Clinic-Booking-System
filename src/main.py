@@ -1,8 +1,8 @@
 import json
 import os.path
-import configuration
-import calendars
-import calendar_api
+import configure.configuration as configuration
+import calendars.calendars as calendars
+import calendars.calendar_api as calendar_api
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -30,11 +30,6 @@ def main():
         clinic_calendar = calendars.create_coding_clinic_calendar(service)
     except Exception as e:
         print(f"An error was encountered while creating calendar\n{e}")
-
-    connection_successful = calendars.verify_calendar_connection(service)
-
-    if not connection_successful:
-        print("Connection to Google Calendar failed. Please try again.")
 
 
 if __name__ == "__main__":

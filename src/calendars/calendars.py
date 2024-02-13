@@ -1,6 +1,5 @@
 import datetime
 import json
-from googleapiclient.errors import HttpError
 from InquirerPy import inquirer
 
 
@@ -46,15 +45,3 @@ def create_coding_clinic_calendar(service):
 
     print("Coding Clinic Calendar created.")
     return created_calendar
-
-
-def verify_calendar_connection(service):
-    try:
-        print("Verifying connection to Google Calendar...\n")
-        calendar = service.calendars().get(calendarId='primary').execute()
-        print("Connection to Google Calendar successful")
-        return True
-
-    except HttpError as e:
-        print(f"Error connecting to Google Calendar: {e}")
-        return False
