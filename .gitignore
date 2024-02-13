@@ -4,3 +4,4 @@ pyvenv.cfg
 lib64
 something.py
 venv
+src/__pycache__
