@@ -5,12 +5,9 @@ def is_slot_available(service, date, time):
 
 
 def book_slot(service, date, time, description):
-    #TODO:  Check if the slot is available
-
+    # TODO: Check if the slot is available
     #       Create event for booking
-
     #       Insert the event into the user's calendar
-
     #       Update local data file with the booking information (leave this out for now)
     pass
 
