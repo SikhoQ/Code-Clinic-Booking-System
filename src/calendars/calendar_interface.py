@@ -26,7 +26,7 @@ def download_calendar_data(service, start_date, end_date):
     except HttpError as e:
         print(f"An error occurred: {e}")
     
-    return events
+    return events["items"]
 
 
 def display_calendar_data(data):
