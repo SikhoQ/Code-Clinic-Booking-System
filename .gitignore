@@ -7,3 +7,5 @@ venv
 src/__pycache__
 .vscode
 view_slots_example.py
+src/calendars/__pycache__
+src/configure/__pycache__
