@@ -6,7 +6,7 @@ from googleapiclient.errors import HttpError
 from datetime import *
 
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
-CLINIC_CALENDAR_FILE = os.path.expanduser("data/clinic_calendar.json")
+CLINIC_CALENDAR_FILE = os.path.expanduser("src/calendars/calendar_data.json")
 
 def download_calendar_data(service, start_date, end_date):
     with open(CLINIC_CALENDAR_FILE, 'r') as file_handle:

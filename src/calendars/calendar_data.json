@@ -1,0 +1,21 @@
+{
+  "primary": {
+    "events": {
+      "event_id": "~",
+      "start": "~",
+      "end": "~",
+      "description": "~"
+    },
+    "calendar_id": "~"
+  },
+
+  "code clinic": {
+    "events": {
+      "event_id": "~",
+      "start": "~",
+      "end": "~",
+      "description": "~"
+    },
+    "calendar_id": "~"
+  }
+}

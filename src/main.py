@@ -32,7 +32,7 @@ def main():
     try:
         clinic_calendar = calendar_interface.create_coding_clinic_calendar(service)
         # add calendar id to calendar data file
-        with open("data/clinic_calendar.json", 'w') as file_handle:
+        with open("src/calendars/calendar_data.json", 'w') as file_handle:
             data = {
                 "calendar_id": clinic_calendar["id"] 
             }
