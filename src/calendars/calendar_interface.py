@@ -1,25 +1,32 @@
+import json
 import os
 import sys
 from google.auth.transport.requests import Request
 from googleapiclient.errors import HttpError
 from datetime import *
 
+CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
+CLINIC_CALENDAR_FILE = os.path.expanduser("data/clinic_calendar.json")
 
 def download_calendar_data(service, start_date, end_date):
+    with open(CLINIC_CALENDAR_FILE, 'r') as file_handle:
+        file_data = json.load(file_handle)
     try:
         events = service.events().list(
-            calendarId='primary',
+            calendarId=file_data["calendar_id"],
             timeMin=start_date,
             timeMax=end_date,
             singleEvents=True,
             orderBy='startTime'
         ).execute()
 
-        for event in events['items']:
-            print(event['summary'])
+        # for event in events['items']:
+        #     print(event['summary'])
 
     except HttpError as e:
         print(f"An error occurred: {e}")
+    
+    return events
 
 
 def display_calendar_data(data):

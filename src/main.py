@@ -1,6 +1,6 @@
 import json
 import os.path
-import datetime
+from datetime import datetime
 import configure.configuration as configuration
 import calendars.calendar_interface as calendar_interface
 import calendars.calendar_api as api
@@ -21,25 +21,35 @@ def load_client_credentials():
 
 
 def main():
-    
-    if not os.path.exists(CONFIG_FILE):
-        configuration.first_run_setup()
-
     service = api.authorise_google_calendar(SCOPES,
                                             CREDS_FILE,
                                             TOKEN_FILE)
+
+    if not os.path.exists(CONFIG_FILE):
+        configuration.first_run_setup(service)
+
+
     try:
         clinic_calendar = calendar_interface.create_coding_clinic_calendar(service)
+        # add calendar id to calendar data file
+        with open("data/clinic_calendar.json", 'w') as file_handle:
+            data = {
+                "calendar_id": clinic_calendar["id"] 
+            }
+            json.dump(data, file_handle, indent=2)
     except Exception as e:
         print(f"An error was encountered while creating calendar\n{e}")
         try_again = inquirer.confirm(message="\nTry again?").execute()
         if try_again:
             main()
 
-        start_date = datetime(2024, 2, 14, 0, 0, 0)  
-        end_date = datetime(2024, 2, 16, 0, 0, 0)    
-        calendar_interface.download_calendar_data(service, start_date, end_date)
-        # display_calendar_data(calendar_data)
+    start_date = datetime(2024, 2, 14, 0, 0, 0)
+    end_date = datetime(2024, 5, 16, 0, 0, 0)
+    start_date = start_date.isoformat() + 'Z'
+    end_date = end_date.isoformat() + 'Z'
+
+    calendar_data = calendar_interface.download_calendar_data(service, start_date, end_date)
+    calendar_interface.display_calendar_data(calendar_data)
 
 if __name__ == "__main__":
     main()

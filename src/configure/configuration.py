@@ -15,7 +15,7 @@ def print_welcome():
 
 
 # TODO: DO something about this useless function
-def read_config(CONFIG_FILE):
+def read_config():
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, 'r') as f:
             return json.load(f)
@@ -23,7 +23,7 @@ def read_config(CONFIG_FILE):
         raise FileNotFoundError
 
 
-def write_config(config_data, CONFIG_FILE):
+def write_config(config_data):
     with open(CONFIG_FILE, 'w') as f:
         json.dump(config_data, f, indent=2)
 
@@ -49,7 +49,10 @@ def get_student_info():
     return (first_name, last_name, campus, student_email)
 
 
-def do_configuration():
+
+
+
+def do_configuration(service):
     try:
         with open(CREDS_FILE, 'r') as creds_file:
             file_data = json.load(creds_file)
@@ -69,7 +72,7 @@ def do_configuration():
             "student_email": student_email
         },
 
-        "google_calendar": {
+        "google_calendar_api": {
                 "credentials": {
                     "client_id": client_id,
                     "client_secret": client_secret,
@@ -78,9 +81,9 @@ def do_configuration():
             }
     }
 
-    write_config(config_data, CONFIG_FILE)
+    write_config(config_data)
 
 
-def first_run_setup():
+def first_run_setup(service):
     print_welcome()
-    do_configuration()
+    do_configuration(service)
