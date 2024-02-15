@@ -3,6 +3,7 @@ import os.path
 import configure.configuration as configuration
 import calendars.calendar_interface as calendar_interface
 import calendars.calendar_api as api
+from InquirerPy import inquirer
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -30,6 +31,9 @@ def main():
         clinic_calendar = calendar_interface.create_coding_clinic_calendar(service)
     except Exception as e:
         print(f"An error was encountered while creating calendar\n{e}")
+        try_again = inquirer.confirm(message="\nTry again?").execute()
+        if try_again:
+            main()
 
     #     start_date = datetime(2024, 2, 13, 0, 0, 0)  
     #     end_date = datetime(2024, 2, 14, 0, 0, 0)    
