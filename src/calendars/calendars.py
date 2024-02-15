@@ -1,6 +1,6 @@
-import datetime
 import json
 from InquirerPy import inquirer
+from googleapiclient.errors import HttpError
 
 
 def download_calendar_data(start_date, end_date):
@@ -27,10 +27,11 @@ def create_coding_clinic_calendar(service):
         for calendar in calendars['items']:
             if calendar['summary'] == "Coding Clinic":
                 return calendar
-        print("Coding Clinic Calendar not found. Creating...\n")
+        print("\n\nCoding Clinic Calendar not found. Creating...\n")
+
     except HttpError as e:
         if e.resp.status == 404:
-            print("Coding Clinic Calendar not found. Creating...\n")
+            print("\n\nCoding Clinic Calendar not found. Creating...\n")
         else:
             # re-raise caught exception if its status code is not 404.
             raise
@@ -38,7 +39,7 @@ def create_coding_clinic_calendar(service):
     # Create the calendar
     calendar = {
         "summary": "Coding Clinic",
-        "description": "Calendar for Coding Clinics volunteering and bookings"
+        "description": "Calendar for Coding Clinic bookings"
     }
 
     created_calendar = service.calendars().insert(body=calendar).execute()

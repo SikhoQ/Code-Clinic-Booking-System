@@ -5,3 +5,4 @@ lib64
 something.py
 venv
 src/__pycache__
+.vscode

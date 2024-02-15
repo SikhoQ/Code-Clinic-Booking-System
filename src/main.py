@@ -3,6 +3,7 @@ import os.path
 import configure.configuration as configuration
 import calendars.calendars as calendars
 import calendars.calendar_api as calendar_api
+from InquirerPy import inquirer
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -23,13 +24,19 @@ def main():
     if not os.path.exists(CONFIG_FILE):
         configuration.first_run_setup()
 
-    credentials, service = calendar_api.authorise_google_calendar(SCOPES,
-                                                                  CREDS_FILE,
-                                                                  TOKEN_FILE)
+    service = calendar_api.authorise_google_calendar(SCOPES,
+                                                     CREDS_FILE,
+                                                     TOKEN_FILE)
+
     try:
-        clinic_calendar = calendars.create_coding_clinic_calendar(service)
+        calendars.create_coding_clinic_calendar(service)
     except Exception as e:
         print(f"An error was encountered while creating calendar\n{e}")
+        try_again = inquirer.confirm(message="\nTry again?").execute()
+        if try_again:
+            main()
+
+    # TODO: Implement main loop logic here
 
 
 if __name__ == "__main__":
