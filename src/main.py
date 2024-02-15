@@ -2,8 +2,9 @@ import json
 import os.path
 import configure.configuration as configuration
 import calendars.calendars as calendars
-import calendars.calendar_api as calendar_api
+import calendars.calendar_api as calendar_interface
 from InquirerPy import inquirer
+
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -20,14 +21,13 @@ def load_client_credentials():
 
 
 def main():
-    # If no config file found, assume 1st run
+    
     if not os.path.exists(CONFIG_FILE):
         configuration.first_run_setup()
 
-    service = calendar_api.authorise_google_calendar(SCOPES,
-                                                     CREDS_FILE,
-                                                     TOKEN_FILE)
-
+    service = calendar_interface.authorise_google_calendar(SCOPES,
+                                                           CREDS_FILE,
+                                                           TOKEN_FILE)
     try:
         calendars.create_coding_clinic_calendar(service)
     except Exception as e:
@@ -38,6 +38,10 @@ def main():
 
     # TODO: Implement main loop logic here
 
+    #     start_date = datetime(2024, 2, 13, 0, 0, 0)  
+    #     end_date = datetime(2024, 2, 14, 0, 0, 0)    
+    #     calendar_data = download_calendar_data(start_date, end_date)
+    #     display_calendar_data(calendar_data)
 
 if __name__ == "__main__":
     main()
