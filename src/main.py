@@ -1,5 +1,6 @@
 import json
 import os.path
+import datetime
 import configure.configuration as configuration
 import calendars.calendar_interface as calendar_interface
 import calendars.calendar_api as api
@@ -35,10 +36,10 @@ def main():
         if try_again:
             main()
 
-    #     start_date = datetime(2024, 2, 13, 0, 0, 0)  
-    #     end_date = datetime(2024, 2, 14, 0, 0, 0)    
-    #     calendar_data = download_calendar_data(start_date, end_date)
-    #     display_calendar_data(calendar_data)
+        start_date = datetime(2024, 2, 14, 0, 0, 0)  
+        end_date = datetime(2024, 2, 16, 0, 0, 0)    
+        calendar_interface.download_calendar_data(service, start_date, end_date)
+        # display_calendar_data(calendar_data)
 
 if __name__ == "__main__":
     main()
