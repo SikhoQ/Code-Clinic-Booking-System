@@ -2,6 +2,7 @@ import json
 import os
 import sys
 from InquirerPy import inquirer
+from InquirerPy.validator import EmptyInputValidator
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -13,6 +14,7 @@ def print_welcome():
     print("You do not appear to have a config file defined, so let me ask you some questions\n")
 
 
+# TODO: DO something about this useless function
 def read_config(CONFIG_FILE):
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, 'r') as f:
@@ -27,11 +29,22 @@ def write_config(config_data, CONFIG_FILE):
 
 
 def get_student_info():
-    first_name = inquirer.text(message="First name: ").execute()
-    last_name = inquirer.text(message="Last name: ").execute()
-    campus = inquirer.select(message="Select your campus:",
-                             choices=["CPT", "DBN", "JHB"]).execute()
-    student_email = inquirer.text(message="username: ").execute()
+    first_name = inquirer.text(
+        message="First name:",
+        validate=EmptyInputValidator("Name should not be empty")
+        ).execute()
+    last_name = inquirer.text(
+        message="Last name:",
+        validate=EmptyInputValidator("Last name should not be empty")
+        ).execute()
+    campus = inquirer.select(
+        message="Select your campus:",
+        choices=["CPT", "DBN", "JHB"]
+        ).execute()
+    student_email = inquirer.text(
+        message="username:",
+        validate=EmptyInputValidator("Username should not be empty")
+        ).execute()
 
     return (first_name, last_name, campus, student_email)
 
@@ -43,15 +56,10 @@ def do_configuration():
             client_id = file_data["installed"]["client_id"]
             client_secret = file_data["installed"]["client_secret"]
     except FileNotFoundError:
-        print("Google Calendar API credentials not found. Please run authorisation flow.")
+        print("Error: Google Calendar API credentials not found.\nQuitting...")
+        sys.exit()
 
     first_name, last_name, campus, student_email = get_student_info()
-
-
-def first_run_setup():
-    print_welcome()
-
-    do_configuration()
 
     config_data = {
         "student_info": {
@@ -59,46 +67,20 @@ def first_run_setup():
             "last_name": last_name.title(),
             "campus": campus,
             "student_email": student_email
-        }
+        },
+
+        "google_calendar": {
+                "credentials": {
+                    "client_id": client_id,
+                    "client_secret": client_secret,
+                    "token_file": TOKEN_FILE
+                }
+            }
     }
 
     write_config(config_data, CONFIG_FILE)
 
 
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# "google_calendar": {
-#             "credentials": {
-#                 "client_id": client_id,
-#                 "client_secret": client_secret,
-#                 "token_file": TOKEN_FILE
-#             }
-#         }
+def first_run_setup():
+    print_welcome()
+    do_configuration()

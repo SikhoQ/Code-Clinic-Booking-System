@@ -1,7 +1,3 @@
-def is_slot_available(service, date, time):
-    # Implement logic to check if the specified slot is available
-    # This could involve querying the Google Calendar API for events at the specified time
-    pass
 
 
 def book_slot(service, date, time, description):
