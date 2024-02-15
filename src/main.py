@@ -29,7 +29,7 @@ def main():
                                                            CREDS_FILE,
                                                            TOKEN_FILE)
     try:
-        calendars.create_coding_clinic_calendar(service)
+        calendars.create_code_clinic_calendar(service)
     except Exception as e:
         print(f"An error was encountered while creating calendar\n{e}")
         try_again = inquirer.confirm(message="\nTry again?").execute()

@@ -18,31 +18,33 @@ def update_local_data_file(file_path, new_data):
     pass
 
 
-def create_coding_clinic_calendar(service):
+def create_code_clinic_calendar(service):
     clinic_calendar = service.calendarList().list().execute()
 
     # Check if the calendar already exists
     try:
         calendars = service.calendarList().list().execute()
         for calendar in calendars['items']:
-            if calendar['summary'] == "Coding Clinic":
+            if calendar['summary'] == "Code Clinic":
                 return calendar
-        print("\n\nCoding Clinic Calendar not found. Creating...\n")
+        # TODO: add blinking ellipses
+        print("\n\nCode Clinic Calendar not found. Creating...\n")
 
     except HttpError as e:
         if e.resp.status == 404:
-            print("\n\nCoding Clinic Calendar not found. Creating...\n")
+            # TODO: add blinking ellipses
+            print("\n\nCode Clinic Calendar not found. Creating...\n")
         else:
             # re-raise caught exception if its status code is not 404.
             raise
 
     # Create the calendar
     calendar = {
-        "summary": "Coding Clinic",
-        "description": "Calendar for Coding Clinic bookings"
+        "summary": "Code Clinic",
+        "description": "Calendar for Code Clinic bookings"
     }
 
     created_calendar = service.calendars().insert(body=calendar).execute()
 
-    print("Coding Clinic Calendar created.")
+    print("Code Clinic Calendar created.")
     return created_calendar

@@ -6,3 +6,4 @@ something.py
 venv
 src/__pycache__
 .vscode
+view_slots_example.py
