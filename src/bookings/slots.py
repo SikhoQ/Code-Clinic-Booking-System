@@ -15,6 +15,7 @@ def book_slot(service, date, time, description):
 def update_local_data_file(date, time, event_id, description):
     # Implement logic to update the local data file with booking information
 
+
     pass
 
 
