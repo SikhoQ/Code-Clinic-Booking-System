@@ -9,3 +9,6 @@ src/__pycache__
 view_slots_example.py
 src/calendars/__pycache__
 src/configure/__pycache__
+credentials.json
+quickstart.py
+token.json
