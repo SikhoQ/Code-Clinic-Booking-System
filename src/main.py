@@ -28,7 +28,6 @@ def main():
     if not os.path.exists(CONFIG_FILE):
         configuration.first_run_setup(service)
 
-
     try:
         clinic_calendar = calendar_interface.create_coding_clinic_calendar(service)
         # add calendar id to calendar data file
