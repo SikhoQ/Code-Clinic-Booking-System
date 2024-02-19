@@ -1,3 +1,21 @@
 {
-  "calendar_id": "c_5eec962a747e4629f88a441f3b171016ef3adadd4bf3bb1628cc0611e0baeefc@group.calendar.google.com"
+  "primary": {
+    "events": {
+      "event_id": "~",
+      "start": "~",
+      "end": "~",
+      "description": "~"
+    },
+    "calendar_id": "~"
+  },
+
+  "code clinic": {
+    "events": {
+      "event_id": "~",
+      "start": "~",
+      "end": "~",
+      "description": "~"
+    },
+    "calendar_id": "~"
+  }
 }
