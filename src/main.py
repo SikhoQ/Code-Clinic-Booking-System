@@ -42,13 +42,6 @@ def main():
         if try_again:
             main()
 
-    start_date = datetime(2024, 2, 14, 0, 0, 0)
-    end_date = datetime(2024, 5, 16, 0, 0, 0)
-    start_date = start_date.isoformat() + 'Z'
-    end_date = end_date.isoformat() + 'Z'
-
-    calendar_data = calendar_interface.download_calendar_data(service, start_date, end_date)
-    calendar_interface.display_calendar_data(calendar_data)
 
 if __name__ == "__main__":
     main()
