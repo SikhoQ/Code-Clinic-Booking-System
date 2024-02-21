@@ -1,6 +1,6 @@
 from datetime import *
-import calendar_interface
-import calendar_api as api
+import booking_system.calendars.calendar_utilities as calendar_utilities
+import booking_system.calendars.calendar_api as api
 import os
 import csv
 from prettytable import PrettyTable
@@ -24,18 +24,13 @@ def format_data(event):
 
 
 def view_calendar():
-    service = api.authorise_google_calendar(SCOPES, CREDS_FILE, TOKEN_FILE)
-    today = datetime.now()
-    start_date = today.isoformat() + 'Z'
-    
-    end_date = (today + timedelta(days=6)).isoformat() + 'Z'
-    
+
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration']
 
     slots = []
-    calendar_data = calendar_interface.download_calendar_data(service, start_date, end_date)
-    
+    calendar_data = calendar_utilities.read_calendar_data()["cohort 2023"]["items"]
+
     for event in calendar_data:
     
         formatted = format_data(event)
@@ -48,6 +43,7 @@ def view_calendar():
             formatted[0] = 'No event'
 
 
+    print("printing table")
     print(table)
     
     return slots

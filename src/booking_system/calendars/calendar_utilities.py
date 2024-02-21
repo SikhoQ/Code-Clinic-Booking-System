@@ -31,9 +31,12 @@ def read_calendar_data():
         with open(CALENDAR_FILE, "r") as file:
             calendar_data = json.load(file)
 
+        print(calendar_data)
+        input()
         return calendar_data
 
     except FileNotFoundError:
+        print("!!!")
         create_calendar_data_file_template()
 
         return read_calendar_data()
@@ -129,7 +132,7 @@ def get_server_data(service, days=7):
     server_data = dict()
 
     now = datetime.utcnow()
-    end_date = now + timedelta(days=days)
+    end_date = now + timedelta(days=days - 1)
 
     for key in calendar_ids:
         # catch possible exception here
@@ -155,16 +158,19 @@ def update_calendar_data_file(service):
         new_data = {
             "primary": {
                 "etag": server_data["primary"]["etag"],
-                "events": server_data["primary"]["items"]
-                "id": 
+                "events": server_data["primary"]["items"],
+                "id": calendar_data["primary"]["id"]
             },
             "code clinic": {
                 "etag": server_data["code clinic"]["etag"],
-                "events": server_data["code clinic"]["items"]
+                "events": server_data["code clinic"]["items"],
+                "id": calendar_data["code clinic"]["id"]
+
             },
             "cohort 2023": {
                 "etag": server_data["cohort 2023"]["etag"],
-                "events": server_data["cohort 2023"]["items"]
+                "events": server_data["cohort 2023"]["items"],
+                "id": calendar_data["cohort 2023"]["id"]
             }
         }
 

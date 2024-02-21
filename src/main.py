@@ -3,6 +3,7 @@ import json
 import os.path
 import configure.configuration as configuration
 import booking_system.calendars.calendar_utilities as calendar_utilities
+import booking_system.calendars.view_calendar as view_calendar
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 
@@ -50,11 +51,15 @@ def main():
 
     # assume file can only be created by program; fix later on
     # (can also be created manually with wrong format)
-    if not os.path.exists(CALENDAR_FILE):
+    try:
+        calendar_utilities.read_calendar_data()
+    except FileNotFoundError:
         calendar_utilities.create_calendar_data_file_template(calendars)
 
     # after config step, update the calendar data file (data dates checked inside func def)
     calendar_utilities.update_calendar_data_file(service)
+
+    view_calendar.view_calendar()
 
 
 if __name__ == "__main__":
