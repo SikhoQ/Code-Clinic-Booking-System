@@ -119,7 +119,7 @@ def is_calendar_data_outdated(calendar_data, server_data):
 
 def get_server_data(service, days=7):
     # days could be redundant
-    calendar_data = read_calendar_data(service)
+    calendar_data = read_calendar_data()
     calendar_ids = {
         "primary": calendar_data["primary"]["id"],
         "code clinic": calendar_data["code clinic"]["id"],
@@ -148,7 +148,7 @@ def update_calendar_data_file(service):
     # output to user that this is happening
     # ouput should be before API requests -> get_server_data
 
-    calendar_data = read_calendar_data(service)
+    calendar_data = read_calendar_data()
     server_data = get_server_data(service)
 
     if is_calendar_data_outdated(calendar_data, server_data):
@@ -156,6 +156,7 @@ def update_calendar_data_file(service):
             "primary": {
                 "etag": server_data["primary"]["etag"],
                 "events": server_data["primary"]["items"]
+                "id": 
             },
             "code clinic": {
                 "etag": server_data["code clinic"]["etag"],
