@@ -12,3 +12,4 @@ src/configure/__pycache__
 credentials.json
 quickstart.py
 token.json
+dates.csv
