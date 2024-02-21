@@ -7,10 +7,10 @@ from InquirerPy.validator import EmptyInputValidator
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 CREDS_FILE = os.path.expanduser("~/.google_calendar_credentials.json")
+CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
 
-def print_welcome():
-    print("\nWelcome to the Coding Clinic Booking System")
+def print_config_message():
     print("You do not appear to have a config file defined, so let me ask you some questions\n")
 
 
@@ -49,9 +49,6 @@ def get_student_info():
     return (first_name, last_name, campus, student_email)
 
 
-
-
-
 def do_configuration(service):
     try:
         with open(CREDS_FILE, 'r') as creds_file:
@@ -73,10 +70,10 @@ def do_configuration(service):
         },
 
         "google_calendar_api": {
-                "credentials": {
-                    "client_id": client_id,
-                    "client_secret": client_secret,
-                    "token_file": TOKEN_FILE
+            "credentials": {
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "token_file": TOKEN_FILE
                 }
             }
     }
@@ -84,6 +81,10 @@ def do_configuration(service):
     write_config(config_data)
 
 
+
+
+
 def first_run_setup(service):
-    print_welcome()
+    print_config_message()
     do_configuration(service)
+    create_calendar_data_file_template()

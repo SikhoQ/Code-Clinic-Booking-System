@@ -1,9 +1,9 @@
+import sys
 import json
 import os.path
-from datetime import datetime
 import configure.configuration as configuration
-import calendars.calendar_interface as calendar_interface
-import calendars.calendar_api as api
+import booking_system.calendars.calendar_interface as calendar_interface
+import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
@@ -21,26 +21,35 @@ def load_client_credentials():
 
 
 def main():
-    service = api.authorise_google_calendar(SCOPES,
-                                            CREDS_FILE,
-                                            TOKEN_FILE)
-
     if not os.path.exists(CONFIG_FILE):
-        configuration.first_run_setup(service)
+        print("\nWelcome to the Coding Clinic Booking System")
 
+        # google calendar authentication and authorisation
+        service = api.authorise_google_calendar(SCOPES,
+                                                CREDS_FILE,
+                                                TOKEN_FILE)
+
+    # creating the Coding Clinic calendar
     try:
         clinic_calendar = calendar_interface.create_coding_clinic_calendar(service)
-        # add calendar id to calendar data file
-        with open("src/calendars/calendar_data.json", 'w') as file_handle:
-            data = {
-                "calendar_id": clinic_calendar["id"] 
-            }
-            json.dump(data, file_handle, indent=2)
+        # after this step, somewhere, calendar id's should be stored to data file
     except Exception as e:
         print(f"An error was encountered while creating calendar\n{e}")
         try_again = inquirer.confirm(message="\nTry again?").execute()
+
         if try_again:
             main()
+        else:
+            sys.exit()
+
+    # first run config step
+    if not os.path.exists(CONFIG_FILE):
+        configuration.first_run_setup(service)
+
+    calendar_interface.create_calendar_data_file_template(service)
+
+    # after config step, update the calendar data file (data dates checked inside func def)
+    calendar_interface.update_calendar_data_file(service)
 
 
 if __name__ == "__main__":
