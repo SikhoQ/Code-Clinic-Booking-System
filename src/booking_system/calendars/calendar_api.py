@@ -33,7 +33,7 @@ def authorise_google_calendar():
                     flow = InstalledAppFlow.from_client_secrets_file(client_secrets_file=CREDS_FILE, scopes=SCOPES)
                     credentials = flow.run_local_server(port=0)
 
-                # if user denies access, quit programZZ
+                # if user denies access, quit program
                 except Exception as e:
                     os.system("clear")
                     sys.exit(f"There was an error during authentication: {e}\n\nQuitting...")

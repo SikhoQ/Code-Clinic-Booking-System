@@ -25,7 +25,7 @@ def download_calendars(service):
             sys.exit()
 
 
-def read_calendar_data(service):
+def read_calendar_data():
     try:
         # Load the local calendar data
         with open(CALENDAR_FILE, "r") as file:
@@ -36,7 +36,7 @@ def read_calendar_data(service):
     except FileNotFoundError:
         create_calendar_data_file_template()
 
-        return read_calendar_data(service)
+        return read_calendar_data()
 
 
 def write_calendar_data(calendar_data):
@@ -95,7 +95,7 @@ def create_calendar_data_file_template(calendars):
 def is_calendar_data_outdated(calendar_data, server_data):
     # Use the etag to check if the data is outdated, from all 3 calendars
     # needs calendar id's to get server etags for all calendars and compare
-    
+
     keys = ["primary", "code clinic", "cohort 2023"]
     # use list to shorten
     local_etags = {
@@ -113,11 +113,12 @@ def is_calendar_data_outdated(calendar_data, server_data):
     for key in keys:
         if local_etags[key] != server_etags[key]:
             return True
-    
+
     return False
 
 
 def get_server_data(service, days=7):
+    # days could be redundant
     calendar_data = read_calendar_data(service)
     calendar_ids = {
         "primary": calendar_data["primary"]["id"],
@@ -145,12 +146,28 @@ def get_server_data(service, days=7):
 
 def update_calendar_data_file(service):
     # output to user that this is happening
+    # ouput should be before API requests -> get_server_data
 
     calendar_data = read_calendar_data(service)
     server_data = get_server_data(service)
 
     if is_calendar_data_outdated(calendar_data, server_data):
-        pass
+        new_data = {
+            "primary": {
+                "etag": server_data["primary"]["etag"],
+                "events": server_data["primary"]["items"]
+            },
+            "code clinic": {
+                "etag": server_data["code clinic"]["etag"],
+                "events": server_data["code clinic"]["items"]
+            },
+            "cohort 2023": {
+                "etag": server_data["cohort 2023"]["etag"],
+                "events": server_data["cohort 2023"]["items"]
+            }
+        }
+
+        write_calendar_data(new_data)
 
 
 def create_coding_clinic_calendar(service):

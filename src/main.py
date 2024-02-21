@@ -9,6 +9,7 @@ from InquirerPy import inquirer
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 CREDS_FILE = os.path.expanduser("~/.google_calendar_credentials.json")
+CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
 
 def load_client_credentials():
@@ -47,9 +48,12 @@ def main():
     if not os.path.exists(CONFIG_FILE):
         configuration.first_run_setup(service, calendars)
 
+    # assume file can only be created by program; fix later on
+    # (can also be created manually with wrong format)
+    if not os.path.exists(CALENDAR_FILE):
+        calendar_utilities.create_calendar_data_file_template(calendars)
+
     # after config step, update the calendar data file (data dates checked inside func def)
-    calendar_utilities.create_calendar_data_file_template(calendars)
-    calendar_utilities.get_events(service)
     calendar_utilities.update_calendar_data_file(service)
 
 
