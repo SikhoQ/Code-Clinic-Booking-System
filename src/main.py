@@ -2,14 +2,13 @@ import sys
 import json
 import os.path
 import configure.configuration as configuration
-import booking_system.calendars.calendar_interface as calendar_interface
+import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 CREDS_FILE = os.path.expanduser("~/.google_calendar_credentials.json")
-SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
 def load_client_credentials():
@@ -20,36 +19,38 @@ def load_client_credentials():
     return client_id, client_secret
 
 
+def print_welcome():
+    print("\nWelcome to the Coding Clinic Booking System\n")
+
+
 def main():
     if not os.path.exists(CONFIG_FILE):
-        print("\nWelcome to the Coding Clinic Booking System")
+        print_welcome()
 
-        # google calendar authentication and authorisation
-        service = api.authorise_google_calendar(SCOPES,
-                                                CREDS_FILE,
-                                                TOKEN_FILE)
+    # google calendar authentication and authorisation
+    service = api.authorise_google_calendar()
 
     # creating the Coding Clinic calendar
     try:
-        clinic_calendar = calendar_interface.create_coding_clinic_calendar(service)
-        # after this step, somewhere, calendar id's should be stored to data file
+        calendars = calendar_utilities.create_coding_clinic_calendar(service)
+
     except Exception as e:
-        print(f"An error was encountered while creating calendar\n{e}")
+        print(f"An error was encountered while creating calendar: {e}")
         try_again = inquirer.confirm(message="\nTry again?").execute()
 
         if try_again:
             main()
         else:
-            sys.exit()
+            sys.exit("Quitting...")
 
     # first run config step
     if not os.path.exists(CONFIG_FILE):
-        configuration.first_run_setup(service)
-
-    calendar_interface.create_calendar_data_file_template(service)
+        configuration.first_run_setup(service, calendars)
 
     # after config step, update the calendar data file (data dates checked inside func def)
-    calendar_interface.update_calendar_data_file(service)
+    calendar_utilities.create_calendar_data_file_template(calendars)
+    calendar_utilities.get_events(service)
+    calendar_utilities.update_calendar_data_file(service)
 
 
 if __name__ == "__main__":

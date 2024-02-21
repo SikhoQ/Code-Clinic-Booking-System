@@ -3,6 +3,7 @@ import os
 import sys
 from InquirerPy import inquirer
 from InquirerPy.validator import EmptyInputValidator
+import booking_system.calendars.calendar_utilities as calendar_utilities
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -81,10 +82,7 @@ def do_configuration(service):
     write_config(config_data)
 
 
-
-
-
-def first_run_setup(service):
+def first_run_setup(service, calendars):
     print_config_message()
     do_configuration(service)
-    create_calendar_data_file_template()
+    # calendar_utilities.create_calendar_data_file_template(calendars)
