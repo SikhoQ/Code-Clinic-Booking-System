@@ -26,14 +26,10 @@ def view_calendar(calendars):
 
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["cohort 2023"]["events"]
-    today = datetime.now()
     
     for event in calendar_data:
         
         formatted = format_data(event)
-        
-        slots.append(today.isoformat() + 'Z')
-        today += timedelta(days=1)
         date = formatted[3]
         day = calendar.day_name[date.weekday()]
         table.add_row([day, date.strftime("%d-%m-%Y"), formatted[0], f'{formatted[1]} - {formatted[2]}'])
