@@ -59,7 +59,7 @@ def main():
     # after config step, update the calendar data file (data dates checked inside func def)
     calendar_utilities.update_calendar_data_file(service, calendars)
 
-    view_calendar.view_calendar(calendars)
+    view_calendar.calender_layout(calendars)
 
 
 if __name__ == "__main__":

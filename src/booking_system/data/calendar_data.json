@@ -1,39 +1,7 @@
 {
   "primary": {
-    "etag": "\"p328dtle5qau880o\"",
+    "etag": "\"p324a5omfp2v880o\"",
     "events": [
-      {
-        "kind": "calendar#event",
-        "etag": "\"3417045655732000\"",
-        "id": "40smfosmjg47r72ktduo4vnkht",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=NDBzbWZvc21qZzQ3cjcya3RkdW80dm5raHQgc3llbmRlMDIzQHN0dWRlbnQud2V0aGlua2NvZGUuY28uemE",
-        "created": "2024-02-21T13:40:27.000Z",
-        "updated": "2024-02-21T13:40:27.866Z",
-        "summary": "Mpungose",
-        "creator": {
-          "email": "syende023@student.wethinkcode.co.za",
-          "self": true
-        },
-        "organizer": {
-          "email": "syende023@student.wethinkcode.co.za",
-          "self": true
-        },
-        "start": {
-          "dateTime": "2024-02-22T08:00:00+02:00",
-          "timeZone": "Africa/Johannesburg"
-        },
-        "end": {
-          "dateTime": "2024-02-22T09:00:00+02:00",
-          "timeZone": "Africa/Johannesburg"
-        },
-        "iCalUID": "40smfosmjg47r72ktduo4vnkht@google.com",
-        "sequence": 0,
-        "reminders": {
-          "useDefault": true
-        },
-        "eventType": "default"
-      },
       {
         "kind": "calendar#event",
         "etag": "\"3417045711018000\"",
@@ -140,7 +108,7 @@
     "id": "c_3244fa586c02fa20b7f8a62175ef35b0fc98c27ad5a5d628332593c509333d6f@group.calendar.google.com"
   },
   "cohort 2023": {
-    "etag": "\"p32gc33v7mau880o\"",
+    "etag": "\"p32oa3qv6suv880o\"",
     "events": [
       {
         "kind": "calendar#event",
@@ -211,12 +179,12 @@
       },
       {
         "kind": "calendar#event",
-        "etag": "\"3416671662880000\"",
+        "etag": "\"3417200429212000\"",
         "id": "b2hti4tregn0v661j6qibe4614_20240223T080000Z",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAyMjNUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
         "created": "2024-02-06T08:00:59.000Z",
-        "updated": "2024-02-19T09:43:51.440Z",
+        "updated": "2024-02-22T11:10:14.606Z",
         "summary": "Python fundamentals workshop(Compulsory)",
         "description": "WTC Zoom is inviting you to a scheduled Zoom meeting.<br><br>Join Youtube stream:<br><b>**Will be shared on the day via slack**</b><br><b><br></b><br><b>Topics to be discussed:</b><br><b><br></b><br><table dir=\"ltr\"><colgroup><col /></colgroup><tbody><tr><td>02: Control structures</td></tr><tr><td>03: Functions</td></tr><tr><td>04: Data structures</td></tr><tr><td>05. Dictionaries and Sets Manipulation</td></tr><tr><td>06: Testing</td></tr><tr><td>07: String Manipulation</td></tr><tr><td>08: File handling</td></tr><tr><td>09: List comprehension</td></tr><tr><td>10: exception handling</td></tr><tr><td>11: Modules and libraries</td></tr><tr><td>12: Error debugging and TS</td></tr></tbody></table>",
         "creator": {
@@ -501,7 +469,7 @@
           },
           {
             "email": "mmahlangu023@student.wethinkcode.co.za",
-            "responseStatus": "accepted"
+            "responseStatus": "declined"
           },
           {
             "email": "mmangalie023@student.wethinkcode.co.za",
@@ -897,12 +865,12 @@
       },
       {
         "kind": "calendar#event",
-        "etag": "\"3416671662880000\"",
+        "etag": "\"3417200429212000\"",
         "id": "b2hti4tregn0v661j6qibe4614_20240226T080000Z",
         "status": "confirmed",
         "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAyMjZUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
         "created": "2024-02-06T08:00:59.000Z",
-        "updated": "2024-02-19T09:43:51.440Z",
+        "updated": "2024-02-22T11:10:14.606Z",
         "summary": "Python fundamentals workshop(Compulsory)",
         "description": "WTC Zoom is inviting you to a scheduled Zoom meeting.<br><br>Join Youtube stream:<br><b>**Will be shared on the day via slack**</b><br><b><br></b><br><b>Topics to be discussed:</b><br><b><br></b><br><table dir=\"ltr\"><colgroup><col /></colgroup><tbody><tr><td>02: Control structures</td></tr><tr><td>03: Functions</td></tr><tr><td>04: Data structures</td></tr><tr><td>05. Dictionaries and Sets Manipulation</td></tr><tr><td>06: Testing</td></tr><tr><td>07: String Manipulation</td></tr><tr><td>08: File handling</td></tr><tr><td>09: List comprehension</td></tr><tr><td>10: exception handling</td></tr><tr><td>11: Modules and libraries</td></tr><tr><td>12: Error debugging and TS</td></tr></tbody></table>",
         "creator": {
@@ -1187,7 +1155,693 @@
           },
           {
             "email": "mmahlangu023@student.wethinkcode.co.za",
+            "responseStatus": "declined"
+          },
+          {
+            "email": "mmangalie023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mmarabe023@student.wethinkcode.co.za",
             "responseStatus": "accepted"
+          },
+          {
+            "email": "mmere023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mmkwanazi123@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mmolefe023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mmothapo023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mmpeke023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mmtaka023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mntsaluba023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mprudence023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mraletjena023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mralokoana023b@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mschroeder023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nbadugela023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nbhengu023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "ncikiso023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nhlatshwayo023b@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nkunene023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nliboke023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nmathebula023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nmdlovu023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nmthombeni023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nndlala023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nndlovu023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nngema023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nngidi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nnkala023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nnyawo023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nratjatji023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nshabangu023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "nxaba023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "nzitha023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "omakeketlane023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "ondebele023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "oskosana023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "performance@wethinkcode.co.za",
+            "displayName": "Performance",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "phlangu023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "phlazo023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "pjebese023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "pkabeya023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "pmunisi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "pnchabeleng023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "pphakathi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "rmokati023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "rpuren023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "sdlamini023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "sdube023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "sgcabashe023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "skhambule023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "smafilika023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "smanku023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "smanzini023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "smasango023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "smogowane023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "smotaung023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "sngidi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "snguza023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "snkomo023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "ssangweni023b@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "sshabalala023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "sshinga023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "svimba023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tarendse023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tgovender023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tguma023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tkgarabjaye023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tlucia023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tmabaso123@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tmaboela023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tmakwara023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tmathinjwa023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tmoeng023b@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tmonnakgotla023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tmtsweni023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tmvuni023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tradebe023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tsehoole023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tsekgobela023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tshezi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tsibiya023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "tsiluma023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "tzondo023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "usibiya023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "uxipu023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "wmaziya023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "xbooi023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "xxaba023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "ysaliji023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "zbushula023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "zdavids023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "zessop023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "znkosi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "ztom023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "zxinwa023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "srakhumba023b@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          }
+        ],
+        "extendedProperties": {
+          "shared": {
+            "zmMeetingNum": "83302162270"
+          }
+        },
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3417200429212000\"",
+        "id": "b2hti4tregn0v661j6qibe4614_20240228T080000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAyMjhUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "created": "2024-02-06T08:00:59.000Z",
+        "updated": "2024-02-22T11:10:14.606Z",
+        "summary": "Python fundamentals workshop(Compulsory)",
+        "description": "WTC Zoom is inviting you to a scheduled Zoom meeting.<br><br>Join Youtube stream:<br><b>**Will be shared on the day via slack**</b><br><b><br></b><br><b>Topics to be discussed:</b><br><b><br></b><br><table dir=\"ltr\"><colgroup><col /></colgroup><tbody><tr><td>02: Control structures</td></tr><tr><td>03: Functions</td></tr><tr><td>04: Data structures</td></tr><tr><td>05. Dictionaries and Sets Manipulation</td></tr><tr><td>06: Testing</td></tr><tr><td>07: String Manipulation</td></tr><tr><td>08: File handling</td></tr><tr><td>09: List comprehension</td></tr><tr><td>10: exception handling</td></tr><tr><td>11: Modules and libraries</td></tr><tr><td>12: Error debugging and TS</td></tr></tbody></table>",
+        "creator": {
+          "email": "performance.team@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-02-28T10:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-02-28T11:15:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "recurringEventId": "b2hti4tregn0v661j6qibe4614_R20240212T080000",
+        "originalStartTime": {
+          "dateTime": "2024-02-28T10:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "b2hti4tregn0v661j6qibe4614_R20240212T080000@google.com",
+        "sequence": 0,
+        "attendees": [
+          {
+            "email": "adomingo023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "agudlwa023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "ahilario023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "ajoao023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "akhumalo023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "amaganyane023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "amhlamo023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "amnikathi023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "amutale023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "amzimela023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "anovela023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "antshonga023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "asibiya023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "azikhali123@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "balberts023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "bmjaji023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "bmorake023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "bmota023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "bntshantsha023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "bstuurman023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "cngwenya023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "dkalombo023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "dkunene023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "dmathebula023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "ehucklesby023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "ezimba023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "fmabaso023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "fmabece023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "fmasemola023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "gsmith023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "hsefike023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "imaholwana023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "imohlomi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "jaugust023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "jgioio023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "jjansen023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kfatman023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kgulwa023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kjongilanga023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kkubu023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kmabalane023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kmahuma023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "kmogotlhe023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kmpolokeng023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "kseekoei023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "lbuthelezi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "lgallant023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "ljonase023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "lmaistry023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "lmaseko023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "lmathibe023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "lmazibuko023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "lmgolombane023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "lmlilo023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "lmothupi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "lnhlengethwa023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "lsithole023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "lxelelo023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mchoshi023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mcindi023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mdlamini023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mkaudi023@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          },
+          {
+            "email": "mlemekoana023@student.wethinkcode.co.za",
+            "responseStatus": "accepted"
+          },
+          {
+            "email": "mletele023@student.wethinkcode.co.za",
+            "responseStatus": "declined"
+          },
+          {
+            "email": "mmahlangu023@student.wethinkcode.co.za",
+            "responseStatus": "declined"
           },
           {
             "email": "mmangalie023@student.wethinkcode.co.za",

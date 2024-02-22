@@ -1,5 +1,5 @@
 from datetime import datetime
-import booking_system.calendars.calendar_utilities as calendar_utilities
+import calendar_utilities as calendar_utilities
 import os
 from prettytable import PrettyTable
 import calendar
@@ -39,4 +39,3 @@ def calender_layout(calendars):
     print(table)
 
     return slots
-    
