@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 import booking_system.calendars.calendar_utilities as calendar_utilities
 import os
 from prettytable import PrettyTable
@@ -19,7 +19,7 @@ def format_data(event):
     return [summary, start_time, end_time, date]
 
 
-def view_calendar(calendars):
+def calender_layout(calendars):
 
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration']
@@ -39,8 +39,4 @@ def view_calendar(calendars):
     print(table)
 
     return slots
-
-
-if __name__ == '__main__':
-    view_calendar()
     
