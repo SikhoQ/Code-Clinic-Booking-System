@@ -52,14 +52,14 @@ def main():
     # assume file can only be created by program; fix later on
     # (can also be created manually with wrong format)
     try:
-        calendar_utilities.read_calendar_data()
+        calendar_utilities.read_calendar_data(calendars)
     except FileNotFoundError:
         calendar_utilities.create_calendar_data_file_template(calendars)
 
     # after config step, update the calendar data file (data dates checked inside func def)
-    calendar_utilities.update_calendar_data_file(service)
+    calendar_utilities.update_calendar_data_file(service, calendars)
 
-    view_calendar.view_calendar()
+    view_calendar.view_calendar(calendars)
 
 
 if __name__ == "__main__":

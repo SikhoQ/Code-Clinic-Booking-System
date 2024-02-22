@@ -25,21 +25,17 @@ def download_calendars(service):
             sys.exit()
 
 
-def read_calendar_data():
+def read_calendar_data(calendars):
     try:
         # Load the local calendar data
         with open(CALENDAR_FILE, "r") as file:
             calendar_data = json.load(file)
 
-        print(calendar_data)
-        input()
         return calendar_data
 
     except FileNotFoundError:
-        print("!!!")
-        create_calendar_data_file_template()
-
-        return read_calendar_data()
+        create_calendar_data_file_template(calendars)
+        return read_calendar_data(calendars)
 
 
 def write_calendar_data(calendar_data):
@@ -120,9 +116,9 @@ def is_calendar_data_outdated(calendar_data, server_data):
     return False
 
 
-def get_server_data(service, days=7):
+def get_server_data(service, calendars, days=7):
     # days could be redundant
-    calendar_data = read_calendar_data()
+    calendar_data = read_calendar_data(calendars)
     calendar_ids = {
         "primary": calendar_data["primary"]["id"],
         "code clinic": calendar_data["code clinic"]["id"],
@@ -147,12 +143,12 @@ def get_server_data(service, days=7):
     return server_data
 
 
-def update_calendar_data_file(service):
+def update_calendar_data_file(service, calendars):
     # output to user that this is happening
     # ouput should be before API requests -> get_server_data
 
-    calendar_data = read_calendar_data()
-    server_data = get_server_data(service)
+    calendar_data = read_calendar_data(calendars)
+    server_data = get_server_data(service, calendars)
 
     if is_calendar_data_outdated(calendar_data, server_data):
         new_data = {
