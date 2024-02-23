@@ -1,11 +1,13 @@
 import sys
 import json
 import os.path
+import booking_system.volunteering.volunteer_slot as volunteer_slot
 import configure.configuration as configuration
 import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.view_calendar as view_calendar
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
+from rich.console import Console
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -60,6 +62,11 @@ def main():
     calendar_utilities.update_calendar_data_file(service, calendars)
 
     view_calendar.calender_layout(calendars)
+
+    date = "2024-02-23"
+    time = "17:00:00"
+
+    volunteer_slot.volunteer_for_slot(service, date, time, calendars)
 
 
 if __name__ == "__main__":

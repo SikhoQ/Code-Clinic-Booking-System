@@ -1,5 +1,5 @@
 from datetime import datetime
-import calendar_utilities as calendar_utilities
+import booking_system.calendars.calendar_utilities as calendar_utilities
 import os
 from prettytable import PrettyTable
 import calendar
@@ -25,17 +25,16 @@ def calender_layout(calendars):
     table.field_names = ['Day', 'Date', 'Summary', 'Duration']
 
     slots = []
-    calendar_data = calendar_utilities.read_calendar_data(calendars)["cohort 2023"]["events"]
-    
+    calendar_data = calendar_utilities.read_calendar_data(calendars)["code clinic"]["events"]
+
     for event in calendar_data:
-        
+
         formatted = format_data(event)
         date = formatted[3]
         day = calendar.day_name[date.weekday()]
         table.add_row([day, date.strftime("%d-%m-%Y"), formatted[0], f'{formatted[1]} - {formatted[2]}'])
         table.align["Day"] = "l"
 
-        
     print(table)
 
     return slots
