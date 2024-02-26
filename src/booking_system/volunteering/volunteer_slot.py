@@ -2,7 +2,9 @@ import os.path
 import json
 from datetime import datetime, timedelta  # Added import for datetime
 import booking_system.calendars.slot_utilities as slot_utils
-import booking_system.calendars.calendar_utilities as calendar_utilities
+# import src.booking_system.calendars.calendar_utilities as calendar_utilities
+import calendars.calendar_utilities as calendar_utilities
+from src.booking_system.calendars import calendar_utilities
 
 CALENDAR_FILE = os.path.expanduser("src/calendars/calendar_data.json")
 

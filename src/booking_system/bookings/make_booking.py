@@ -75,8 +75,8 @@ def book_slot(calendars, service):
             break
 
     event["attendees"] = [{"email": email}]
-    print(event)
-    input("PAUSED")
+    # print(event)
+    # input("PAUSED")
 
     event = service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
     print(event)
