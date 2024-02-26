@@ -51,8 +51,6 @@ def get_booking_info():
     
     
 
-
-
 def book_slot(calendars,service):
     # TODO: Check if the slot is available
     #       Create event for booking
