@@ -1,33 +1,39 @@
 {
   "primary": {
-    "etag": "\"p328en8mdmf0o80o\"",
+    "etag": "\"p32gdnb6akf4o80o\"",
+    "events": [],
+    "id": "sqangule023@student.wethinkcode.co.za"
+  },
+  "code clinic": {
+    "etag": "\"p32gbn67gkf4o80o\"",
     "events": [
       {
         "kind": "calendar#event",
-        "etag": "\"3417045739912000\"",
-        "id": "7do5g057nus09effudnj8k03qf",
+        "etag": "\"3417919875464000\"",
+        "id": "jovfviece93b7viq87sv08n0n4",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=N2RvNWcwNTdudXMwOWVmZnVkbmo4azAzcWYgc3llbmRlMDIzQHN0dWRlbnQud2V0aGlua2NvZGUuY28uemE",
-        "created": "2024-02-21T13:41:09.000Z",
-        "updated": "2024-02-21T13:41:09.956Z",
-        "summary": "Yende",
+        "htmlLink": "https://www.google.com/calendar/event?eid=am92ZnZpZWNlOTNiN3ZpcTg3c3YwOG4wbjQgY18wNGI5MGQxYzVlOGI1OTEwZTZhYTFhNDg5ODExN2Y5YWU5ZmJkMmIyZDA5OWRmMjc3MTM2ZDEyMWMyMWIxMmVkQGc",
+        "created": "2024-02-26T15:05:37.000Z",
+        "updated": "2024-02-26T15:05:37.732Z",
+        "summary": "Code Clinic",
+        "description": "Volunteer 2",
         "creator": {
-          "email": "syende023@student.wethinkcode.co.za",
-          "self": true
+          "email": "sqangule023@student.wethinkcode.co.za"
         },
         "organizer": {
-          "email": "syende023@student.wethinkcode.co.za",
+          "email": "c_04b90d1c5e8b5910e6aa1a4898117f9ae9fbd2b2d099df277136d121c21b12ed@group.calendar.google.com",
+          "displayName": "Coding Clinic",
           "self": true
         },
         "start": {
-          "dateTime": "2024-02-24T14:00:00+02:00",
+          "dateTime": "2024-02-26T19:00:00Z",
           "timeZone": "Africa/Johannesburg"
         },
         "end": {
-          "dateTime": "2024-02-24T15:00:00+02:00",
+          "dateTime": "2024-02-26T19:30:00Z",
           "timeZone": "Africa/Johannesburg"
         },
-        "iCalUID": "7do5g057nus09effudnj8k03qf@google.com",
+        "iCalUID": "jovfviece93b7viq87sv08n0n4@google.com",
         "sequence": 0,
         "reminders": {
           "useDefault": true
@@ -35,68 +41,19 @@
         "eventType": "default"
       }
     ],
-    "id": "syende023@student.wethinkcode.co.za"
-  },
-  "code clinic": {
-    "etag": "\"p338eh3mdmf0o80o\"",
-    "events": [
-      {
-        "kind": "calendar#event",
-        "etag": "\"3417378562468000\"",
-        "id": "7kboc838krfshejquv9jqce0r0",
-        "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=N2tib2M4MzhrcmZzaGVqcXV2OWpxY2UwcjAgY18zMjQ0ZmE1ODZjMDJmYTIwYjdmOGE2MjE3NWVmMzViMGZjOThjMjdhZDVhNWQ2MjgzMzI1OTNjNTA5MzMzZDZmQGc",
-        "created": "2024-02-23T11:43:28.000Z",
-        "updated": "2024-02-23T11:54:41.234Z",
-        "summary": "BMW M5",
-        "creator": {
-          "email": "syende023@student.wethinkcode.co.za"
-        },
-        "organizer": {
-          "email": "c_3244fa586c02fa20b7f8a62175ef35b0fc98c27ad5a5d628332593c509333d6f@group.calendar.google.com",
-          "displayName": "Coding Clinic",
-          "self": true
-        },
-        "start": {
-          "dateTime": "2024-02-26T08:00:00Z",
-          "timeZone": "Africa/Johannesburg"
-        },
-        "end": {
-          "dateTime": "2024-02-26T08:30:00Z",
-          "timeZone": "Africa/Johannesburg"
-        },
-        "transparency": "transparent",
-        "iCalUID": "7kboc838krfshejquv9jqce0r0@google.com",
-        "sequence": 1,
-        "attendees": [
-          {
-            "email": "newattendee1@example.com",
-            "responseStatus": "needsAction"
-          },
-          {
-            "email": "newattendee2@example.com",
-            "responseStatus": "needsAction"
-          }
-        ],
-        "reminders": {
-          "useDefault": false
-        },
-        "eventType": "default"
-      }
-    ],
-    "id": "c_3244fa586c02fa20b7f8a62175ef35b0fc98c27ad5a5d628332593c509333d6f@group.calendar.google.com"
+    "id": "c_04b90d1c5e8b5910e6aa1a4898117f9ae9fbd2b2d099df277136d121c21b12ed@group.calendar.google.com"
   },
   "cohort 2023": {
-    "etag": "\"p330atbcqvv0880o\"",
+    "etag": "\"p320cb44ru34880o\"",
     "events": [
       {
         "kind": "calendar#event",
-        "etag": "\"3417200429212000\"",
-        "id": "b2hti4tregn0v661j6qibe4614_20240226T080000Z",
+        "etag": "\"3417892138272000\"",
+        "id": "b2hti4tregn0v661j6qibe4614_20240228T080000Z",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAyMjZUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAyMjhUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
         "created": "2024-02-06T08:00:59.000Z",
-        "updated": "2024-02-22T11:10:14.606Z",
+        "updated": "2024-02-26T11:14:29.136Z",
         "summary": "Python fundamentals workshop(Compulsory)",
         "description": "WTC Zoom is inviting you to a scheduled Zoom meeting.<br><br>Join Youtube stream:<br><b>**Will be shared on the day via slack**</b><br><b><br></b><br><b>Topics to be discussed:</b><br><b><br></b><br><table dir=\"ltr\"><colgroup><col /></colgroup><tbody><tr><td>02: Control structures</td></tr><tr><td>03: Functions</td></tr><tr><td>04: Data structures</td></tr><tr><td>05. Dictionaries and Sets Manipulation</td></tr><tr><td>06: Testing</td></tr><tr><td>07: String Manipulation</td></tr><tr><td>08: File handling</td></tr><tr><td>09: List comprehension</td></tr><tr><td>10: exception handling</td></tr><tr><td>11: Modules and libraries</td></tr><tr><td>12: Error debugging and TS</td></tr></tbody></table>",
         "creator": {
@@ -108,16 +65,16 @@
           "self": true
         },
         "start": {
-          "dateTime": "2024-02-26T10:00:00+02:00",
+          "dateTime": "2024-02-28T10:00:00+02:00",
           "timeZone": "Africa/Johannesburg"
         },
         "end": {
-          "dateTime": "2024-02-26T11:15:00+02:00",
+          "dateTime": "2024-02-28T11:15:00+02:00",
           "timeZone": "Africa/Johannesburg"
         },
         "recurringEventId": "b2hti4tregn0v661j6qibe4614_R20240212T080000",
         "originalStartTime": {
-          "dateTime": "2024-02-26T10:00:00+02:00",
+          "dateTime": "2024-02-28T10:00:00+02:00",
           "timeZone": "Africa/Johannesburg"
         },
         "iCalUID": "b2hti4tregn0v661j6qibe4614_R20240212T080000@google.com",
@@ -181,7 +138,7 @@
           },
           {
             "email": "balberts023@student.wethinkcode.co.za",
-            "responseStatus": "needsAction"
+            "responseStatus": "declined"
           },
           {
             "email": "bmjaji023@student.wethinkcode.co.za",
@@ -777,10 +734,41 @@
       },
       {
         "kind": "calendar#event",
-        "etag": "\"3417200429212000\"",
-        "id": "b2hti4tregn0v661j6qibe4614_20240228T080000Z",
+        "etag": "\"3412189254096000\"",
+        "id": "1cqq3e3odlk6ki14nk0mskb4r8",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAyMjhUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWNxcTNlM29kbGs2a2kxNG5rMG1za2I0cjggY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-01-24T11:10:27.000Z",
+        "updated": "2024-01-24T11:10:27.048Z",
+        "summary": "Code Clinics: Iteration 3 Ends",
+        "creator": {
+          "email": "dimpho@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "date": "2024-03-01"
+        },
+        "end": {
+          "date": "2024-03-02"
+        },
+        "transparency": "transparent",
+        "iCalUID": "1cqq3e3odlk6ki14nk0mskb4r8@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": false
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3417200429212000\"",
+        "id": "b2hti4tregn0v661j6qibe4614_20240301T080000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=YjJodGk0dHJlZ24wdjY2MWo2cWliZTQ2MTRfMjAyNDAzMDFUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
         "created": "2024-02-06T08:00:59.000Z",
         "updated": "2024-02-22T11:10:14.606Z",
         "summary": "Python fundamentals workshop(Compulsory)",
@@ -794,16 +782,16 @@
           "self": true
         },
         "start": {
-          "dateTime": "2024-02-28T10:00:00+02:00",
+          "dateTime": "2024-03-01T10:00:00+02:00",
           "timeZone": "Africa/Johannesburg"
         },
         "end": {
-          "dateTime": "2024-02-28T11:15:00+02:00",
+          "dateTime": "2024-03-01T11:15:00+02:00",
           "timeZone": "Africa/Johannesburg"
         },
         "recurringEventId": "b2hti4tregn0v661j6qibe4614_R20240212T080000",
         "originalStartTime": {
-          "dateTime": "2024-02-28T10:00:00+02:00",
+          "dateTime": "2024-03-01T10:00:00+02:00",
           "timeZone": "Africa/Johannesburg"
         },
         "iCalUID": "b2hti4tregn0v661j6qibe4614_R20240212T080000@google.com",
@@ -1167,7 +1155,7 @@
           },
           {
             "email": "nngema023@student.wethinkcode.co.za",
-            "responseStatus": "needsAction"
+            "responseStatus": "accepted"
           },
           {
             "email": "nngidi023@student.wethinkcode.co.za",

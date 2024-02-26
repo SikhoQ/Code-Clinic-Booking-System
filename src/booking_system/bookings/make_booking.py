@@ -39,7 +39,7 @@ def get_booking_info():
     ).execute()
 
     date = inquirer.text(
-        message = "Date (YYYY-MM-DD):",
+        message="Date (YYYY-MM-DD):",
         validate=validate_date,
         invalid_message="Invalid date format. Please use YYYY-MM-DD."
     ).execute()
@@ -85,11 +85,6 @@ def book_slot(calendars, service):
 def update_local_data_file(date, time, event_id, description):
     # Implement logic to update the local data file with booking information
 
-
-    pass
-
-
-def main():
     pass
 
 

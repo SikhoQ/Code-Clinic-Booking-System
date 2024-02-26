@@ -133,13 +133,16 @@ def get_server_data(service, calendars, days=7):
 
     for key in calendar_ids:
         # catch possible exception here
-        server_data[key] = service.events().list(
-            calendarId=calendar_ids[key],
-            timeMin=now.isoformat() + 'Z',
-            timeMax=end_date.isoformat() + 'Z',
-            singleEvents=True,
-            orderBy='startTime'
-        ).execute()
+        try:
+            server_data[key] = service.events().list(
+                calendarId=calendar_ids[key],
+                timeMin=now.isoformat() + 'Z',
+                timeMax=end_date.isoformat() + 'Z',
+                singleEvents=True,
+                orderBy='startTime'
+            ).execute()
+        except Exception as e:
+            print(f"Error: {e}")
 
     return server_data
 
