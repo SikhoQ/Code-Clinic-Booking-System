@@ -1,7 +1,7 @@
 from InquirerPy import inquirer
-from InquirerPy.validator import *
+from InquirerPy.validator import EmptyInputValidator
 from datetime import datetime, timedelta
-import src.booking_system.calendars.calendar_utilities as calendar_utilities
+import booking_system.calendars.calendar_utilities as calendar_utilities
 
         
 def validate_date(value):
@@ -11,11 +11,14 @@ def validate_date(value):
     except ValueError:
         return False
 
-def get_booking_info(): 
+
+def get_booking_info():
 
     time = datetime.now()
     # print(time)validate_date
+    # print(time)validate_date
 
+    end_time = time.replace(hour=17, minute=00, second=0, microsecond=0)
     end_time = time.replace(hour=17, minute=00, second=0, microsecond=0)
 
     interval = timedelta(minutes=30)
@@ -30,7 +33,7 @@ def get_booking_info():
         time += interval
 
     username = inquirer.text(
-        message = f"Username:",
+        message="Username:",
         validate=EmptyInputValidator,
         invalid_message="Invalid date format. Please use YYYY-MM-DD."
     ).execute()
@@ -45,34 +48,38 @@ def get_booking_info():
         message="Time:",
         choices=choices
     ).execute()
-    
+
     return (date, time_choice, username+"@student.wethinkcode.co.za")
 
 
-def book_slot(calendars,service):
+def book_slot(calendars, service):
     # TODO: Check if the slot is available
     #       Create event for booking
     #       Insert the event into the user's calendar
     #       Update local data file with the booking information (leave this out for now)
-    
+
     (date, time_choice, email) = get_booking_info()
 
     calendar_data = calendar_utilities.read_calendar_data(calendars)
 
-    calendar_id = calendar_data["cohort 2023"]["id"]
-    
-    start_time = f"{date}T{time_choice}+02:00"
+    calendar_id = calendar_data["code clinic"]["id"]
+
+    start_time = f"{date}T{time_choice}:00+02:00"
 
     event = dict()
-    for each_event in calendar_data.get("cohort 2023").get("events"):
+    event_id = str()
+    for each_event in calendar_data.get("code clinic").get("events", []):
         if each_event.get("start").get("dateTime") == start_time:
             event_id = each_event.get("id")
             event = each_event
             break
 
-    event["attendees"] = email
+    event["attendees"] = [{"email": email}]
+    print(event)
+    input("PAUSED")
 
-    service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
+    event = service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
+    print(event)
 
 
 def update_local_data_file(date, time, event_id, description):
@@ -89,4 +96,3 @@ def main():
 # if __name__ == "__main__":
 #     # main()
 #     book_slot()
-    
