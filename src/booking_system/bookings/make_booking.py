@@ -48,7 +48,6 @@ def get_booking_info():
     
     return (date, time_choice, username+"@student.wethinkcode.co.za")
 
-    
 
 def book_slot(calendars,service):
     # TODO: Check if the slot is available
