@@ -1,8 +1,8 @@
 from InquirerPy import inquirer
 from InquirerPy.validator import *
 from datetime import datetime, timedelta
-# import src.booking_system.calendars.calendar_utilities as calendar_utilities
-# ifrom calendar_utilities
+import src.booking_system.calendars.calendar_utilities as calendar_utilities
+
         
 def validate_date(value):
     try:
@@ -14,9 +14,9 @@ def validate_date(value):
 def get_booking_info(): 
 
     time = datetime.now()
-    # print(time)
+    # print(time)validate_date
 
-    end_time = time.replace(hour=20, minute=00, second=0, microsecond=0)
+    end_time = time.replace(hour=17, minute=00, second=0, microsecond=0)
 
     interval = timedelta(minutes=30)
 
@@ -26,7 +26,7 @@ def get_booking_info():
     choices = []
 
     while time < end_time:
-        choices.append(time.strftime("%H:%M"))
+        choices.append(time.strftime("%H:%M:%S"))
         time += interval
 
     username = inquirer.text(
@@ -46,49 +46,51 @@ def get_booking_info():
         choices=choices
     ).execute()
     
-    return [date, time_choice, username]
+    return (date, time_choice, username+"@student.wethinkcode.co.za")
 
     
     
 
 
 
-# def book_slot(calendars,service, date, choice_time, email):
-#     # TODO: Check if the slot is available
-#     #       Create event for booking
-#     #       Insert the event into the user's calendar
-#     #       Update local data file with the booking information (leave this out for now)
+def book_slot(calendars,service):
+    # TODO: Check if the slot is available
+    #       Create event for booking
+    #       Insert the event into the user's calendar
+    #       Update local data file with the booking information (leave this out for now)
     
-#     info = get_booking_info()
-#     date = info[0]
+    (date, time_choice, email) = get_booking_info()
 
-#     calendar_data = calendar_utilities.read_calendar_data(calendars)["cohort 2023"]["events"]
+    calendar_data = calendar_utilities.read_calendar_data(calendars)
 
+    calendar_id = calendar_data["cohort 2023"]["id"]
     
-#     calendar_id = calendar_data[0]
-#     event_id = calendar_data[1]
+    start_time = f"{date}T{time_choice}+02:00"
 
-#     event = service.events().get(calendarId=calendar_id, eventId=event_id).execute()
+    event = dict()
+    for each_event in calendar_data.get("cohort 2023").get("events"):
+        if each_event.get("start").get("dateTime") == start_time:
+            event_id = each_event.get("id")
+            event = each_event
+            break
 
+    event["attendees"] = email
+
+    service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
+
+
+def update_local_data_file(date, time, event_id, description):
+    # Implement logic to update the local data file with booking information
+
+
+    pass
+
+
+def main():
+    pass
+
+
+# if __name__ == "__main__":
+#     # main()
+#     book_slot()
     
-#     event['attendees'] = [
-#         {'email': email}
-#     ]
-
-#     service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
-
-
-# def update_local_data_file(date, time, event_id, description):
-#     # Implement logic to update the local data file with booking information
-
-
-#     pass
-
-
-# def main():
-#     pass
-
-
-if __name__ == "__main__":
-    # main()
-    get_booking_info()

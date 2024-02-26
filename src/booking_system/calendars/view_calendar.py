@@ -1,9 +1,6 @@
 from datetime import datetime
 import booking_system.calendars.calendar_utilities as calendar_utilities
-<<<<<<< HEAD
-=======
 # /home/wtc/Documents/dbn_13_code_clinics/src/booking_system/calendars/view_calendar.py
->>>>>>> f74c835 (stagin changes)
 import os
 from prettytable import PrettyTable
 import calendar
@@ -30,11 +27,9 @@ def calender_layout(calendars):
 
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["code clinic"]["events"]
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> f74c835 (stagin changes)
+
+
     for event in calendar_data:
 
         formatted = format_data(event)

@@ -7,12 +7,10 @@ import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.view_calendar as view_calendar
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
-<<<<<<< HEAD
 from rich.console import Console
-=======
 import booking_system.bookings.make_booking as make_booking
-from datetime import datetime
->>>>>>> f74c835 (stagin changes)
+from datetime import datetime 
+
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -67,10 +65,10 @@ def main():
     calendar_utilities.update_calendar_data_file(service, calendars)
 
     view_calendar.calender_layout(calendars)
-    make_booking.book_slot(calendars, service, '2024-02-23', '16:00', 'syende023@student.wethinkcode.co.za')
+    make_booking.book_slot(calendars, service)
 
-    date = "2024-02-23"
-    time = "17:00:00"
+    date = "2024-02-26"
+    time = "15:00:00"
 
     volunteer_slot.volunteer_for_slot(service, date, time, calendars)
 
