@@ -4,6 +4,7 @@ from datetime import datetime, timedelta  # Added import for datetime
 import booking_system.calendars.slot_utilities as slot_utils
 import booking_system.calendars.calendar_utilities as calendar_utilities
 
+
 CALENDAR_FILE = os.path.expanduser("src/calendars/calendar_data.json")
 
 
@@ -18,8 +19,13 @@ def update_local_volunteer_data(date, time, event_id):
 
 
 def volunteer_for_slot(service, date, time, calendars):
-    """    # Check if the slot is available
+    """     # Check if the slot is available
             # Only check code clinic calendar in data file
+            # TODO: * store a csv of usernames to names to extract
+                      volunteer's name for table output
+                    * handle multiple event creation
+                    * loop exception using confirm
+                    * handle time range error in function calling this
     """
 
     # if not slot_utils.is_slot_available(service, date, time):
@@ -27,15 +33,16 @@ def volunteer_for_slot(service, date, time, calendars):
     #     return
 
 
-    # Create event for volunteering
-
     calendar_data = calendar_utilities.read_calendar_data(calendars)
 
     calendar_id = calendar_data["code clinic"]["id"]
 
+<<<<<<< HEAD
     start_time = f"{date}T{time}+02:00"
     end_time = (datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=30)).isoformat()
 
+=======
+>>>>>>> 823c61d (-_-)
     event = {
         'summary': 'Volunteering',
         'start': {'dateTime': start_time},
@@ -58,13 +65,6 @@ def volunteer_for_slot(service, date, time, calendars):
     except Exception as e:
         print(f"Error volunteering for slot: {e}")
 
-
-
-
-
-
-
-# when a user volunteers, they need to supply date (full) - the volunteer's username will be extracted
-# from login info - when tool is run, mainloop will determine program's lifetime, afterwhich login is required
+# when tool is run, mainloop will determine program's lifetime, afterwhich login is required
 # this will be through username input, checked against config file (if found), if user not found, prompt to register
-        
+# or perhaps username/password mechanism(?)
