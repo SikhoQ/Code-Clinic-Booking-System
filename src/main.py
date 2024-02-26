@@ -68,11 +68,7 @@ def main():
     make_booking.book_slot(calendars, service)
 
     date = "2024-02-26"
-<<<<<<< HEAD
     time = "15:00:00"
-=======
-    time = "17:00:00"
->>>>>>> 096daac (-_-)
 
     volunteer_slot.volunteer_for_slot(service, date, time, calendars)
 
