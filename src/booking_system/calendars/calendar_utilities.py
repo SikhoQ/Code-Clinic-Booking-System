@@ -75,6 +75,7 @@ def create_calendar_data_file_template(calendars):
             "etag": primary_calendar["etag"],
             "events": [],
             "id": primary_calendar["id"]
+            
         },
         "code clinic": {
             "etag": clinic_calendar["etag"],

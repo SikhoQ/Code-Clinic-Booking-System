@@ -14,3 +14,4 @@ quickstart.py
 token.json
 dates.csv
 src/booking_system/data/calendar_data.json
+src/booking_system/bookings/__pycache__/
