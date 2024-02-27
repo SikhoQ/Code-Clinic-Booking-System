@@ -1,72 +1,61 @@
-import os.path
-import json
-from datetime import datetime, timedelta  # Added import for datetime
-import booking_system.calendars.slot_utilities as slot_utils
-# import src.booking_system.calendars.calendar_utilities as calendar_utilities
-import calendars.calendar_utilities as calendar_utilities
-from src.booking_system.calendars import calendar_utilities
+from datetime import datetime, timedelta
+from booking_system.calendars import calendar_utilities, slot_utilities
+import pytz
 
-CALENDAR_FILE = os.path.expanduser("src/calendars/calendar_data.json")
+CODE_CLINIC_CALENDAR = "code clinic"
 
 
-def update_local_volunteer_data(date, time, event_id):
-    # this will use the write func in cal_utils
-    pass
-
-
-# for volunteering, to check if a slot is available use the data file to iterate through events
-# event = cal_data["calendar name"]["events"]
-# event["start"]["dateTime"]
-
-
-def volunteer_for_slot(service, date, time, calendars):
-    """    # Check if the slot is available
-            # Only check code clinic calendar in data file
-    """
-
-    # if not slot_utils.is_slot_available(service, date, time):
-    #     print("Slot not available. Please choose another slot.")
-    #     return
-
-
-    # Create event for volunteering
-
+def volunteer_for_slot(service, date, time, calendars, volunteer_email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
+    calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
 
-    calendar_id = calendar_data["code clinic"]["id"]
+    calendar_id = calendar_info.get("id")
+    clinic_events = calendar_info.get("events")
+    print(f"clinic events {clinic_events}")
 
-    start_time = f"{date}T{time}+02:00"
-    end_time = (datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=30)).isoformat()
+    start_time = f"{date}T{time}:00"
 
-    event = {
-        'summary': 'Volunteering',
-        'start': {'dateTime': start_time},
-        'end': {'dateTime': end_time},
-    }
+    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
+    end_datetime = start_datetime + timedelta(minutes=30)
 
+    start_datetime_str = start_datetime.isoformat()
+    end_datetime_str = end_datetime.isoformat()
+
+    start_datetime = start_datetime.astimezone(pytz.timezone('Africa/Johannesburg'))
+    end_datetime = end_datetime.astimezone(pytz.timezone('Africa/Johannesburg'))
+
+    print(f"volunteer start: {start_datetime}\n***\n***\nvolunteer end: {end_datetime}")
+    input("eventss")
+
+    if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
+        event = {
+            'summary': 'Code Clinic',
+            'description': 'Volunteer Slot',
+            'start': {'dateTime': start_datetime_str, 'timeZone': 'Africa/Johannesburg'},
+            'end': {'dateTime': end_datetime_str, 'timeZone': 'Africa/Johannesburg'},
+        }
+
+        try:
+            event = service.events().insert(
+                calendarId=calendar_id,
+                body=event
+            ).execute()
+
+            calendar_utilities.update_calendar_data_file(service, calendars)
+            print(f"Volunteering successful. Event ID: {event['id']}")
+
+        except Exception:
+            raise
+
+
+def do_volunteering(service, calendars):
     try:
-        # Insert the event into the volunteer's personal Google Calendar
-        event = service.events().insert(
-            calendarId=calendar_id,
-            body=event
-        ).execute()
+        (date, time_choice, volunteer_email) = slot_utilities.get_booking_info()
+        volunteer_for_slot(service, date, time_choice, calendars, volunteer_email)
 
-        print(f"Volunteering successful. Event ID: {event['id']}")
-
-        # Update local data file for the volunteer
-
-        # update_local_volunteer_data(date, time, event['id'])
-
-    except Exception as e:
-        print(f"Error volunteering for slot: {e}")
+    except Exception:
+        raise
 
 
-
-
-
-
-
-# when a user volunteers, they need to supply date (full) - the volunteer's username will be extracted
-# from login info - when tool is run, mainloop will determine program's lifetime, afterwhich login is required
+# when tool is run, mainloop will determine program's lifetime, afterwhich login is required
 # this will be through username input, checked against config file (if found), if user not found, prompt to register
-        

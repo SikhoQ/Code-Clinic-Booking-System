@@ -1,3 +1,5 @@
+# HANDLE ALL EXCEPTIONS IN MAIN LOOP
+
 import sys
 import json
 import os.path
@@ -9,7 +11,7 @@ import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 from rich.console import Console
 import booking_system.bookings.make_booking as make_booking
-from datetime import datetime 
+from datetime import datetime
 
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
@@ -64,13 +66,11 @@ def main():
     # after config step, update the calendar data file (data dates checked inside func def)
     calendar_utilities.update_calendar_data_file(service, calendars)
 
-    view_calendar.calender_layout(calendars)
-    make_booking.book_slot(calendars, service)
+    view_calendar.calendar_layout(calendars)
 
-    date = "2024-02-26"
-    time = "15:00:00"
+    volunteer_slot.do_volunteering(service, calendars)
 
-    volunteer_slot.volunteer_for_slot(service, date, time, calendars)
+    # make_booking.do_booking(service, calendars)
 
 
 if __name__ == "__main__":
