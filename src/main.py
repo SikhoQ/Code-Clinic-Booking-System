@@ -66,14 +66,11 @@ def main():
     # after config step, update the calendar data file (data dates checked inside func def)
     calendar_utilities.update_calendar_data_file(service, calendars)
 
-    view_calendar.calender_layout(calendars)
+    view_calendar.calendar_layout(calendars)
 
-    date = "2024-02-27"
-    time = "08:00:00"
+    volunteer_slot.do_volunteering(service, calendars)
 
-    # volunteer_slot.volunteer_for_slot(service, date, time, calendars)
-
-    make_booking.book_slot(calendars, service)
+    make_booking.do_booking(service, calendars)
 
 
 if __name__ == "__main__":

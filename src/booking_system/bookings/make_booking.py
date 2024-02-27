@@ -1,6 +1,3 @@
-from InquirerPy import inquirer
-from InquirerPy.validator import EmptyInputValidator
-from datetime import datetime, timedelta
 import booking_system.calendars.calendar_utilities as calendar_utilities
 
         
@@ -60,9 +57,11 @@ def book_slot(calendars, service):
 
     (date, time_choice, email) = get_booking_info()
 
+def book_slot(service, date, time, calendars, email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
 
-    calendar_id = calendar_data["code clinic"]["id"]
+    # change these to use .get
+    calendar_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
 
     start_time = f"{date}T{time_choice}:00+02:00"
 

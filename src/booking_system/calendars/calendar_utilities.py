@@ -109,6 +109,8 @@ def is_calendar_data_outdated(calendar_data, server_data):
         "cohort 2023": server_data["cohort 2023"]["etag"],
         "code clinic": server_data["code clinic"]["etag"]
     }
+    if len(local_etags) != len(server_etags):
+        return True
 
     for key in keys:
         if local_etags[key] != server_etags[key]:
@@ -118,7 +120,6 @@ def is_calendar_data_outdated(calendar_data, server_data):
 
 
 def get_server_data(service, calendars, days=7):
-    # days could be redundant
     calendar_data = read_calendar_data(calendars)
     calendar_ids = {
         "primary": calendar_data["primary"]["id"],
@@ -132,12 +133,16 @@ def get_server_data(service, calendars, days=7):
     end_date = now + timedelta(days=days - 1)
 
     for key in calendar_ids:
-        # catch possible exception here
+        # Convert datetime objects to the desired format
+        formatted_now = now.strftime('%Y-%m-%dT%H:%M:%SZ')
+        formatted_end_date = end_date.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+        # Catch possible exception here
         try:
             server_data[key] = service.events().list(
                 calendarId=calendar_ids[key],
-                timeMin=now.isoformat() + 'Z',
-                timeMax=end_date.isoformat() + 'Z',
+                timeMin=formatted_now,
+                timeMax=formatted_end_date,
                 singleEvents=True,
                 orderBy='startTime'
             ).execute()
@@ -204,3 +209,20 @@ def create_coding_clinic_calendar(service):
 
     # after creating calendars, call this func again to return updated calendar list
     return create_coding_clinic_calendar(service)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 2024-02-27T10:00
+
+
+# 2024-02-27T10:00:00

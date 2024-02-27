@@ -3,57 +3,53 @@ from datetime import datetime, timedelta
 import booking_system.calendars.slot_utilities as slot_utilities
 import booking_system.calendars.calendar_utilities as calendar_utilities
 
-CALENDAR_FILE = os.path.expanduser("src/calendars/calendar_data.json")
+CODE_CLINIC_CALENDAR = "code clinic"
 
 
-def volunteer_for_slot(service, date, time, calendars):
-    """    # Check if the slot is available
-            # Only check code clinic calendar in data file
-    """
-
+def volunteer_for_slot(service, date, time, calendars, volunteer_email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
+    calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
 
-    calendar_id = calendar_data["code clinic"]["id"]
+    calendar_id = calendar_info.get("id")
+    clinic_events = calendar_info.get("events")
 
-    start_time = f"{date}T{time}Z"
-    end_time = (datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=30)).isoformat()
+    start_time = f"{date}T{time}:00:02:00"
 
-    event = {
-        'summary': 'Code Clinic',
-        'description': 'Volunteer 2',
-        'start': {'dateTime': start_time},
-        'end': {'dateTime': end_time}
-    }
+    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
+    end_datetime = start_datetime + timedelta(minutes=30)
 
-    try:
-        event = service.events().insert(
-            calendarId=calendar_id,
-            body=event
-        ).execute()
+    start_datetime_str = start_datetime.isoformat()
+    end_datetime_str = end_datetime.isoformat()
 
-        print(f"Volunteering successful. Event ID: {event['id']}")
+    if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
+        event = {
+            'summary': 'Code Clinic',
+            'description': 'Volunteer Slot',
+            'start': {'dateTime': start_datetime_str, 'timeZone': 'Africa/Johannesburg'},
+            'end': {'dateTime': end_datetime_str, 'timeZone': 'Africa/Johannesburg'},
+        }
 
-        calendar_utilities.update_calendar_data_file(service, calendars)
+        try:
+            event = service.events().insert(
+                calendarId=calendar_id,
+                body=event
+            ).execute()
 
-    except Exception:
-        raise
+            print(f"Volunteering successful. Event ID: {event['id']}")
+            calendar_utilities.update_calendar_data_file(service, calendars)
+
+        except Exception:
+            raise  # Re-raise the exception for further handling
 
 
 def do_volunteering(service, calendars):
-    (date, time_choice, email) = slot_utilities.get_booking_info()
-
     try:
-        volunteer_for_slot(service, date, time_choice, calendars)
+        (date, time_choice, volunteer_email) = slot_utilities.get_booking_info()
+        volunteer_for_slot(service, date, time_choice, calendars, volunteer_email)
 
     except Exception:
         raise
 
 
-
-
-
-
-# when a user volunteers, they need to supply date (full) - the volunteer's username will be extracted
-# from login info - when tool is run, mainloop will determine program's lifetime, afterwhich login is required
+# when tool is run, mainloop will determine program's lifetime, afterwhich login is required
 # this will be through username input, checked against config file (if found), if user not found, prompt to register
-        

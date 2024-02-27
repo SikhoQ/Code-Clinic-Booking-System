@@ -1,22 +1,22 @@
 {
   "primary": {
-    "etag": "\"p32gdnb6akf4o80o\"",
+    "etag": "\"p324ehndgvf5880o\"",
     "events": [],
     "id": "sqangule023@student.wethinkcode.co.za"
   },
   "code clinic": {
-    "etag": "\"p32gbn67gkf4o80o\"",
+    "etag": "\"p32oej3efhb5o80o\"",
     "events": [
       {
         "kind": "calendar#event",
-        "etag": "\"3417919875464000\"",
-        "id": "jovfviece93b7viq87sv08n0n4",
+        "etag": "\"3418043753884000\"",
+        "id": "4dcdpaja25co9qshep08ij5ils",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=am92ZnZpZWNlOTNiN3ZpcTg3c3YwOG4wbjQgY18wNGI5MGQxYzVlOGI1OTEwZTZhYTFhNDg5ODExN2Y5YWU5ZmJkMmIyZDA5OWRmMjc3MTM2ZDEyMWMyMWIxMmVkQGc",
-        "created": "2024-02-26T15:05:37.000Z",
-        "updated": "2024-02-26T15:05:37.732Z",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NGRjZHBhamEyNWNvOXFzaGVwMDhpajVpbHMgY18wNGI5MGQxYzVlOGI1OTEwZTZhYTFhNDg5ODExN2Y5YWU5ZmJkMmIyZDA5OWRmMjc3MTM2ZDEyMWMyMWIxMmVkQGc",
+        "created": "2024-02-27T08:17:56.000Z",
+        "updated": "2024-02-27T08:17:56.942Z",
         "summary": "Code Clinic",
-        "description": "Volunteer 2",
+        "description": "Volunteer Slot",
         "creator": {
           "email": "sqangule023@student.wethinkcode.co.za"
         },
@@ -26,14 +26,14 @@
           "self": true
         },
         "start": {
-          "dateTime": "2024-02-26T19:00:00Z",
+          "dateTime": "2024-02-27T11:00:00Z",
           "timeZone": "Africa/Johannesburg"
         },
         "end": {
-          "dateTime": "2024-02-26T19:30:00Z",
+          "dateTime": "2024-02-27T11:30:00Z",
           "timeZone": "Africa/Johannesburg"
         },
-        "iCalUID": "jovfviece93b7viq87sv08n0n4@google.com",
+        "iCalUID": "4dcdpaja25co9qshep08ij5ils@google.com",
         "sequence": 0,
         "reminders": {
           "useDefault": true
@@ -1446,6 +1446,68 @@
         },
         "reminders": {
           "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3412195851340000\"",
+        "id": "17n0qnkrvjqtqaquqiulkt56cu",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MTduMHFua3J2anF0cWFxdXFpdWxrdDU2Y3UgY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-01-24T11:13:27.000Z",
+        "updated": "2024-01-24T12:05:25.670Z",
+        "summary": "Code Clinics: Demo Week",
+        "creator": {
+          "email": "dimpho@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "date": "2024-03-04"
+        },
+        "end": {
+          "date": "2024-03-09"
+        },
+        "transparency": "transparent",
+        "iCalUID": "17n0qnkrvjqtqaquqiulkt56cu@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": false
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3412191969662000\"",
+        "id": "21abu78ejlafi411jmon9g8m9t",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MjFhYnU3OGVqbGFmaTQxMWptb245ZzhtOXQgY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-01-24T11:31:27.000Z",
+        "updated": "2024-01-24T11:33:04.831Z",
+        "summary": "Iteration 0: Development Setup Starts",
+        "creator": {
+          "email": "dimpho@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "date": "2024-03-04"
+        },
+        "end": {
+          "date": "2024-03-05"
+        },
+        "transparency": "transparent",
+        "iCalUID": "21abu78ejlafi411jmon9g8m9t@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": false
         },
         "eventType": "default"
       }

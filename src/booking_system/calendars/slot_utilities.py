@@ -50,39 +50,30 @@ def get_booking_info():
     return (date, time_choice, username+"@student.wethinkcode.co.za")
 
 
-def is_available_to_volunteer(clinic_events, start_time, end_time):
+def is_slot_available(clinic_events, start_time, email, slot_type):
+    end_time = start_time + timedelta(minutes=30)
+
     for event in clinic_events:
-        event_start = event["start"]
-        event_end = event["end"]
-        if start_time >= event_start and start_time < event_end:
-            # Slot is already booked for volunteer
-            return False
-    # Slot is available for volunteering
+        event_start = event.get("start", {}).get("dateTime")
+        event_end = event.get("end", {}).get("dateTime")
+
+        if event_start and event_end:
+            event_start = datetime.fromisoformat(event_start)
+            event_end = datetime.fromisoformat(event_end)
+
+            if start_time == event_start and end_time == event_end:
+                if slot_type == "booking":
+                    if event.get("description", "").lower() == "volunteer slot" and\
+                       email != event.get("creator", "").get("email"):
+                        print("Slot available for booking")
+                        return True
+                elif slot_type == "volunteering":
+                    if email == event.get("creator", "").get("email"):
+                        print("You have already volunteered for this slot")
+                        return False
+                    else:
+                        print("Slot is not available for volunteering")
+                        return False
+
+    print("Slot is available for volunteering")
     return True
-
-
-def is_available_to_book(clinic_events, start_time, end_time):
-    for event in clinic_events:
-        event_start = event["start"]["dateTime"]
-        event_end = event["end"]["dateTime"]
-        if start_time >= event_start and start_time < event_end:
-            if event["description"].lower() == "volunteer":
-                # Slot is booked by a volunteer
-                return False
-            else:
-                # Slot is already booked for a non-volunteer event
-                return False
-    # Slot is available for booking
-    return True
-
-
-def is_slot_available(calendars, start_time, end_time, slot_type):
-    calendar_data = calendar_utilities.read_calendar_data(calendars)
-    clinic_events = calendar_data["code clinic"]["events"]
-
-    if slot_type == "booking":
-        return is_available_to_book(clinic_events, start_time, end_time)
-    elif slot_type == "volunteer":
-        return is_available_to_volunteer(clinic_events, start_time, end_time)
-    else:
-        raise ValueError("Invalid slot_type. Use 'booking' or 'volunteer'.")
