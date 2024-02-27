@@ -68,9 +68,9 @@ def main():
 
     view_calendar.calendar_layout(calendars)
 
-    # volunteer_slot.do_volunteering(service, calendars)
+    volunteer_slot.do_volunteering(service, calendars)
 
-    make_booking.do_booking(service, calendars)
+    # make_booking.do_booking(service, calendars)
 
 
 if __name__ == "__main__":

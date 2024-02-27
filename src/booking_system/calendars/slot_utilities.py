@@ -61,14 +61,18 @@ def is_slot_available(clinic_events, start_time, email, slot_type):
             event_start = datetime.fromisoformat(event_start)
             event_end = datetime.fromisoformat(event_end)
 
-            if start_time == event_start and end_time == event_end:
+            print(f"start time: {start_time}, event start {event_start}\nend time: {end_time} event end {event_end}")
+
+            # Check if there's an overlap in time
+            if start_time < event_end and end_time > event_start:
                 if slot_type == "booking":
-                    if event.get("description", "").lower() == "volunteer slot" and\
-                       email != event.get("creator", "").get("email"):
+                    # Check if the event is a volunteer slot and not booked by the same volunteer
+                    if event.get("description", "").lower() == "volunteer slot" and email != event.get("creator", {}).get("email"):
                         print("Slot available for booking")
                         return True
                 elif slot_type == "volunteering":
-                    if email == event.get("creator", "").get("email"):
+                    # Check if the same volunteer has already volunteered for this slot
+                    if email == event.get("creator", {}).get("email"):
                         print("You have already volunteered for this slot")
                         return False
                     else:

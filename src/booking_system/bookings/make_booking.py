@@ -1,5 +1,8 @@
 import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.slot_utilities as slot_utilities
+from datetime import datetime, timedelta
+import pytz
+
 
 CODE_CLINIC_CALENDAR = "code clinic"
 
@@ -10,12 +13,15 @@ def book_slot(service, date, time, calendars, email):
     # change these to use .get
     calendar_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
 
-    start_time = f"{date}T{time}"
+    start_time = f"{date}T{time}:00Z"
+    start_time = start_time.astimezone(pytz.timezone('Africa/Johannesburg'))
 
     event = dict()
     event_id = str()
     for each_event in calendar_data.get(CODE_CLINIC_CALENDAR).get("events", []):
-        print(each_event.get("start").get("dateTime"), start_time, sep="***\n***\n\n")
+        event_start_time = each_event.get("start").get("dateTime")
+        event_start_time = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S').replace(tzinfo=pytz.utc)
+        print(f"event start time: {event_start_time}***\n***\n\nstart time: {start_time}")
         input("events")
         if each_event.get("start").get("dateTime") == start_time:
             event_id = each_event.get("id")

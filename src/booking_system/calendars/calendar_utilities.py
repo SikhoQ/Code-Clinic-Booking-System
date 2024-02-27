@@ -2,10 +2,10 @@ from datetime import datetime, timedelta
 import json
 import os
 import sys
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from datetime import *
 from InquirerPy import inquirer
+import pytz
+
 
 CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
@@ -96,27 +96,27 @@ def is_calendar_data_outdated(calendar_data, server_data):
     # Use the etag to check if the data is outdated, from all 3 calendars
     # needs calendar id's to get server etags for all calendars and compare
 
-    keys = ["primary", "code clinic", "cohort 2023"]
-    # use list to shorten
-    local_etags = {
-        "primary": calendar_data["primary"]["etag"],
-        "cohort 2023": calendar_data["cohort 2023"]["etag"],
-        "code clinic": calendar_data["code clinic"]["etag"]
-    }
+    # keys = ["primary", "code clinic", "cohort 2023"]
+    # # use list to shorten
+    # local_etags = {
+    #     "primary": calendar_data["primary"]["etag"],
+    #     "cohort 2023": calendar_data["cohort 2023"]["etag"],
+    #     "code clinic": calendar_data["code clinic"]["etag"]
+    # }
 
-    server_etags = {
-        "primary": server_data["primary"]["etag"],
-        "cohort 2023": server_data["cohort 2023"]["etag"],
-        "code clinic": server_data["code clinic"]["etag"]
-    }
-    if len(local_etags) != len(server_etags):
-        return True
+    # server_etags = {
+    #     "primary": server_data["primary"]["etag"],
+    #     "cohort 2023": server_data["cohort 2023"]["etag"],
+    #     "code clinic": server_data["code clinic"]["etag"]
+    # }
+    # if len(local_etags) != len(server_etags):
+    #     return True
 
-    for key in keys:
-        if local_etags[key] != server_etags[key]:
-            return True
+    # for key in keys:
+    #     if local_etags[key] != server_etags[key]:
+    #         return True
 
-    return False
+    return True
 
 
 def get_server_data(service, calendars, days=7):
@@ -129,15 +129,21 @@ def get_server_data(service, calendars, days=7):
 
     server_data = dict()
 
-    now = datetime.utcnow()
+    # Use the time zone of 'code clinic' as an example; adjust accordingly
+    calendar_timezone = 'Africa/Johannesburg'
+    tz = pytz.timezone(calendar_timezone)
+
+    now = datetime.utcnow().replace(tzinfo=pytz.utc)
     end_date = now + timedelta(days=days - 1)
 
-    for key in calendar_ids:
-        # Convert datetime objects to the desired format
-        formatted_now = now.strftime('%Y-%m-%dT%H:%M:%SZ')
-        formatted_end_date = end_date.strftime('%Y-%m-%dT%H:%M:%SZ')
+    # Convert UTC time to the calendar time zone
+    formatted_now = now.astimezone(tz).strftime('%Y-%m-%dT%H:%M:%SZ')
+    formatted_end_date = end_date.astimezone(tz).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-        # Catch possible exception here
+    print(formatted_now, formatted_end_date, sep="\n***\n***\n")
+    input("server data")
+
+    for key in calendar_ids:
         try:
             server_data[key] = service.events().list(
                 calendarId=calendar_ids[key],
@@ -153,13 +159,15 @@ def get_server_data(service, calendars, days=7):
 
 
 def update_calendar_data_file(service, calendars):
-    # output to user that this is happening
-    # ouput should be before API requests -> get_server_data
-
+    # "UPDATE FUNCTIONALITY WORKS BUT OUTDATED CHECK DOESN'T"
     calendar_data = read_calendar_data(calendars)
     server_data = get_server_data(service, calendars)
 
+    # print("Calendar Data:", calendar_data, end="\n\n\n")
+    print("Server Data:", server_data)
+
     if is_calendar_data_outdated(calendar_data, server_data):
+        print("Updating Calendar Data...")
         new_data = {
             "primary": {
                 "etag": server_data["primary"]["etag"],
@@ -170,7 +178,6 @@ def update_calendar_data_file(service, calendars):
                 "etag": server_data["code clinic"]["etag"],
                 "events": server_data["code clinic"]["items"],
                 "id": calendar_data["code clinic"]["id"]
-
             },
             "cohort 2023": {
                 "etag": server_data["cohort 2023"]["etag"],
@@ -180,6 +187,9 @@ def update_calendar_data_file(service, calendars):
         }
 
         write_calendar_data(new_data)
+        print("Calendar Data Updated.")
+    else:
+        print("Calendar Data is up to date.")
 
 
 def create_coding_clinic_calendar(service):

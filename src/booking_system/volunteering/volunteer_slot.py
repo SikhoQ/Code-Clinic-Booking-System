@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from booking_system.calendars import calendar_utilities, slot_utilities
+import pytz
 
 CODE_CLINIC_CALENDAR = "code clinic"
 
@@ -10,16 +11,20 @@ def volunteer_for_slot(service, date, time, calendars, volunteer_email):
 
     calendar_id = calendar_info.get("id")
     clinic_events = calendar_info.get("events")
+    print(f"clinic events {clinic_events}")
 
-    start_time = f"{date}T{time}:00Z"
+    start_time = f"{date}T{time}:00"
 
-    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z')
+    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
     end_datetime = start_datetime + timedelta(minutes=30)
 
     start_datetime_str = start_datetime.isoformat()
     end_datetime_str = end_datetime.isoformat()
 
-    print(start_datetime, end_datetime, sep="***\n***\n\n")
+    start_datetime = start_datetime.astimezone(pytz.timezone('Africa/Johannesburg'))
+    end_datetime = end_datetime.astimezone(pytz.timezone('Africa/Johannesburg'))
+
+    print(f"volunteer start: {start_datetime}\n***\n***\nvolunteer end: {end_datetime}")
     input("eventss")
 
     if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
@@ -36,8 +41,8 @@ def volunteer_for_slot(service, date, time, calendars, volunteer_email):
                 body=event
             ).execute()
 
-            print(f"Volunteering successful. Event ID: {event['id']}")
             calendar_utilities.update_calendar_data_file(service, calendars)
+            print(f"Volunteering successful. Event ID: {event['id']}")
 
         except Exception:
             raise
