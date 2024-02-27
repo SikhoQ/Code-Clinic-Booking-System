@@ -13,7 +13,7 @@ def volunteer_for_slot(service, date, time, calendars, volunteer_email):
 
     start_time = f"{date}T{time}:00Z"
 
-    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
+    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z')
     end_datetime = start_datetime + timedelta(minutes=30)
 
     start_datetime_str = start_datetime.isoformat()
