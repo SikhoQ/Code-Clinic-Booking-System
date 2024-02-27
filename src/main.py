@@ -68,8 +68,8 @@ def main():
 
     view_calendar.calender_layout(calendars)
 
-    date = "2024-02-26"
-    time = "19:00:00"
+    date = "2024-02-27"
+    time = "08:00:00"
 
     # volunteer_slot.volunteer_for_slot(service, date, time, calendars)
 

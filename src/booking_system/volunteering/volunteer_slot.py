@@ -15,7 +15,7 @@ def volunteer_for_slot(service, date, time, calendars):
 
     calendar_id = calendar_data["code clinic"]["id"]
 
-    start_time = f"{date}T{time}"
+    start_time = f"{date}T{time}Z"
     end_time = (datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z') + timedelta(minutes=30)).isoformat()
 
     event = {
