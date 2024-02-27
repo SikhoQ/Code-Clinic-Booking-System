@@ -70,7 +70,7 @@ def main():
 
     volunteer_slot.do_volunteering(service, calendars)
 
-    make_booking.do_booking(service, calendars)
+    # make_booking.do_booking(service, calendars)
 
 
 if __name__ == "__main__":

@@ -5,16 +5,16 @@
     "id": "sqangule023@student.wethinkcode.co.za"
   },
   "code clinic": {
-    "etag": "\"p32oej3efhb5o80o\"",
+    "etag": "\"p32ccpmvjkn5o80o\"",
     "events": [
       {
         "kind": "calendar#event",
-        "etag": "\"3418043753884000\"",
-        "id": "4dcdpaja25co9qshep08ij5ils",
+        "etag": "\"3418058402942000\"",
+        "id": "pbpu5lf9c537lipci33iikhlc8",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=NGRjZHBhamEyNWNvOXFzaGVwMDhpajVpbHMgY18wNGI5MGQxYzVlOGI1OTEwZTZhYTFhNDg5ODExN2Y5YWU5ZmJkMmIyZDA5OWRmMjc3MTM2ZDEyMWMyMWIxMmVkQGc",
-        "created": "2024-02-27T08:17:56.000Z",
-        "updated": "2024-02-27T08:17:56.942Z",
+        "htmlLink": "https://www.google.com/calendar/event?eid=cGJwdTVsZjljNTM3bGlwY2kzM2lpa2hsYzggY18wNGI5MGQxYzVlOGI1OTEwZTZhYTFhNDg5ODExN2Y5YWU5ZmJkMmIyZDA5OWRmMjc3MTM2ZDEyMWMyMWIxMmVkQGc",
+        "created": "2024-02-27T10:20:01.000Z",
+        "updated": "2024-02-27T10:20:01.471Z",
         "summary": "Code Clinic",
         "description": "Volunteer Slot",
         "creator": {
@@ -26,14 +26,14 @@
           "self": true
         },
         "start": {
-          "dateTime": "2024-02-27T11:00:00Z",
+          "dateTime": "2024-02-27T13:00:00Z",
           "timeZone": "Africa/Johannesburg"
         },
         "end": {
-          "dateTime": "2024-02-27T11:30:00Z",
+          "dateTime": "2024-02-27T13:30:00Z",
           "timeZone": "Africa/Johannesburg"
         },
-        "iCalUID": "4dcdpaja25co9qshep08ij5ils@google.com",
+        "iCalUID": "pbpu5lf9c537lipci33iikhlc8@google.com",
         "sequence": 0,
         "reminders": {
           "useDefault": true

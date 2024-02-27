@@ -1,7 +1,5 @@
-import os.path
 from datetime import datetime, timedelta
-import booking_system.calendars.slot_utilities as slot_utilities
-import booking_system.calendars.calendar_utilities as calendar_utilities
+from booking_system.calendars import calendar_utilities, slot_utilities
 
 CODE_CLINIC_CALENDAR = "code clinic"
 
@@ -13,13 +11,16 @@ def volunteer_for_slot(service, date, time, calendars, volunteer_email):
     calendar_id = calendar_info.get("id")
     clinic_events = calendar_info.get("events")
 
-    start_time = f"{date}T{time}:00:02:00"
+    start_time = f"{date}T{time}:00Z"
 
     start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
     end_datetime = start_datetime + timedelta(minutes=30)
 
     start_datetime_str = start_datetime.isoformat()
     end_datetime_str = end_datetime.isoformat()
+
+    print(start_datetime, end_datetime, sep="***\n***\n\n")
+    input("eventss")
 
     if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
         event = {
@@ -39,7 +40,7 @@ def volunteer_for_slot(service, date, time, calendars, volunteer_email):
             calendar_utilities.update_calendar_data_file(service, calendars)
 
         except Exception:
-            raise  # Re-raise the exception for further handling
+            raise
 
 
 def do_volunteering(service, calendars):
