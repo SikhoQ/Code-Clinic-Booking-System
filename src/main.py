@@ -81,10 +81,7 @@ def main():
         calendar_utilities.read_calendar_data(calendars)
     except FileNotFoundError:
         calendar_utilities.create_calendar_data_file_template(calendars)
-        
-    
 
-<<<<<<< HEAD
     while True:
         if menu == 'view calendar':
             view_calendar.calendar_layout(calendars)
@@ -97,18 +94,8 @@ def main():
             continue
         elif menu == 'quit':
             sys.exit("Quitting...")
-            
+
         calendar_utilities.update_calendar_data_file(service, calendars)
-=======
-    # after config step, update the calendar data file (data dates checked inside func def)
-    calendar_utilities.update_calendar_data_file(service, calendars)
-
-    view_calendar.calendar_layout(calendars)
-
-    # volunteer_slot.do_volunteering(service, calendars)
-
-    make_booking.do_booking(service, calendars)
->>>>>>> 4e3555d (changes)
 
 
 if __name__ == "__main__":
