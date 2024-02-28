@@ -13,8 +13,8 @@ def book_slot(service, date, time, calendars, email):
     # change these to use .get
     calendar_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
 
-    start_time = f"{date}T{time}:00Z"
-    start_time = start_time.astimezone(pytz.timezone('Africa/Johannesburg'))
+    start_time = f"{date}T{time}:00"
+    # start_time = start_time.astimezone(pytz.timezone('Africa/Johannesburg'))
 
     event = dict()
     event_id = str()

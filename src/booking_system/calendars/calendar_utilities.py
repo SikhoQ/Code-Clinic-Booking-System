@@ -216,20 +216,3 @@ def create_coding_clinic_calendar(service):
 
     # after creating calendars, call this func again to return updated calendar list
     return create_coding_clinic_calendar(service)
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 2024-02-27T10:00
-
-
-# 2024-02-27T10:00:00

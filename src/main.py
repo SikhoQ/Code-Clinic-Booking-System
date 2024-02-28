@@ -30,9 +30,28 @@ def load_client_credentials():
 
 def print_welcome():
     print("\nWelcome to the Coding Clinic Booking System\n")
+    
+    
+def usage():
+    pass
+    
+def menu_selection():
+
+    menu = inquirer.select(
+        message="Select",
+        choices=['view calendar', 'volunteer', 'book session', 'help', 'quit']
+    ).execute()
+    
+    
+
+    return (menu)
+
 
 
 def main():
+    
+    menu = menu_selection()
+    
     if not os.path.exists(CONFIG_FILE):
         print_welcome()
 
@@ -62,15 +81,23 @@ def main():
         calendar_utilities.read_calendar_data(calendars)
     except FileNotFoundError:
         calendar_utilities.create_calendar_data_file_template(calendars)
+        
+    
 
-    # after config step, update the calendar data file (data dates checked inside func def)
-    calendar_utilities.update_calendar_data_file(service, calendars)
-
-    view_calendar.calendar_layout(calendars)
-
-    # volunteer_slot.do_volunteering(service, calendars)
-
-    make_booking.do_booking(service, calendars)
+    while True:
+        if menu == 'view calendar':
+            view_calendar.calendar_layout(calendars)
+        elif menu == 'volunteer':
+            volunteer_slot.do_volunteering(service, calendars)
+        elif menu == 'book session':
+            make_booking.do_booking(service, calendars)
+        elif menu == 'help':
+            usage()
+            continue
+        elif menu == 'quit':
+            sys.exit("Quitting...")
+            
+        calendar_utilities.update_calendar_data_file(service, calendars)
 
 
 if __name__ == "__main__":
