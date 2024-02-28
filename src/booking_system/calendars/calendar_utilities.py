@@ -10,7 +10,7 @@ CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
 
 def download_calendars(service):
-    print("Downloading calendars...\n")
+    # print("Downloading calendars...\n")
     try:
         calendars = service.calendarList().list().execute()
         return calendars.get('items', [])

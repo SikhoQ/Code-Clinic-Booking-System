@@ -50,7 +50,7 @@ def menu_selection():
 
 def main():
     
-    menu = menu_selection()
+    (menu) = menu_selection()
     
     if not os.path.exists(CONFIG_FILE):
         print_welcome()
@@ -83,7 +83,9 @@ def main():
         calendar_utilities.create_calendar_data_file_template(calendars)
 
     while True:
+        
         if menu == 'view calendar':
+            print("Downloading calendars...\n")
             view_calendar.calendar_layout(calendars)
         elif menu == 'volunteer':
             volunteer_slot.do_volunteering(service, calendars)
@@ -91,11 +93,16 @@ def main():
             make_booking.do_booking(service, calendars)
         elif menu == 'help':
             usage()
-            continue
         elif menu == 'quit':
-            sys.exit("Quitting...")
+            try_again = inquirer.confirm(message="\nAre you sure?").execute()
 
-        calendar_utilities.update_calendar_data_file(service, calendars)
+            if try_again:
+            
+                sys.exit("Quitting...")
+            else:
+                main()
+            
+        # calendar_utilities.update_calendar_data_file(service, calendars)
 
 
 if __name__ == "__main__":
