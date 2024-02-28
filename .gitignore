@@ -16,3 +16,8 @@ src/booking_system/data/calendar_data.json
 src/booking_system/bookings/__pycache__/
 src/booking_system/calendars/__pycache__/
 src/booking_system/volunteering/__pycache__/
+src/booking_system/calendars/__pycache__/*_api.cpython-311.pyc
+src/booking_system/calendars/__pycache__/calendar_utilities.cpython-311.pyc
+src/booking_system/calendars/__pycache__/slot_utilities.cpython-311.pyc
+src/booking_system/calendars/__pycache__/view_calendar.cpython-311.pyc
+src/booking_system/volunteering/__pycache__/volunteer_slot.cpython-311.pyc
