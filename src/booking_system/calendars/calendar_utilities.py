@@ -6,7 +6,6 @@ from datetime import *
 from InquirerPy import inquirer
 import pytz
 
-
 CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
 
@@ -122,23 +121,31 @@ def is_calendar_data_outdated(calendar_data, server_data):
 def get_server_data(service, calendars, days=7):
     calendar_data = read_calendar_data(calendars)
     calendar_ids = {
-        "primary": calendar_data["primary"]["id"],
+        # "primary": calendar_data["primary"]["id"],
         "code clinic": calendar_data["code clinic"]["id"]
         # "cohort 2023": calendar_data["cohort 2023"]["id"]
     }
 
     server_data = dict()
-
+    tzinfo = pytz.timezone('Africa/Johannesburg')
     # Use the time zone of 'code clinic' as an example; adjust accordingly
-    calendar_timezone = 'Africa/Johannesburg'
-    tz = pytz.timezone(calendar_timezone)
 
-    now = datetime.utcnow().replace(tzinfo=pytz.utc)
+    # Get the current UTC time
+    now = datetime.utcnow()
+
+    # Get the timezone object for South Africa Standard Time (SAST)
+    sast_tz = pytz.timezone('Africa/Johannesburg')
+
+    # Localize the current UTC time to SAST
+    now = now.replace(tzinfo=pytz.utc).astimezone(sast_tz)
+
     end_date = now + timedelta(days=days - 1)
 
     # Convert UTC time to the calendar time zone
-    formatted_now = now.astimezone(tz).strftime('%Y-%m-%dT%H:%M:%SZ')
-    formatted_end_date = end_date.astimezone(tz).strftime('%Y-%m-%dT%H:%M:%SZ')
+    formatted_now = now.isoformat()
+    formatted_end_date = end_date.isoformat()
+    print(f"now: {formatted_now}\n\nend: {formatted_end_date}")
+    input()
 
     for key in calendar_ids:
         try:
@@ -166,11 +173,11 @@ def update_calendar_data_file(service, calendars):
     if is_calendar_data_outdated(calendar_data, server_data):
         print("Updating Calendar Data...")
         new_data = {
-            "primary": {
-                "etag": server_data["primary"]["etag"],
-                "events": server_data["primary"]["items"],
-                "id": calendar_data["primary"]["id"]
-            },
+        #     "primary": {
+        #         "etag": server_data["primary"]["etag"],
+        #         "events": server_data["primary"]["items"],
+        #         "id": calendar_data["primary"]["id"]
+        #     },
             "code clinic": {
                 "etag": server_data["code clinic"]["etag"],
                 "events": server_data["code clinic"]["items"],
