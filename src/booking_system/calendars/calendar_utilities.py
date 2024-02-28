@@ -123,8 +123,8 @@ def get_server_data(service, calendars, days=7):
     calendar_data = read_calendar_data(calendars)
     calendar_ids = {
         "primary": calendar_data["primary"]["id"],
-        "code clinic": calendar_data["code clinic"]["id"],
-        "cohort 2023": calendar_data["cohort 2023"]["id"]
+        "code clinic": calendar_data["code clinic"]["id"]
+        # "cohort 2023": calendar_data["cohort 2023"]["id"]
     }
 
     server_data = dict()
@@ -139,9 +139,6 @@ def get_server_data(service, calendars, days=7):
     # Convert UTC time to the calendar time zone
     formatted_now = now.astimezone(tz).strftime('%Y-%m-%dT%H:%M:%SZ')
     formatted_end_date = end_date.astimezone(tz).strftime('%Y-%m-%dT%H:%M:%SZ')
-
-    print(formatted_now, formatted_end_date, sep="\n***\n***\n")
-    input("server data")
 
     for key in calendar_ids:
         try:
@@ -178,11 +175,11 @@ def update_calendar_data_file(service, calendars):
                 "etag": server_data["code clinic"]["etag"],
                 "events": server_data["code clinic"]["items"],
                 "id": calendar_data["code clinic"]["id"]
-            },
-            "cohort 2023": {
-                "etag": server_data["cohort 2023"]["etag"],
-                "events": server_data["cohort 2023"]["items"],
-                "id": calendar_data["cohort 2023"]["id"]
+            # },
+            # "cohort 2023": {
+            #     "etag": server_data["cohort 2023"]["etag"],
+            #     "events": server_data["cohort 2023"]["items"],
+            #     "id": calendar_data["cohort 2023"]["id"]
             }
         }
 

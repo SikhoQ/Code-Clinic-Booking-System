@@ -5,34 +5,24 @@ import pytz
 CODE_CLINIC_CALENDAR = "code clinic"
 
 
-def volunteer_for_slot(service, date, time, calendars, volunteer_email):
+def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
     calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
 
     calendar_id = calendar_info.get("id")
     clinic_events = calendar_info.get("events")
-    print(f"clinic events {clinic_events}")
 
-    start_time = f"{date}T{time}:00"
-
-    start_datetime = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
     end_datetime = start_datetime + timedelta(minutes=30)
 
     start_datetime_str = start_datetime.isoformat()
     end_datetime_str = end_datetime.isoformat()
-
-    start_datetime = start_datetime.astimezone(pytz.timezone('Africa/Johannesburg'))
-    end_datetime = end_datetime.astimezone(pytz.timezone('Africa/Johannesburg'))
-
-    print(f"volunteer start: {start_datetime}\n***\n***\nvolunteer end: {end_datetime}")
-    input("eventss")
 
     if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
         event = {
             'summary': 'Code Clinic',
             'description': 'Volunteer Slot',
             'start': {'dateTime': start_datetime_str, 'timeZone': 'Africa/Johannesburg'},
-            'end': {'dateTime': end_datetime_str, 'timeZone': 'Africa/Johannesburg'},
+            'end': {'dateTime': end_datetime_str, 'timeZone': 'Africa/Johannesburg'}
         }
 
         try:
@@ -51,7 +41,9 @@ def volunteer_for_slot(service, date, time, calendars, volunteer_email):
 def do_volunteering(service, calendars):
     try:
         (date, time_choice, volunteer_email) = slot_utilities.get_booking_info()
-        volunteer_for_slot(service, date, time_choice, calendars, volunteer_email)
+        start_datetime = f"{date} {time_choice}"
+        start_datetime_str = datetime.strptime(start_datetime, "%Y-%m-%d %H:%M")
+        volunteer_for_slot(service, date, start_datetime_str, calendars, volunteer_email)
 
     except Exception:
         raise

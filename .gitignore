@@ -14,4 +14,5 @@ token.json
 dates.csv
 src/booking_system/data/calendar_data.json
 src/booking_system/bookings/__pycache__/
-src/booking_system/calendars/__pycache__/*
+src/booking_system/calendars/__pycache__/
+src/booking_system/volunteering/__pycache__/

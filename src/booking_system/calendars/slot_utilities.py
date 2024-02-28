@@ -46,6 +46,8 @@ def get_booking_info():
         message="Time:",
         choices=choices
     ).execute()
+    print(f"time choice: {time_choice}")
+    input("paused")
 
     return (date, time_choice, username+"@student.wethinkcode.co.za")
 
