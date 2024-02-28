@@ -87,12 +87,15 @@ def main():
         if menu == 'view calendar':
             print("Downloading calendars...\n")
             view_calendar.calendar_layout(calendars)
+        
         elif menu == 'volunteer':
             volunteer_slot.do_volunteering(service, calendars)
+            
         elif menu == 'book session':
             make_booking.do_booking(service, calendars)
         elif menu == 'help':
             usage()
+            
         elif menu == 'quit':
             try_again = inquirer.confirm(message="\nAre you sure?").execute()
 
@@ -101,7 +104,7 @@ def main():
                 sys.exit("Quitting...")
             else:
                 main()
-            
+        main()    
         # calendar_utilities.update_calendar_data_file(service, calendars)
 
 
