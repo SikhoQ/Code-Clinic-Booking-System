@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import booking_system.calendars.calendar_utilities as calendar_utilities
 import os
 from prettytable import PrettyTable
@@ -30,6 +30,11 @@ def format_data(event):
     return [summary, start_time, end_time, date]
 
 
+def get_next_7_days():
+    today = datetime.now(pytz.timezone('Africa/Johannesburg')).replace(hour=0, minute=0, second=0, microsecond=0)
+    next_7_days = [today + timedelta(days=i) for i in range(7)]
+    return next_7_days
+
 def calendar_layout(calendars):
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration']
@@ -37,15 +42,20 @@ def calendar_layout(calendars):
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["code clinic"]["events"]
 
-    for event in calendar_data:
-        formatted = format_data(event)
+    next_7_days = get_next_7_days()
 
-        # Convert the 'date' string to a datetime object
-        date = datetime.strptime(formatted[3], '%Y-%m-%d %H:%M:%S')
+    for day in next_7_days:
+        day_str = day.strftime("%d-%m-%Y")
+        events_on_day = [event for event in calendar_data if day <= datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S%z') < day + timedelta(days=1)]
 
-        day = calendar.day_name[date.weekday()]
-        table.add_row([day, date.strftime("%d-%m-%Y"), formatted[0], f'{formatted[1]} - {formatted[2]}'])
-        table.align["Day"] = "l"
+        if not events_on_day:
+            # If no events on this day, display "No events" and "N/A"
+            table.add_row([calendar.day_name[day.weekday()], day_str, 'No events', 'N/A'])
+        else:
+            for event in events_on_day:
+                formatted = format_data(event)
+                table.add_row([calendar.day_name[day.weekday()], day_str, formatted[0], f'{formatted[1]} - {formatted[2]}'])
+                table.align["Day"] = "l"
 
     print(table)
     return slots

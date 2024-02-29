@@ -1,45 +1,76 @@
 import booking_system.calendars.calendar_utilities as calendar_utilities
 from datetime import timedelta, datetime
-from InquirerPy import inquirer
+from InquirerPy import inquirer , validator
 from InquirerPy.validator import EmptyInputValidator
+from main import main
+import pytz
 
 
 def validate_date(value):
     try:
-        datetime.strptime(value, "%Y-%m-%d")
-        return True
+        date = datetime.strptime(value, "%Y-%m-%d")
+        today = datetime.today()
+        
+        # Check if entered date is today or in the next 7 days
+        if today <= date <= today + timedelta(days=6):
+            return True
+            
     except ValueError:
         return False
+    
+    return False
+        
+
+
+
+def time_handler():
+    choices = []
+
+    utc_now = datetime.utcnow().replace(tzinfo=pytz.UTC)  # Get current UTC time
+    local_now = utc_now.astimezone(pytz.timezone('Africa/Johannesburg'))  # Convert to Johannesburg time zone
+
+    start_time = local_now
+    end_time = start_time.replace(hour=17, minute=0, second=0, microsecond=0)
+    interval = timedelta(minutes=30)
+
+    if start_time.hour < 8 or end_time.hour >= 17:
+        print("Closed!")
+
+        book_next = inquirer.confirm(message="\nDo you wish to book a different date?").execute()
+
+        if book_next:
+            start_time = start_time.replace(hour=8, minute=0, second=0, microsecond=0)
+            end_time = end_time.replace(hour=17, minute=0, second=0, microsecond=0)
+        else:
+            main()  # Returns to main if the user decides not to book
+
+    if start_time.minute > 30:
+        start_time = start_time.replace(minute=30, second=0, microsecond=0)
+    else:
+        start_time = start_time.replace(minute=0, second=0, microsecond=0)
+
+    while start_time < end_time:
+        choices.append(start_time.strftime("%H:%M"))
+        start_time += interval
+
+    return choices
+
+
 
 
 def get_booking_info():
-
-    time = datetime.now()
-    # print(time)validate_date
-
-    end_time = time.replace(hour=20, minute=00, second=0, microsecond=0)
-
-    interval = timedelta(minutes=30)
-
-    if time.minute % 30 != 0:
-        time += interval - timedelta(minutes=time.minute % 30)
-
-    choices = []
-
-    while time < end_time:
-        choices.append(time.strftime("%H:%M"))
-        time += interval
+    choices = time_handler()
 
     username = inquirer.text(
         message="Username:",
         validate=EmptyInputValidator,
-        invalid_message="Invalid date format. Please use YYYY-MM-DD."
+        invalid_message="Usename cannot be empty"
     ).execute()
 
     date = inquirer.text(
         message="Date (YYYY-MM-DD):",
         validate=validate_date,
-        invalid_message="Invalid date format. Please use YYYY-MM-DD."
+        invalid_message="Invalid date format or date is not within the next 7 days. Please use YYYY-MM-DD."
     ).execute()
 
     time_choice = inquirer.select(
@@ -47,7 +78,8 @@ def get_booking_info():
         choices=choices
     ).execute()
 
-    return (date, time_choice, username+"@student.wethinkcode.co.za")
+
+    return (date, time_choice, username + "@student.wethinkcode.co.za")
 
 
 def is_slot_available(clinic_events, start_time, email, slot_type):
