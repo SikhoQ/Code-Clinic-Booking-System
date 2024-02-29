@@ -59,6 +59,7 @@ def time_handler():
 
 
 def get_booking_info():
+    # TODO: change to general name
     choices = time_handler()
 
     username = inquirer.text(

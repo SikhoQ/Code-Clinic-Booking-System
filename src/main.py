@@ -4,6 +4,7 @@ import sys
 import json
 import os.path
 import booking_system.volunteering.volunteer_slot as volunteer_slot
+import booking_system.volunteering.cancel_slot as cancel_slot
 import configure.configuration as configuration
 import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.view_calendar as view_calendar
@@ -41,7 +42,7 @@ def menu_selection():
 
     menu = inquirer.select(
         message="Select",
-        choices=['configure system', 'view calendar', 'volunteer', 'book session','cancel booking', 'help', 'quit',]
+        choices=['configure system', 'view calendar', 'volunteer', 'book session', 'cancel volunteer slot', 'cancel booking', 'help', 'quit',]
     ).execute()
 
     return (menu)
@@ -100,6 +101,9 @@ def main():
             
         elif menu == 'cancel booking':
             cancel_booking.view_events(calendars)
+        
+        elif menu == 'cancel volunteer slot':
+            cancel_slot.cancel_volunteering(service, calendars)
 
         elif menu == 'quit':
             try_again = inquirer.confirm(message="\nAre you sure?").execute()
