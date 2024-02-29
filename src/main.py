@@ -11,6 +11,7 @@ import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 from rich.console import Console
 import booking_system.bookings.make_booking as make_booking
+import booking_system.bookings.cancel_booking as cancel_booking
 from datetime import datetime
 
 
@@ -40,7 +41,7 @@ def menu_selection():
 
     menu = inquirer.select(
         message="Select",
-        choices=['configure system', 'view calendar', 'volunteer', 'book session', 'help', 'quit']
+        choices=['configure system', 'view calendar', 'volunteer', 'book session','cancel booking', 'help', 'quit',]
     ).execute()
 
     return (menu)
@@ -96,6 +97,9 @@ def main():
             make_booking.do_booking(service, calendars)
         elif menu == 'help':
             usage()
+            
+        elif menu == 'cancel booking':
+            cancel_booking.view_events(calendars)
 
         elif menu == 'quit':
             try_again = inquirer.confirm(message="\nAre you sure?").execute()

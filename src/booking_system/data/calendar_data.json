@@ -5,16 +5,16 @@
     "id": "mmsane023@student.wethinkcode.co.za"
   },
   "code clinic": {
-    "etag": "\"p33odd5k7in8880o\"",
+    "etag": "\"p32kale7ckn8880o\"",
     "events": [
       {
         "kind": "calendar#event",
-        "etag": "\"3418392955148000\"",
-        "id": "2v2hs6qac6u0sr32fd43j7nvbo",
+        "etag": "\"3418401969810000\"",
+        "id": "99sq3j7g9nbgs1c4m33dciu7is",
         "status": "confirmed",
-        "htmlLink": "https://www.google.com/calendar/event?eid=MnYyaHM2cWFjNnUwc3IzMmZkNDNqN252Ym8gY18yN2Q2NDY1YjU3Y2M2ZGEwM2Y0ZmQ1NmEyN2IxOTlkZjcyMDA5MzAwOWI2NTIwMzhkMTM5YTkzNmQ1YTg4ZGI2QGc",
-        "created": "2024-02-29T08:44:08.000Z",
-        "updated": "2024-02-29T08:47:57.574Z",
+        "htmlLink": "https://www.google.com/calendar/event?eid=OTlzcTNqN2c5bmJnczFjNG0zM2RjaXU3aXMgY18yN2Q2NDY1YjU3Y2M2ZGEwM2Y0ZmQ1NmEyN2IxOTlkZjcyMDA5MzAwOWI2NTIwMzhkMTM5YTkzNmQ1YTg4ZGI2QGc",
+        "created": "2024-02-29T10:03:04.000Z",
+        "updated": "2024-02-29T10:03:04.905Z",
         "summary": "Code Clinic",
         "description": "Volunteer Slot",
         "creator": {
@@ -26,21 +26,48 @@
           "self": true
         },
         "start": {
-          "dateTime": "2024-02-29T10:00:00Z",
+          "dateTime": "2024-02-29T12:00:00Z",
           "timeZone": "Africa/Johannesburg"
         },
         "end": {
-          "dateTime": "2024-02-29T10:30:00Z",
+          "dateTime": "2024-02-29T12:30:00Z",
           "timeZone": "Africa/Johannesburg"
         },
-        "iCalUID": "2v2hs6qac6u0sr32fd43j7nvbo@google.com",
+        "iCalUID": "99sq3j7g9nbgs1c4m33dciu7is@google.com",
         "sequence": 0,
-        "attendees": [
-          {
-            "email": "nbhengu023@student.wethinkcode.co.za",
-            "responseStatus": "needsAction"
-          }
-        ],
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3418398071618000\"",
+        "id": "7lu23p6k73o5smice86uris6lo",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N2x1MjNwNms3M281c21pY2U4NnVyaXM2bG8gY18yN2Q2NDY1YjU3Y2M2ZGEwM2Y0ZmQ1NmEyN2IxOTlkZjcyMDA5MzAwOWI2NTIwMzhkMTM5YTkzNmQ1YTg4ZGI2QGc",
+        "created": "2024-02-29T09:30:35.000Z",
+        "updated": "2024-02-29T09:30:35.809Z",
+        "summary": "Code Clinic",
+        "description": "Volunteer Slot",
+        "creator": {
+          "email": "mmsane023@student.wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_27d6465b57cc6da03f4fd56a27b199df720093009b652038d139a936d5a88db6@group.calendar.google.com",
+          "displayName": "Coding Clinic",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-01T07:00:00Z",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-01T07:30:00Z",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "7lu23p6k73o5smice86uris6lo@google.com",
+        "sequence": 0,
         "reminders": {
           "useDefault": true
         },
@@ -50,7 +77,7 @@
     "id": "c_27d6465b57cc6da03f4fd56a27b199df720093009b652038d139a936d5a88db6@group.calendar.google.com"
   },
   "cohort 2023": {
-    "etag": "\"p33cbbbu6h38880o\"",
+    "etag": "\"p33kc7pebm78880o\"",
     "events": [
       {
         "kind": "calendar#event",
@@ -142,6 +169,38 @@
         "sequence": 0,
         "reminders": {
           "useDefault": false
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3418408275330000\"",
+        "id": "66uvtm74kj1neboe55vag8s30c",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NjZ1dnRtNzRrajFuZWJvZTU1dmFnOHMzMGMgY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-02-29T10:55:37.000Z",
+        "updated": "2024-02-29T10:55:37.665Z",
+        "summary": "Summative Assessment / Spot Test",
+        "creator": {
+          "email": "peter@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-04T10:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-04T11:01:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "66uvtm74kj1neboe55vag8s30c@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": true
         },
         "eventType": "default"
       },
@@ -264,6 +323,73 @@
           "conferenceId": "muq-rauu-knb"
         },
         "guestsCanInviteOthers": false,
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3414630156866000\"",
+        "id": "6cudqbobgp3jq3dqm2l0e2gdu2_20240306T093000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NmN1ZHFib2JncDNqcTNkcW0ybDBlMmdkdTJfMjAyNDAzMDZUMDkzMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "created": "2024-02-07T14:11:18.000Z",
+        "updated": "2024-02-07T14:11:18.433Z",
+        "summary": "PSS Jhb Wed Group 1",
+        "creator": {
+          "email": "latoya@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-06T11:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-06T13:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "recurringEventId": "6cudqbobgp3jq3dqm2l0e2gdu2",
+        "originalStartTime": {
+          "dateTime": "2024-03-06T11:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "6cudqbobgp3jq3dqm2l0e2gdu2@google.com",
+        "sequence": 0,
+        "hangoutLink": "https://meet.google.com/okh-smzi-whk",
+        "conferenceData": {
+          "entryPoints": [
+            {
+              "entryPointType": "video",
+              "uri": "https://meet.google.com/okh-smzi-whk",
+              "label": "meet.google.com/okh-smzi-whk"
+            },
+            {
+              "entryPointType": "more",
+              "uri": "https://tel.meet/okh-smzi-whk?pin=5899777818418",
+              "pin": "5899777818418"
+            },
+            {
+              "regionCode": "ZA",
+              "entryPointType": "phone",
+              "uri": "tel:+27-10-823-1117",
+              "label": "+27 10 823 1117",
+              "pin": "185239539"
+            }
+          ],
+          "conferenceSolution": {
+            "key": {
+              "type": "hangoutsMeet"
+            },
+            "name": "Google Meet",
+            "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+          },
+          "conferenceId": "okh-smzi-whk"
+        },
         "reminders": {
           "useDefault": true
         },

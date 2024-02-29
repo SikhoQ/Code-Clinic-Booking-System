@@ -8,8 +8,8 @@ import pytz
 
 def validate_date(value):
     try:
-        date = datetime.strptime(value, "%Y-%m-%d")
-        today = datetime.today()
+        date = datetime.strptime(value, "%Y-%m-%d").date()
+        today = datetime.today().date()
         
         # Check if entered date is today or in the next 7 days
         if today <= date <= today + timedelta(days=6):
@@ -19,9 +19,8 @@ def validate_date(value):
         return False
     
     return False
-        
 
-
+    
 
 def time_handler():
     choices = []
@@ -33,7 +32,7 @@ def time_handler():
     end_time = start_time.replace(hour=17, minute=0, second=0, microsecond=0)
     interval = timedelta(minutes=30)
 
-    if start_time.hour < 8 or end_time.hour >= 17:
+    if start_time.hour < 8 or start_time.hour >= 17:
         print("Closed!")
 
         book_next = inquirer.confirm(message="\nDo you wish to book a different date?").execute()
@@ -41,6 +40,7 @@ def time_handler():
         if book_next:
             start_time = start_time.replace(hour=8, minute=0, second=0, microsecond=0)
             end_time = end_time.replace(hour=17, minute=0, second=0, microsecond=0)
+            
         else:
             main()  # Returns to main if the user decides not to book
 
@@ -64,7 +64,7 @@ def get_booking_info():
     username = inquirer.text(
         message="Username:",
         validate=EmptyInputValidator,
-        invalid_message="Usename cannot be empty"
+        invalid_message="Username cannot be empty"
     ).execute()
 
     date = inquirer.text(
@@ -84,15 +84,16 @@ def get_booking_info():
 
 def is_slot_available(clinic_events, start_time, email, slot_type):
     end_time = start_time + timedelta(minutes=30)
+    start_time = start_time.isoformat()+'+02:00'
+    end_time = end_time.isoformat()+'+02:00'
+
 
     for event in clinic_events:
         event_start = event.get("start", {}).get("dateTime")
         event_end = event.get("end", {}).get("dateTime")
 
         if event_start and event_end:
-            event_start = datetime.fromisoformat(event_start)
-            event_end = datetime.fromisoformat(event_end)
-
+          
             # Check if there's an overlap in time
             if start_time < event_end and end_time > event_start:
                 if slot_type == "booking":
