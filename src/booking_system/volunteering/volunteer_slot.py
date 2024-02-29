@@ -5,7 +5,7 @@ import pytz
 CODE_CLINIC_CALENDAR = "code clinic"
 
 
-def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email):
+def volunteer_for_slot(service, start_datetime, calendars, email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
     calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
 
@@ -16,7 +16,7 @@ def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email
 
     start_datetime_str = start_datetime.isoformat()+'+02:00'
     end_datetime_str = end_datetime.isoformat()+'+02:00'
-    if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
+    if slot_utilities.is_slot_available(clinic_events, start_datetime, email, "volunteering"):
         event = {
             'summary': 'Code Clinic',
             'description': 'Volunteer Slot',
@@ -39,10 +39,10 @@ def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email
 
 def do_volunteering(service, calendars):
     try:
-        (date, time_choice, volunteer_email) = slot_utilities.get_booking_info()
+        (date, time_choice, email) = slot_utilities.get_booking_info()
         start_datetime = f"{date} {time_choice}"
         start_datetime_str = datetime.strptime(start_datetime, "%Y-%m-%d %H:%M")
-        volunteer_for_slot(service, date, start_datetime_str, calendars, volunteer_email)
+        volunteer_for_slot(service, start_datetime_str, calendars, email)
 
     except Exception:
         raise

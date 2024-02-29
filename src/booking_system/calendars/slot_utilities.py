@@ -79,32 +79,40 @@ def get_booking_info():
         choices=choices
     ).execute()
 
-
     return (date, time_choice, username + "@student.wethinkcode.co.za")
 
 
 def is_slot_available(clinic_events, start_time, email, slot_type):
     end_time = start_time + timedelta(minutes=30)
-    start_time = start_time.isoformat()+'+02:00'
-    end_time = end_time.isoformat()+'+02:00'
 
+    # Convert start_time and end_time to the local time zone
+    local_timezone = pytz.timezone('Africa/Johannesburg')
+    start_time_local = start_time.astimezone(local_timezone)
+    end_time_local = end_time.astimezone(local_timezone)
 
     for event in clinic_events:
         event_start = event.get("start", {}).get("dateTime")
         event_end = event.get("end", {}).get("dateTime")
 
         if event_start and event_end:
-          
-            # Check if there's an overlap in time
-            if start_time < event_end and end_time > event_start:
+            event_start = datetime.fromisoformat(event_start)
+            event_end = datetime.fromisoformat(event_end)
+
+            # Convert event start and end times to the local time zone
+            event_start_local = event_start.astimezone(local_timezone)
+            event_end_local = event_end.astimezone(local_timezone)
+
+            if start_time_local == event_start_local and end_time_local == event_end_local:
                 if slot_type == "booking":
-                    # Check if the event is a volunteer slot and not booked by the same volunteer
-                    if event.get("description", "").lower() == "volunteer slot" and email != event.get("creator", {}).get("email"):
+                    if event.get("description", "").lower() == "volunteer slot" and \
+                            email != event.get("creator", "").get("email"):
                         print("Slot available for booking")
                         return True
+                    else:
+                        print("You cannot book a slot you have volunteered for")
+                        return False
                 elif slot_type == "volunteering":
-                    # Check if the same volunteer has already volunteered for this slot
-                    if email == event.get("creator", {}).get("email"):
+                    if email == event.get("creator", "").get("email"):
                         print("You have already volunteered for this slot")
                         return False
                     else:
