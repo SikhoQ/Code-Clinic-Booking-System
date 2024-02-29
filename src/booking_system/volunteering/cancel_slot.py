@@ -3,11 +3,7 @@ import booking_system.calendars.calendar_utilities as calendar_utilities
 from InquirerPy import inquirer
 
 
-
-
-
 def validate_date(value):
-
     try:
 
         datetime.strptime(value, "%Y-%m-%d")
@@ -17,7 +13,6 @@ def validate_date(value):
     except ValueError:
 
         return False
-
 
 
 def get_cancellation_info():

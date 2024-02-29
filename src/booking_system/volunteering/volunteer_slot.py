@@ -16,8 +16,6 @@ def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email
 
     start_datetime_str = start_datetime.isoformat()+'+02:00'
     end_datetime_str = end_datetime.isoformat()+'+02:00'
-    print(f"start_datetime_str: {start_datetime_str}\nend_datetime_str: {end_datetime_str}")
-    input()
     if slot_utilities.is_slot_available(clinic_events, start_datetime, volunteer_email, "volunteering"):
         event = {
             'summary': 'Code Clinic',

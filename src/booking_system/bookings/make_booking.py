@@ -14,7 +14,10 @@ def book_slot(service, date, time, calendars, email):
     calendar_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
 
     start_time = f"{date}T{time}:00"
-    # start_time = start_time.astimezone(pytz.timezone('Africa/Johannesburg'))
+
+    # Assuming start_time is in Africa/Johannesburg timezone
+    start_time_sast = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
+    start_time_sast = pytz.timezone('Africa/Johannesburg').localize(start_time_sast)
 
     event = dict()
     event_id = str()
@@ -24,8 +27,6 @@ def book_slot(service, date, time, calendars, email):
         event_start_time_utc = event_start_time_utc.replace(tzinfo=pytz.utc)  # Make it aware of UTC timezone
         event_start_time_sast = event_start_time_utc.astimezone(pytz.timezone('Africa/Johannesburg'))  # Convert to SAST
 
-        print(f"event start time (SAST): {event_start_time_sast}\nStart time (SAST): {start_time_sast}")
-
         if event_start_time_sast == start_time_sast:
             event_id = each_event.get("id")
             event = each_event
@@ -34,8 +35,6 @@ def book_slot(service, date, time, calendars, email):
     event["attendees"] = [{"email": email}]
 
     event = service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
-    print(event)
-
 
 
 def do_booking(service, calendars):

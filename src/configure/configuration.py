@@ -47,10 +47,13 @@ def get_student_info():
         validate=EmptyInputValidator("Username should not be empty")
         ).execute()
 
+    student_email += "@student.wethinkcode.co.za"
+
     return (first_name, last_name, campus, student_email)
 
 
-def do_configuration(service):
+def do_configuration():
+    print("Starting configuration...\n")
     try:
         with open(CREDS_FILE, 'r') as creds_file:
             file_data = json.load(creds_file)
@@ -80,9 +83,9 @@ def do_configuration(service):
     }
 
     write_config(config_data)
+    print("Configuration completed.\n")
 
 
-def first_run_setup(service, calendars):
+def first_run_setup():
     print_config_message()
-    do_configuration(service)
-    # calendar_utilities.create_calendar_data_file_template(calendars)
+    do_configuration()

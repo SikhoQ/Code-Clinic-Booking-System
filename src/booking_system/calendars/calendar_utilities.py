@@ -74,7 +74,7 @@ def create_calendar_data_file_template(calendars):
             "etag": primary_calendar["etag"],
             "events": [],
             "id": primary_calendar["id"]
-            
+
         },
         "code clinic": {
             "etag": clinic_calendar["etag"],
@@ -95,25 +95,25 @@ def is_calendar_data_outdated(calendar_data, server_data):
     # Use the etag to check if the data is outdated, from all 3 calendars
     # needs calendar id's to get server etags for all calendars and compare
 
-    # keys = ["primary", "code clinic", "cohort 2023"]
-    # # use list to shorten
-    # local_etags = {
-    #     "primary": calendar_data["primary"]["etag"],
-    #     "cohort 2023": calendar_data["cohort 2023"]["etag"],
-    #     "code clinic": calendar_data["code clinic"]["etag"]
-    # }
+    keys = ["primary", "code clinic", "cohort 2023"]
+    # use list to shorten
+    local_etags = {
+        "primary": calendar_data["primary"]["etag"],
+        "cohort 2023": calendar_data["cohort 2023"]["etag"],
+        "code clinic": calendar_data["code clinic"]["etag"]
+    }
 
-    # server_etags = {
-    #     "primary": server_data["primary"]["etag"],
-    #     "cohort 2023": server_data["cohort 2023"]["etag"],
-    #     "code clinic": server_data["code clinic"]["etag"]
-    # }
-    # if len(local_etags) != len(server_etags):
-    #     return True
+    server_etags = {
+        "primary": server_data["primary"]["etag"],
+        "cohort 2023": server_data["cohort 2023"]["etag"],
+        "code clinic": server_data["code clinic"]["etag"]
+    }
+    if len(local_etags) != len(server_etags):
+        return True
 
-    # for key in keys:
-    #     if local_etags[key] != server_etags[key]:
-    #         return True
+    for key in keys:
+        if local_etags[key] != server_etags[key]:
+            return True
 
     return True
 
@@ -121,14 +121,12 @@ def is_calendar_data_outdated(calendar_data, server_data):
 def get_server_data(service, calendars, days=7):
     calendar_data = read_calendar_data(calendars)
     calendar_ids = {
-        # "primary": calendar_data["primary"]["id"],
-        "code clinic": calendar_data["code clinic"]["id"]
-        # "cohort 2023": calendar_data["cohort 2023"]["id"]
+        "primary": calendar_data["primary"]["id"],
+        "code clinic": calendar_data["code clinic"]["id"],
+        "cohort 2023": calendar_data["cohort 2023"]["id"]
     }
 
     server_data = dict()
-    tzinfo = pytz.timezone('Africa/Johannesburg')
-    # Use the time zone of 'code clinic' as an example; adjust accordingly
 
     # Get the current UTC time
     now = datetime.utcnow()
@@ -136,7 +134,6 @@ def get_server_data(service, calendars, days=7):
     # Get the timezone object for South Africa Standard Time (SAST)
     sast_tz = pytz.timezone('Africa/Johannesburg')
 
-    # Localize the current UTC time to SAST
     now = now.replace(tzinfo=pytz.utc).astimezone(sast_tz)
 
     end_date = now + timedelta(days=days - 1)
@@ -144,8 +141,6 @@ def get_server_data(service, calendars, days=7):
     # Convert UTC time to the calendar time zone
     formatted_now = now.isoformat()
     formatted_end_date = end_date.isoformat()
-    print(f"now: {formatted_now}\n\nend: {formatted_end_date}")
-    input()
 
     for key in calendar_ids:
         try:
@@ -156,8 +151,8 @@ def get_server_data(service, calendars, days=7):
                 singleEvents=True,
                 orderBy='startTime'
             ).execute()
-        except Exception as e:
-            print(f"Error: {e}")
+        except Exception:
+            raise
 
     return server_data
 
@@ -165,35 +160,39 @@ def get_server_data(service, calendars, days=7):
 def update_calendar_data_file(service, calendars):
     # "UPDATE FUNCTIONALITY WORKS BUT OUTDATED CHECK DOESN'T"
     calendar_data = read_calendar_data(calendars)
-    server_data = get_server_data(service, calendars)
-
-    # print("Calendar Data:", calendar_data, end="\n\n\n")
-    print("Server Data:", server_data)
+    try:
+        print("Getting server data...\n")
+        server_data = get_server_data(service, calendars)
+    except Exception:
+        if inquirer.confirm(message="An error was encountered, try again?"):
+            update_calendar_data_file(service, calendars)
+        else:
+            sys.exit("Quitting...")
 
     if is_calendar_data_outdated(calendar_data, server_data):
-        print("Updating Calendar Data...")
+        print("Updating Calendar Data...\n")
         new_data = {
-        #     "primary": {
-        #         "etag": server_data["primary"]["etag"],
-        #         "events": server_data["primary"]["items"],
-        #         "id": calendar_data["primary"]["id"]
-        #     },
+            "primary": {
+                "etag": server_data["primary"]["etag"],
+                "events": server_data["primary"]["items"],
+                "id": calendar_data["primary"]["id"]
+            },
             "code clinic": {
                 "etag": server_data["code clinic"]["etag"],
                 "events": server_data["code clinic"]["items"],
                 "id": calendar_data["code clinic"]["id"]
-            # },
-            # "cohort 2023": {
-            #     "etag": server_data["cohort 2023"]["etag"],
-            #     "events": server_data["cohort 2023"]["items"],
-            #     "id": calendar_data["cohort 2023"]["id"]
+            },
+            "cohort 2023": {
+                "etag": server_data["cohort 2023"]["etag"],
+                "events": server_data["cohort 2023"]["items"],
+                "id": calendar_data["cohort 2023"]["id"]
             }
         }
 
         write_calendar_data(new_data)
-        print("Calendar Data Updated.")
+        print("Calendar Data Updated.\n")
     else:
-        print("Calendar Data is up to date.")
+        print("Calendar Data is up to date.\n")
 
 
 def create_coding_clinic_calendar(service):

@@ -46,8 +46,6 @@ def get_booking_info():
         message="Time:",
         choices=choices
     ).execute()
-    print(f"time choice: {time_choice}")
-    input("paused")
 
     return (date, time_choice, username+"@student.wethinkcode.co.za")
 
@@ -62,8 +60,6 @@ def is_slot_available(clinic_events, start_time, email, slot_type):
         if event_start and event_end:
             event_start = datetime.fromisoformat(event_start)
             event_end = datetime.fromisoformat(event_end)
-
-            print(f"start time: {start_time}, event start {event_start}\nend time: {end_time} event end {event_end}")
 
             # Check if there's an overlap in time
             if start_time < event_end and end_time > event_start:

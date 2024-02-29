@@ -30,28 +30,23 @@ def load_client_credentials():
 
 def print_welcome():
     print("\nWelcome to the Coding Clinic Booking System\n")
-    
-    
+
+
 def usage():
     pass
-    
+
+
 def menu_selection():
 
     menu = inquirer.select(
         message="Select",
-        choices=['view calendar', 'volunteer', 'book session', 'help', 'quit']
+        choices=['configure system', 'view calendar', 'volunteer', 'book session', 'help', 'quit']
     ).execute()
-    
-    
 
     return (menu)
 
 
-
 def main():
-    
-    (menu) = menu_selection()
-    
     if not os.path.exists(CONFIG_FILE):
         print_welcome()
 
@@ -82,30 +77,35 @@ def main():
     except FileNotFoundError:
         calendar_utilities.create_calendar_data_file_template(calendars)
 
+    calendar_utilities.update_calendar_data_file(service, calendars)
+
+    (menu) = menu_selection()
+
     while True:
-        
-        if menu == 'view calendar':
+        if menu == 'configure system':
+            configuration.do_configuration()
+
+        elif menu == 'view calendar':
             print("Downloading calendars...\n")
             view_calendar.calendar_layout(calendars)
-        
+
         elif menu == 'volunteer':
             volunteer_slot.do_volunteering(service, calendars)
-            
+
         elif menu == 'book session':
             make_booking.do_booking(service, calendars)
         elif menu == 'help':
             usage()
-            
+
         elif menu == 'quit':
             try_again = inquirer.confirm(message="\nAre you sure?").execute()
 
             if try_again:
-            
+
                 sys.exit("Quitting...")
             else:
                 main()
-        main()    
-        # calendar_utilities.update_calendar_data_file(service, calendars)
+        main()
 
 
 if __name__ == "__main__":
