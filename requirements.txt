@@ -1,6 +1,7 @@
 cachetools==5.3.2
 certifi==2024.2.2
 charset-normalizer==3.3.2
+colorama==0.4.6
 google-api-core==2.16.2
 google-api-python-client==2.116.0
 google-auth==2.27.0
