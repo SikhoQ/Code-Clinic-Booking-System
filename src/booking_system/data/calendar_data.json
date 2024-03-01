@@ -1,12 +1,46 @@
 {
   "primary": {
-    "etag": "\"p3389dhudlf9880o\"",
+    "etag": "\"p33sdh8nvnv9880o\"",
     "events": [],
     "id": "sqangule023@student.wethinkcode.co.za"
   },
   "code clinic": {
-    "etag": "\"p33kff27em79880o\"",
-    "events": [],
+    "etag": "\"p32cb7nvopf9880o\"",
+    "events": [
+      {
+        "kind": "calendar#event",
+        "etag": "\"3418559861470000\"",
+        "id": "cd6qn2rp0o0ulajb4hgv5s096s",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=Y2Q2cW4ycnAwbzB1bGFqYjRoZ3Y1czA5NnMgY18wNGI5MGQxYzVlOGI1OTEwZTZhYTFhNDg5ODExN2Y5YWU5ZmJkMmIyZDA5OWRmMjc3MTM2ZDEyMWMyMWIxMmVkQGc",
+        "created": "2024-03-01T07:58:10.000Z",
+        "updated": "2024-03-01T07:58:50.735Z",
+        "summary": "Code Clinic",
+        "description": "Volunteer Slot",
+        "creator": {
+          "email": "sqangule023@student.wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_04b90d1c5e8b5910e6aa1a4898117f9ae9fbd2b2d099df277136d121c21b12ed@group.calendar.google.com",
+          "displayName": "Coding Clinic",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-01T10:00:00Z",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-01T10:30:00Z",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "cd6qn2rp0o0ulajb4hgv5s096s@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      }
+    ],
     "id": "c_04b90d1c5e8b5910e6aa1a4898117f9ae9fbd2b2d099df277136d121c21b12ed@group.calendar.google.com"
   },
   "cohort 2023": {

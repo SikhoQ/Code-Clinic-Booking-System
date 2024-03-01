@@ -1,5 +1,7 @@
 # HANDLE ALL EXCEPTIONS IN MAIN LOOP
 
+# when tool is run, mainloop will determine program's lifetime, afterwhich login is required
+# this will be through username input, checked against config file (if found), if user not found, prompt to register
 import sys
 import json
 import os.path
@@ -100,7 +102,7 @@ def main():
             usage()
 
         elif menu == 'cancel booking':
-            cancel_booking.view_events(calendars)
+            cancel_booking.cancel_booking(service, calendars)
 
         elif menu == 'cancel volunteer slot':
             cancel_slot.cancel_volunteering(service, calendars)

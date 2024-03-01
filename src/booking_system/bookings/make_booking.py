@@ -31,8 +31,14 @@ def book_slot(service, start_datetime_str, calendars, email):
             break
 
     if slot_utilities.is_slot_available(clinic_events, start_time_sast, email, "booking"):
-        event["attendees"] = [{"email": email}]
-        event = service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
+        try:
+            event["attendees"] = [{"email": email}]
+            event["description"] = "Booked Slot"
+            service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
+            calendar_utilities.update_calendar_data_file(service, calendars)
+
+        except Exception:
+            raise
 
 
 def do_booking(service, calendars):

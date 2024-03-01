@@ -48,5 +48,3 @@ def do_volunteering(service, calendars):
         raise
 
 
-# when tool is run, mainloop will determine program's lifetime, afterwhich login is required
-# this will be through username input, checked against config file (if found), if user not found, prompt to register

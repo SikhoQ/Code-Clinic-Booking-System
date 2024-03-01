@@ -1,8 +1,8 @@
-import booking_system.calendars.calendar_utilities as calendar_utilities
+# import booking_system.calendars.calendar_utilities as calendar_utilities
 from datetime import timedelta, datetime
-from InquirerPy import inquirer , validator
+from InquirerPy import inquirer
 from InquirerPy.validator import EmptyInputValidator
-from main import main
+# from main import main
 import pytz
 
 
@@ -140,3 +140,11 @@ def find_existing_event(clinic_events, date, time_choice):
             return event_id, event
 
     return event_id, event
+
+
+def is_volunteer_slot(event):
+    return event.get("description", "").lower() == "volunteer slot"
+
+
+def is_booked_slot(existing_event):
+    return existing_event.get("description", "").lower() == "booked slot"
