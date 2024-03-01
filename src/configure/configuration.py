@@ -13,24 +13,30 @@ CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
 
 def print_config_message():
+    """
+    Prints a message indicating the absence of a config file and prompts the user for input.
+    """
     print("You do not appear to have a config file defined, so let me ask you some questions\n")
 
 
-# TODO: DO something about this useless function
-def read_config():
-    if os.path.exists(CONFIG_FILE):
-        with open(CONFIG_FILE, 'r') as f:
-            return json.load(f)
-    else:
-        raise FileNotFoundError
-
-
 def write_config(config_data):
+    """
+    Writes configuration data to the config file.
+
+    Args:
+        config_data (dict): Configuration data to be written to the file."""
+
     with open(CONFIG_FILE, 'w') as f:
         json.dump(config_data, f, indent=2)
 
 
-def get_student_info():
+def get_student_info(): 
+    """
+    Prompts the user to enter student information.
+
+    Returns:
+        tuple: A tuple containing first name, last name, campus, and student email.
+    """
     first_name = inquirer.text(
         message="First name:",
         validate=EmptyInputValidator("Name should not be empty")
@@ -54,6 +60,8 @@ def get_student_info():
 
 
 def do_configuration():
+    """Performs the initial configuration.
+    """
     print("Starting configuration...\n")
     time.sleep(2)
     try:
@@ -89,5 +97,7 @@ def do_configuration():
 
 
 def first_run_setup():
+    """Performs the setup for the first run of the application.
+    """
     print_config_message()
     do_configuration()
