@@ -52,10 +52,6 @@ def time_handler(date_str):
         start_time = start_time.replace(hour=7, minute=30, second=0, microsecond=0)
     end_time = start_time.replace(hour=17, minute=30, second=0, microsecond=0)
     interval = timedelta(minutes=30)
-<<<<<<< HEAD
-=======
-
->>>>>>> 245ef4f (updated main and view cal modules)
     if start_time.minute > 30:
         start_time = start_time.replace(hour=start_time.hour + 1, minute=0, second=0, microsecond=0)
     else:

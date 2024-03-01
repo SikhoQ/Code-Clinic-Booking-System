@@ -1,16 +1,11 @@
 from datetime import datetime, timedelta
 from booking_system.calendars import calendar_utilities, slot_utilities
+import pytz
 
 CODE_CLINIC_CALENDAR = "code clinic"
 PRIMARY_CALENDAR = "primary"
 
 
-<<<<<<< HEAD
-def volunteer_for_slot(service, date, start_datetime, calendars, email):
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
     calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
@@ -109,8 +104,9 @@ def volunteer_for_slot(service, date, start_datetime, calendars, email):
 
             except Exception:
                 raise
+        
+        print(f"Volunteering successful\n")
 
-        print("Volunteering successful\n")
 
 
 def do_volunteering(service, calendars):
@@ -118,14 +114,11 @@ def do_volunteering(service, calendars):
         (date, time_choice, email) = slot_utilities.get_booking_info()
         start_datetime = f"{date} {time_choice}"
         start_datetime_str = datetime.strptime(start_datetime, "%Y-%m-%d %H:%M")
-        volunteer_for_slot(service, date, start_datetime_str, calendars, email)
+        volunteer_for_slot(service, start_datetime_str, calendars, email)
 
     except Exception:
         raise
-<<<<<<< HEAD
-=======
 
 
 # when tool is run, mainloop will determine program's lifetime, afterwhich login is required
 # this will be through username input, checked against config file (if found), if user not found, prompt to register
->>>>>>> c5f84f1 (nervous)

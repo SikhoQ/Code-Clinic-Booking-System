@@ -135,6 +135,7 @@ def main():
                     sys.exit("Quitting...")
 
         elif menu == 'view calendar':
+            
             print("Downloading calendars...\n")
             avilable_calendars = calendar_selection()
             
@@ -143,9 +144,6 @@ def main():
             if avilable_calendars == "Primary":
                 view_calendar.primary_calendar(calendars)
                 
-            
-            
-
         elif menu == 'volunteer':
             try:
                 volunteer_slot.do_volunteering(service, calendars)
