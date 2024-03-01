@@ -13,6 +13,7 @@ import booking_system.calendars.verify_connection as verify_connection
 import booking_system.calendars.view_calendar as view_calendar
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
+from InquirerPy.separator import Separator
 from rich.console import Console
 import booking_system.bookings.make_booking as make_booking
 import booking_system.bookings.cancel_booking as cancel_booking
