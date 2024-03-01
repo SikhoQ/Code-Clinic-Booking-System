@@ -25,6 +25,12 @@ CALENDAR_FILE = os.path.expanduser("src/booking_system/data/calendar_data.json")
 
 
 def load_client_credentials():
+    """
+    Loads client credentials from the credentials file.
+
+    Returns:
+        tuple: A tuple containing client ID and client secret."""
+    
     with open(CREDS_FILE, "r") as credentials_file:
         credentials_data = json.load(credentials_file)
         client_id = credentials_data.client_id
@@ -33,6 +39,9 @@ def load_client_credentials():
 
 
 def print_welcome():
+    """
+    Prints a welcome message for the Coding Clinic Booking System."""
+
     print("\nWelcome to the Coding Clinic Booking System\n")
     time.sleep(2)
     os.system("clear")
@@ -61,6 +70,9 @@ def menu_selection():
 
 
 def main():
+    """
+    The main function for running the Code Clinics Booking System.
+    """
     if not os.path.exists(CONFIG_FILE):
         print_welcome()
 
@@ -128,6 +140,7 @@ def main():
                     volunteer_slot.do_volunteering(service, calendars)
 
         elif menu == 'help':
+            pass
             usage()
 
         elif menu == 'cancel booking':
