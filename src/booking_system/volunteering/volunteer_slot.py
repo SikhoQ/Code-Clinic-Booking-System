@@ -38,9 +38,8 @@ def volunteer_for_slot(service, date, start_datetime, calendars, email):
 
             except Exception:
                 raise
-        
-        print(f"Volunteering successful\n")
 
+        print("Volunteering successful\n")
 
 
 def do_volunteering(service, calendars):
@@ -52,5 +51,3 @@ def do_volunteering(service, calendars):
 
     except Exception:
         raise
-
-

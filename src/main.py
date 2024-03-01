@@ -14,10 +14,8 @@ import booking_system.calendars.view_calendar as view_calendar
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 from InquirerPy.separator import Separator
-from rich.console import Console
 import booking_system.bookings.make_booking as make_booking
 import booking_system.bookings.cancel_booking as cancel_booking
-from datetime import datetime
 
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
@@ -46,7 +44,16 @@ def menu_selection():
 
     menu = inquirer.select(
         message="Select",
-        choices=['configure system', 'verify configuration', 'view calendar', 'volunteer', 'book session', 'cancel volunteer slot', 'cancel booking', 'help', 'quit',]
+        choices=['configure system', 'verify configuration',
+                 Separator(),
+                 'view calendar',
+                 Separator(),
+                 'volunteer', 'cancel volunteer slot',
+                 Separator(),
+                 'book session',
+                 'cancel booking',
+                 Separator(),
+                 'help', 'quit',]
     ).execute()
 
     return (menu)
@@ -91,26 +98,52 @@ def main():
         if menu == 'configure system':
             configuration.do_configuration()
 
-        elif  menu == 'verify configuration':
-            verify_connection.verify_calendar_connection(service, calendars)
+        elif menu == 'verify configuration':
+            connection = verify_connection.verify_calendar_connection(service, calendars)
+            while not connection:
+                if inquirer.confirm(message="Retry?"):
+                    connection = verify_connection.verify_calendar_connection(service, calendars)
+                else:
+                    sys.exit("Quitting...")
 
         elif menu == 'view calendar':
             print("Downloading calendars...\n")
             view_calendar.calendar_layout(calendars)
 
         elif menu == 'volunteer':
-            volunteer_slot.do_volunteering(service, calendars)
+            try:
+                volunteer_slot.do_volunteering(service, calendars)
+            except Exception as e:
+                print(f"Error encountered: {e}\n")
+                if inquirer.confirm(message="Retry?"):
+                    volunteer_slot.do_volunteering(service, calendars)
 
         elif menu == 'book session':
-            make_booking.do_booking(service, calendars)
+            try:
+                make_booking.do_booking(service, calendars)
+            except Exception as e:
+                print(f"Error encountered: {e}\n")
+                if inquirer.confirm(message="Retry?"):
+                    volunteer_slot.do_volunteering(service, calendars)
+
         elif menu == 'help':
             usage()
 
         elif menu == 'cancel booking':
-            cancel_booking.cancel_booking(service, calendars)
+            try:
+                cancel_booking.cancel_booking(service, calendars)
+            except Exception as e:
+                print(f"Error encountered: {e}\n")
+                if inquirer.confirm(message="Retry?"):
+                    volunteer_slot.do_volunteering(service, calendars)
 
         elif menu == 'cancel volunteer slot':
-            cancel_slot.cancel_volunteering(service, calendars)
+            try:
+                cancel_slot.cancel_volunteering(service, calendars)
+            except Exception as e:
+                print(f"Error encountered: {e}\n")
+                if inquirer.confirm(message="Retry?"):
+                    volunteer_slot.do_volunteering(service, calendars)
 
         elif menu == 'quit':
             try_again = inquirer.confirm(message="\nAre you sure?").execute()

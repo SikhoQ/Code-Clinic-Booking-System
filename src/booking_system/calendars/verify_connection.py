@@ -1,4 +1,3 @@
-from googleapiclient.errors import HttpError
 import booking_system.calendars.calendar_utilities as calendar_utilities
 
 
@@ -12,6 +11,6 @@ def verify_calendar_connection(service, calendars):
             print("Connection verification successful\n")
         return True
 
-    except HttpError as e:
+    except Exception as e:
         print(f"Error connecting to Google Calendar: {e}\n")
         return False

@@ -36,10 +36,10 @@ def cancel_booking(service, calendars):
         print("Booking cancellation successful!\n")
     else:
         if not existing_event:
-            print("No volunteer slot for given time.", end=" ")
+            print("No volunteer slot for given time.")
         else:
             print("No booking found for volunteer slot.")
-        if inquirer.confirm(message="Select another slot?"):
+        if inquirer.confirm(message="Select another slot?").execute():
             cancel_booking(service, calendars)
 
 
