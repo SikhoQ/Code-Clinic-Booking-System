@@ -8,6 +8,16 @@ PRIMARY_CALENDAR = "primary"
 
 
 def book_slot(service, start_datetime_str, calendars, email):
+    """
+    Books a slot.
+
+    Args:
+        service: Google Calendar service object.
+        start_datetime_str (str): Start date and time in the format '%Y-%m-%d %H:%M:%S'.
+        calendars (dict): Dictionary containing calendar names and their corresponding IDs.
+        email (str): Email address of the student booking the slot.
+
+    """
     calendar_data = calendar_utilities.read_calendar_data(calendars)
 
     # Change these to use .get
@@ -50,6 +60,18 @@ def book_slot(service, start_datetime_str, calendars, email):
         
 
 def do_booking(service, calendars):
+    """
+    Perform the booking process.
+
+    Args:
+        service: Google Calendar service object.
+        calendars (dict): Dictionary containing calendar names and their corresponding IDs.
+
+    Raises:
+        Exception: If an error occurs during the booking process.
+
+    """
+
     try:
         (date, time_choice, volunteer_email) = slot_utilities.get_booking_info()
         start_datetime = f"{date} {time_choice}:00"  # Adding seconds to match the format
