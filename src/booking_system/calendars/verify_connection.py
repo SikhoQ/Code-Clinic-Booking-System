@@ -1,4 +1,6 @@
 import booking_system.calendars.calendar_utilities as calendar_utilities
+import time
+import os
 
 
 def verify_calendar_connection(service, calendars):
@@ -9,6 +11,8 @@ def verify_calendar_connection(service, calendars):
             print(f"Verifying connection to {user_calendar.title()} Calendar...")
             calendar = service.calendars().get(calendarId=user_calendars[user_calendar]["id"]).execute()
             print("Connection verification successful\n")
+            time.sleep(2)
+            os.system("clear")
         return True
 
     except Exception as e:

@@ -1,3 +1,4 @@
+import time
 import json
 import os
 import sys
@@ -29,7 +30,7 @@ def write_config(config_data):
         json.dump(config_data, f, indent=2)
 
 
-def get_student_info(): 
+def get_student_info():
     first_name = inquirer.text(
         message="First name:",
         validate=EmptyInputValidator("Name should not be empty")
@@ -54,6 +55,7 @@ def get_student_info():
 
 def do_configuration():
     print("Starting configuration...\n")
+    time.sleep(2)
     try:
         with open(CREDS_FILE, 'r') as creds_file:
             file_data = json.load(creds_file)

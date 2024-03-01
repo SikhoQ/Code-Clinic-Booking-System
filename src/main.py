@@ -16,7 +16,7 @@ from InquirerPy import inquirer
 from InquirerPy.separator import Separator
 import booking_system.bookings.make_booking as make_booking
 import booking_system.bookings.cancel_booking as cancel_booking
-
+import time
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -34,6 +34,8 @@ def load_client_credentials():
 
 def print_welcome():
     print("\nWelcome to the Coding Clinic Booking System\n")
+    time.sleep(2)
+    os.system("clear")
 
 
 def usage():
@@ -41,7 +43,6 @@ def usage():
 
 
 def menu_selection():
-
     menu = inquirer.select(
         message="Select",
         choices=['configure system', 'verify configuration',
@@ -81,7 +82,7 @@ def main():
 
     # first run config step
     if not os.path.exists(CONFIG_FILE):
-        configuration.first_run_setup(service, calendars)
+        configuration.first_run_setup()
 
     # assume file can only be created by program; fix later on
     # (can also be created manually with wrong format)
