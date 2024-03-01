@@ -51,7 +51,6 @@ def get_next_7_days():
     next_7_days = [today + timedelta(days=i) for i in range(7)]
     return next_7_days
 
-<<<<<<< HEAD
 
 def calendar_layout(calendars):
     """
@@ -64,9 +63,6 @@ def calendar_layout(calendars):
         list: List of slots.
 
     """
-=======
-def code_clinic_calendar(calendars):
->>>>>>> 245ef4f (updated main and view cal modules)
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
 

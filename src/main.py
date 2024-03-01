@@ -140,7 +140,7 @@ def main():
             avilable_calendars = calendar_selection()
             
             if avilable_calendars == "Code Clinic":
-                view_calendar.code_clinic_calendar(calendars)
+                view_calendar.calendar_layout(calendars)
             if avilable_calendars == "Primary":
                 view_calendar.primary_calendar(calendars)
                 

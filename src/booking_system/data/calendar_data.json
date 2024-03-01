@@ -1,15 +1,5 @@
 {
   "primary": {
-<<<<<<< HEAD
-    "etag": "\"p33gfd8m1tb9880o\"",
-    "events": [],
-    "id": "sqangule023@student.wethinkcode.co.za"
-  },
-  "code clinic": {
-    "etag": "\"p32ofjpe8hv9o80o\"",
-    "events": [],
-    "id": "c_04b90d1c5e8b5910e6aa1a4898117f9ae9fbd2b2d099df277136d121c21b12ed@group.calendar.google.com"
-=======
     "etag": "\"p33kblvk0gv9o80o\"",
     "events": [],
     "id": "mmsane023@student.wethinkcode.co.za"
@@ -52,7 +42,6 @@
       }
     ],
     "id": "c_27d6465b57cc6da03f4fd56a27b199df720093009b652038d139a936d5a88db6@group.calendar.google.com"
->>>>>>> 245ef4f (updated main and view cal modules)
   },
   "cohort 2023": {
     "etag": "\"p33kc7pebm78880o\"",

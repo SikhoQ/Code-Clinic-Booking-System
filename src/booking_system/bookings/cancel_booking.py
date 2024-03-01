@@ -46,16 +46,8 @@ def cancel_booking(service, calendars):
             print("No volunteer slot for given time.")
         else:
             print("No booking found for volunteer slot.")
-<<<<<<< HEAD
-<<<<<<< HEAD
         if inquirer.confirm(message="Select another slot?").execute():
             cancel_booking(service, calendars)
-=======
-            if inquirer.confirm(message="Select another slot?"):
-                cancel_booking(service, calendars)
-            else:
-                main()
->>>>>>> a184be8 (updated main and view cal modules)
 
 
 # def view_events(calendars):
@@ -74,7 +66,3 @@ def cancel_booking(service, calendars):
 #         table.align["Day"] = "l"
 
 #     print(table)
-=======
-        if inquirer.confirm(message="Select another slot?"):
-            cancel_booking(service, calendars)
->>>>>>> 4b11384 (Code clining)
