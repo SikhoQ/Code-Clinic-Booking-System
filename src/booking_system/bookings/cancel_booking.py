@@ -48,3 +48,12 @@ def update_local_data_file(date, time, event_id, description):
 # if __name__ == "__main__":
 #     main()
     
+
+
+def cancel_booking(service, calendars):
+    (date, time_choice, email) = slot_utilities.get_booking_info()
+    calendar_data = calendar_utilities.read_calendar_data(calendars)
+    clinic_events = calendar_data["code clinic"]["events"]
+    calendar_id = calendar_data["code clinic"]["id"]
+
+    event_id, existing_event = find_existing_event(clinic_events, date, time_choice)

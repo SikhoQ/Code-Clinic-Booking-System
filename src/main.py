@@ -98,10 +98,10 @@ def main():
             make_booking.do_booking(service, calendars)
         elif menu == 'help':
             usage()
-            
+
         elif menu == 'cancel booking':
             cancel_booking.view_events(calendars)
-        
+
         elif menu == 'cancel volunteer slot':
             cancel_slot.cancel_volunteering(service, calendars)
 

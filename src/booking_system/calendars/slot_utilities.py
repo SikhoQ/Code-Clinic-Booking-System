@@ -10,17 +10,16 @@ def validate_date(value):
     try:
         date = datetime.strptime(value, "%Y-%m-%d").date()
         today = datetime.today().date()
-        
+
         # Check if entered date is today or in the next 7 days
         if today <= date <= today + timedelta(days=6):
             return True
-            
+
     except ValueError:
         return False
-    
+
     return False
 
-    
 
 def time_handler():
     choices = []
@@ -29,33 +28,31 @@ def time_handler():
     local_now = utc_now.astimezone(pytz.timezone('Africa/Johannesburg'))  # Convert to Johannesburg time zone
 
     start_time = local_now
-    end_time = start_time.replace(hour=17, minute=0, second=0, microsecond=0)
+    end_time = start_time.replace(hour=17, minute=30, second=0, microsecond=0)
     interval = timedelta(minutes=30)
 
-    if start_time.hour < 8 or start_time.hour >= 17:
-        print("Closed!")
+    # if start_time.hour < 8 or start_time.hour >= 17:
+    #     print("Closed!")
 
-        book_next = inquirer.confirm(message="\nDo you wish to book a different date?").execute()
+    #     book_next = inquirer.confirm(message="\nDo you wish to book a different date?").execute()
 
-        if book_next:
-            start_time = start_time.replace(hour=8, minute=0, second=0, microsecond=0)
-            end_time = end_time.replace(hour=17, minute=0, second=0, microsecond=0)
-            
-        else:
-            main()  # Returns to main if the user decides not to book
+    #     if book_next:
+    #         start_time = start_time.replace(hour=8, minute=0, second=0, microsecond=0)
+    #         end_time = end_time.replace(hour=17, minute=0, second=0, microsecond=0)
+
+    #     else:
+    #         main()  # Returns to main if the user decides not to book
 
     if start_time.minute > 30:
-        start_time = start_time.replace(minute=30, second=0, microsecond=0)
+        start_time = start_time.replace(hour=start_time.hour + 1, minute=0, second=0, microsecond=0)
     else:
-        start_time = start_time.replace(minute=0, second=0, microsecond=0)
+        start_time = start_time.replace(minute=30, second=0, microsecond=0)
 
     while start_time < end_time:
         choices.append(start_time.strftime("%H:%M"))
         start_time += interval
 
     return choices
-
-
 
 
 def get_booking_info():
@@ -121,3 +118,25 @@ def is_slot_available(clinic_events, start_time, email, slot_type):
 
     print("Slot is available for volunteering")
     return True
+
+
+def find_existing_event(clinic_events, date, time_choice):
+    start_time = f"{date}T{time_choice}:00"
+    start_time_sast = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
+    start_time_sast = pytz.timezone('Africa/Johannesburg').localize(start_time_sast)
+
+    event = dict()
+    event_id = str()
+
+    for each_event in clinic_events:
+        event_start_time = each_event.get("start").get("dateTime")
+        event_start_time_utc = datetime.strptime(event_start_time, '%Y-%m-%dT%H:%M:%S%z')  # Parse event start time with timezone
+        event_start_time_utc = event_start_time_utc.replace(tzinfo=pytz.utc)  # Make it aware of UTC timezone
+        event_start_time_sast = event_start_time_utc.astimezone(pytz.timezone('Africa/Johannesburg'))  # Convert to SAST
+
+        if event_start_time_sast == start_time_sast:
+            event_id = each_event.get("id")
+            event = each_event
+            return event_id, event
+
+    return event_id, event
