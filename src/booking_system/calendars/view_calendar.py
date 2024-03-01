@@ -37,7 +37,7 @@ def get_next_7_days():
 
 def calendar_layout(calendars):
     table = PrettyTable()
-    table.field_names = ['Day', 'Date', 'Summary', 'Duration']
+    table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
 
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["code clinic"]["events"]
@@ -50,11 +50,11 @@ def calendar_layout(calendars):
 
         if not events_on_day:
             # If no events on this day, display "No events" and "N/A"
-            table.add_row([calendar.day_name[day.weekday()], day_str, 'No events', 'N/A'])
+            table.add_row([calendar.day_name[day.weekday()], day_str, 'No events', 'N/A', 'N/A'])
         else:
             for event in events_on_day:
                 formatted = format_data(event)
-                table.add_row([calendar.day_name[day.weekday()], day_str, formatted[0], f'{formatted[1]} - {formatted[2]}'])
+                table.add_row([calendar.day_name[day.weekday()], day_str, formatted[0], f'{formatted[1]} - {formatted[2]}', event["description"]])
                 table.align["Day"] = "l"
 
     print(table)

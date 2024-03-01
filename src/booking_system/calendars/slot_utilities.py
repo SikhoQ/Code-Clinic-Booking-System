@@ -21,13 +21,17 @@ def validate_date(value):
     return False
 
 
-def time_handler():
+def time_handler(date_str):
     choices = []
 
     utc_now = datetime.utcnow().replace(tzinfo=pytz.UTC)  # Get current UTC time
     local_now = utc_now.astimezone(pytz.timezone('Africa/Johannesburg'))  # Convert to Johannesburg time zone
 
     start_time = local_now
+    date = datetime.strptime(date_str, '%Y-%m-%d')  # Convert date string to datetime object
+
+    if date.date() > utc_now.date():
+        start_time = start_time.replace(hour=7, minute=30, second=0, microsecond=0)
     end_time = start_time.replace(hour=17, minute=30, second=0, microsecond=0)
     interval = timedelta(minutes=30)
 
@@ -57,7 +61,6 @@ def time_handler():
 
 def get_booking_info():
     # TODO: change to general name
-    choices = time_handler()
 
     username = inquirer.text(
         message="Username:",
@@ -70,6 +73,8 @@ def get_booking_info():
         validate=validate_date,
         invalid_message="Invalid date format or date is not within the next 7 days. Please use YYYY-MM-DD."
     ).execute()
+
+    choices = time_handler(date)
 
     time_choice = inquirer.select(
         message="Time:",
