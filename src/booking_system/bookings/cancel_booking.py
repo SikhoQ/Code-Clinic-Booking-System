@@ -13,6 +13,13 @@ PRIMARY_CALENDAR = "primary"
 
 
 def cancel_booking(service, calendars):
+    """Cancels a booking.
+
+    Args:
+        service: The Google Calendar service object.
+        calendars (dict): Dictionary containing calendar data.
+        """
+
     (date, time_choice, email) = slot_utilities.get_booking_info()
     calendar_data = calendar_utilities.read_calendar_data(calendars)
     clinic_events = calendar_data[CODE_CLINIC_CALENDAR]["events"]
@@ -39,6 +46,7 @@ def cancel_booking(service, calendars):
             print("No volunteer slot for given time.")
         else:
             print("No booking found for volunteer slot.")
+<<<<<<< HEAD
         if inquirer.confirm(message="Select another slot?").execute():
             cancel_booking(service, calendars)
 
@@ -59,3 +67,7 @@ def cancel_booking(service, calendars):
 #         table.align["Day"] = "l"
 
 #     print(table)
+=======
+        if inquirer.confirm(message="Select another slot?"):
+            cancel_booking(service, calendars)
+>>>>>>> 4b11384 (Code clining)
