@@ -4,6 +4,8 @@ import os
 from prettytable import PrettyTable
 import calendar
 import pytz
+from InquirerPy import inquirer, validator
+
 
 TOKEN_FILE = os.path.expanduser("~/.google_calendar_token.json")
 CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
@@ -39,7 +41,7 @@ def format_data(event):
     return [summary, start_time, end_time, date]
 
 
-def get_next_7_days():
+def get_next_7_days(number):
     """
     Gets the list of the next 7 days starting from today.
 
@@ -48,8 +50,8 @@ def get_next_7_days():
 
     """
     today = datetime.now(pytz.timezone('Africa/Johannesburg')).replace(hour=0, minute=0, second=0, microsecond=0)
-    next_7_days = [today + timedelta(days=i) for i in range(7)]
-    return next_7_days
+    next_days = [today + timedelta(days=i) for i in range(number)]
+    return next_days
 
 
 def calendar_layout(calendars):
@@ -63,15 +65,22 @@ def calendar_layout(calendars):
         list: List of slots.
 
     """
+    number = inquirer.text(
+        message="please enter number of Days: ",
+        validate= validator.EmptyInputValidator ,
+        invalid_message="Number of days cannot be empty"
+    ).execute()
+    number = int(number)
+    
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
 
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["code clinic"]["events"]
 
-    next_7_days = get_next_7_days()
+    next_days = get_next_7_days(number)
 
-    for day in next_7_days:
+    for day in next_days:
         day_str = day.strftime("%d-%m-%Y")
         events_on_day = [event for event in calendar_data if day <= datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S%z') < day + timedelta(days=1)]
 
@@ -88,15 +97,24 @@ def calendar_layout(calendars):
     return slots
 
 def primary_calendar(calendars):
+    
+    number = inquirer.text(
+        message="please enter number of Days: ",
+        validate= validator.EmptyInputValidator ,
+        invalid_message="Number of days cannot be empty"
+    ).execute()
+    
+    number = int(number)
+    
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
 
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["primary"]["events"]
 
-    next_7_days = get_next_7_days()
+    next_days = get_next_7_days(number)
 
-    for day in next_7_days:
+    for day in next_days:
         day_str = day.strftime("%d-%m-%Y")
         events_on_day = [event for event in calendar_data if day <= datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S%z') < day + timedelta(days=1)]
 
