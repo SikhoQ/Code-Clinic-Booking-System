@@ -46,7 +46,7 @@ def time_handler(date_str):
     local_now = utc_now.astimezone(pytz.timezone('Africa/Johannesburg'))  # Convert to Johannesburg time zone
 
     start_time = local_now
-    date = datetime.strptime(date_str, '%Y-%m-%d')  # Convert date string to datetime object
+    date = datetime.strptime(date_str, '%Y-%m-%d') 
 
     if date.date() > utc_now.date():
         start_time = start_time.replace(hour=7, minute=30, second=0, microsecond=0)
@@ -65,7 +65,11 @@ def time_handler(date_str):
 
 
 def get_booking_info():
-    # TODO: change to general name
+    """
+    Prompts the user to enter booking information.
+
+    Returns:
+        tuple: A tuple containing date, time, and username in the format (date, time, username)."""
 
     username = inquirer.text(
         message="Username:",
@@ -90,6 +94,19 @@ def get_booking_info():
 
 
 def is_slot_available(clinic_events, start_time, email, slot_type):
+    """
+    Checks if a slot is available for booking or volunteering.
+
+    Args:
+        clinic_events (list): List of events from the Code Clinic calendar.
+        start_time (datetime): Start time of the slot.
+        email (str): Email of the user making the booking or volunteering.
+        slot_type (str): Type of slot - "booking" or "volunteering".
+
+    Returns:
+        bool: True if the slot is available, False otherwise.
+
+    """
     end_time = start_time + timedelta(minutes=30)
 
     # Convert start_time and end_time to the local time zone
@@ -131,6 +148,18 @@ def is_slot_available(clinic_events, start_time, email, slot_type):
 
 
 def find_existing_event(clinic_events, date, time_choice):
+    """
+    Finds an existing event in the clinic events list.
+
+    Args:
+        clinic_events (list): List of events from the Code Clinic calendar.
+        date (str): Date of the event in the format '%Y-%m-%d'.
+        time_choice (str): Time of the event in the format '%H:%M'.
+
+    Returns:
+        tuple: A tuple containing the event ID and event details.
+
+    """
     start_time = f"{date}T{time_choice}:00"
     start_time_sast = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
     start_time_sast = pytz.timezone('Africa/Johannesburg').localize(start_time_sast)
@@ -153,8 +182,28 @@ def find_existing_event(clinic_events, date, time_choice):
 
 
 def is_volunteer_slot(event):
+    """
+    Checks if the event is a volunteer slot.
+
+    Args:
+        event (dict): Event details.
+
+    Returns:
+        bool: True if the event is a volunteer slot, False otherwise.
+
+    """
     return event.get("description", "").lower() == "volunteer slot"
 
 
 def is_booked_slot(existing_event):
+    """
+    Checks if the existing event is a booked slot.
+
+    Args:
+        existing_event (dict): Existing event details.
+
+    Returns:
+        bool: True if the existing event is a booked slot, False otherwise.
+
+    """
     return existing_event.get("description", "").lower() == "booked slot"

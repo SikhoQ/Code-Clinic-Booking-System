@@ -4,6 +4,17 @@ import os
 
 
 def verify_calendar_connection(service, calendars):
+    """
+    Verifies the connection to Google Calendar for the specified calendars.
+
+    Args:
+        service : Google Calendar service object.
+        calendars (dict): Dictionary containing calendar names and their corresponding IDs.
+
+    Returns:
+        bool: True if the connection is successful for all calendars, False otherwise.
+
+    """
     user_calendars = calendar_utilities.read_calendar_data(calendars)
 
     try:

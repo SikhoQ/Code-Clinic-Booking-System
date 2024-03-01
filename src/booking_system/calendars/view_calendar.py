@@ -12,7 +12,17 @@ SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
 def format_data(event):
-    # Convert event times to South African Standard Time (SAST)
+    """
+    Formats event data for display in South African Standard Time (SAST) .
+
+    Args:
+        event (dict): Event details.
+
+    Returns:
+        list: Formatted event data.
+
+    """
+    
     start_time_utc = datetime.fromisoformat(event['start']['dateTime'])
     end_time_utc = datetime.fromisoformat(event['end']['dateTime'])
 
@@ -20,7 +30,6 @@ def format_data(event):
     start_time_sast = start_time_utc.replace(tzinfo=pytz.utc).astimezone(sa_tz)
     end_time_sast = end_time_utc.replace(tzinfo=pytz.utc).astimezone(sa_tz)
 
-    # Format times in SAST
     start_time = start_time_sast.strftime('%H:%M')
     end_time = end_time_sast.strftime('%H:%M')
 
@@ -31,11 +40,29 @@ def format_data(event):
 
 
 def get_next_7_days():
+    """
+    Gets the list of the next 7 days starting from today.
+
+    Returns:
+        list: List of datetime objects representing the next 7 days.
+
+    """
     today = datetime.now(pytz.timezone('Africa/Johannesburg')).replace(hour=0, minute=0, second=0, microsecond=0)
     next_7_days = [today + timedelta(days=i) for i in range(7)]
     return next_7_days
 
+
 def calendar_layout(calendars):
+    """
+    Displays calendar data in a tabular layout.
+
+    Args:
+        calendars (dict): Dictionary containing calendar names and their corresponding IDs.
+
+    Returns:
+        list: List of slots.
+
+    """
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
 
