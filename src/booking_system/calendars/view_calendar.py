@@ -12,6 +12,15 @@ CONFIG_FILE = os.path.expanduser("~/.coding_clinic_config.json")
 CREDS_FILE = os.path.expanduser("~/.google_calendar_credentials.json")
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
+def validate_day_type(value):
+    try:
+        # Check if the input value is an integer
+        int(value)
+        return True
+    except ValueError:
+        # If the input value cannot be converted to an integer, return False
+        return False
+
 
 def format_data(event):
     """
@@ -67,8 +76,8 @@ def calendar_layout(calendars):
     """
     number = inquirer.text(
         message="please enter number of Days: ",
-        validate= validator.EmptyInputValidator ,
-        invalid_message="Number of days cannot be empty"
+        validate= validate_day_type,
+        invalid_message="Invalid entry. Number of days should not be empty or should be an interger"
     ).execute()
     number = int(number)
     
