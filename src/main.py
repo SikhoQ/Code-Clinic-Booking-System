@@ -9,6 +9,7 @@ import booking_system.volunteering.volunteer_slot as volunteer_slot
 import booking_system.volunteering.cancel_slot as cancel_slot
 import configure.configuration as configuration
 import booking_system.calendars.calendar_utilities as calendar_utilities
+import booking_system.calendars.verify_connection as verify_connection
 import booking_system.calendars.view_calendar as view_calendar
 import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
@@ -44,7 +45,7 @@ def menu_selection():
 
     menu = inquirer.select(
         message="Select",
-        choices=['configure system', 'view calendar', 'volunteer', 'book session', 'cancel volunteer slot', 'cancel booking', 'help', 'quit',]
+        choices=['configure system', 'verify configuration', 'view calendar', 'volunteer', 'book session', 'cancel volunteer slot', 'cancel booking', 'help', 'quit',]
     ).execute()
 
     return (menu)
@@ -88,6 +89,9 @@ def main():
     while True:
         if menu == 'configure system':
             configuration.do_configuration()
+
+        elif  menu == 'verify configuration':
+            verify_connection.verify_calendar_connection(service, calendars)
 
         elif menu == 'view calendar':
             print("Downloading calendars...\n")

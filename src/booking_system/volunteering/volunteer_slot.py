@@ -3,8 +3,10 @@ from booking_system.calendars import calendar_utilities, slot_utilities
 import pytz
 
 CODE_CLINIC_CALENDAR = "code clinic"
+PRIMARY_CALENDAR = "primary"
 
 
+<<<<<<< HEAD
 def volunteer_for_slot(service, start_datetime, calendars, email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
     calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
@@ -12,7 +14,19 @@ def volunteer_for_slot(service, start_datetime, calendars, email):
     calendar_id = calendar_info.get("id")
     clinic_events = calendar_info.get("events")
 
+=======
+def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email):
+>>>>>>> 126a455 (work)
     end_datetime = start_datetime + timedelta(minutes=30)
+
+    calendar_data = calendar_utilities.read_calendar_data(calendars)
+
+    clinic_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
+    primary_id = calendar_data[PRIMARY_CALENDAR]["id"]
+
+    id_list = [clinic_id, primary_id]
+
+    clinic_events = calendar_data[CODE_CLINIC_CALENDAR]["events"]
 
     start_datetime_str = start_datetime.isoformat()+'+02:00'
     end_datetime_str = end_datetime.isoformat()+'+02:00'
@@ -24,17 +38,20 @@ def volunteer_for_slot(service, start_datetime, calendars, email):
             'end': {'dateTime': end_datetime_str, 'timeZone': 'Africa/Johannesburg'}
         }
 
-        try:
-            event = service.events().insert(
-                calendarId=calendar_id,
-                body=event
-            ).execute()
+        for calendar_id in id_list:
+            try:
+                event = service.events().insert(
+                    calendarId=calendar_id,
+                    body=event
+                ).execute()
 
-            calendar_utilities.update_calendar_data_file(service, calendars)
-            print(f"Volunteering successful. Event ID: {event['id']}")
+                calendar_utilities.update_calendar_data_file(service, calendars)
 
-        except Exception:
-            raise
+            except Exception:
+                raise
+        
+        print(f"Volunteering successful\n")
+
 
 
 def do_volunteering(service, calendars):

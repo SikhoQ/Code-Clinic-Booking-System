@@ -1,0 +1,334 @@
+{
+  "primary": {
+    "etag": "\"p320dbfkpub9880o\"",
+    "events": [],
+    "id": "nbhengu023@student.wethinkcode.co.za"
+  },
+  "code clinic": {
+    "etag": "\"p324bj14oub9880o\"",
+    "events": [],
+    "id": "c_5eec962a747e4629f88a441f3b171016ef3adadd4bf3bb1628cc0611e0baeefc@group.calendar.google.com"
+  },
+  "cohort 2023": {
+    "etag": "\"p33kc7pebm78880o\"",
+    "events": [
+      {
+        "kind": "calendar#event",
+        "etag": "\"3412189254096000\"",
+        "id": "1cqq3e3odlk6ki14nk0mskb4r8",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWNxcTNlM29kbGs2a2kxNG5rMG1za2I0cjggY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-01-24T11:10:27.000Z",
+        "updated": "2024-01-24T11:10:27.048Z",
+        "summary": "Code Clinics: Iteration 3 Ends",
+        "creator": {
+          "email": "dimpho@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "date": "2024-03-01"
+        },
+        "end": {
+          "date": "2024-03-02"
+        },
+        "transparency": "transparent",
+        "iCalUID": "1cqq3e3odlk6ki14nk0mskb4r8@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": false
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3412195851340000\"",
+        "id": "17n0qnkrvjqtqaquqiulkt56cu",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MTduMHFua3J2anF0cWFxdXFpdWxrdDU2Y3UgY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-01-24T11:13:27.000Z",
+        "updated": "2024-01-24T12:05:25.670Z",
+        "summary": "Code Clinics: Demo Week",
+        "creator": {
+          "email": "dimpho@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "date": "2024-03-04"
+        },
+        "end": {
+          "date": "2024-03-09"
+        },
+        "transparency": "transparent",
+        "iCalUID": "17n0qnkrvjqtqaquqiulkt56cu@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": false
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3412191969662000\"",
+        "id": "21abu78ejlafi411jmon9g8m9t",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MjFhYnU3OGVqbGFmaTQxMWptb245ZzhtOXQgY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-01-24T11:31:27.000Z",
+        "updated": "2024-01-24T11:33:04.831Z",
+        "summary": "Iteration 0: Development Setup Starts",
+        "creator": {
+          "email": "dimpho@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "date": "2024-03-04"
+        },
+        "end": {
+          "date": "2024-03-05"
+        },
+        "transparency": "transparent",
+        "iCalUID": "21abu78ejlafi411jmon9g8m9t@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": false
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3418408275330000\"",
+        "id": "66uvtm74kj1neboe55vag8s30c",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NjZ1dnRtNzRrajFuZWJvZTU1dmFnOHMzMGMgY185NjViNTY5NmExOTAzYzcxMDExYTI1YThlYjcxZTk3YjNkODQ3NDEwZjhlZTkxOTc2NGNkNDZlNTg1ZDFjNTI4QGc",
+        "created": "2024-02-29T10:55:37.000Z",
+        "updated": "2024-02-29T10:55:37.665Z",
+        "summary": "Summative Assessment / Spot Test",
+        "creator": {
+          "email": "peter@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-04T10:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-04T11:01:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "66uvtm74kj1neboe55vag8s30c@google.com",
+        "sequence": 0,
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3414610388980000\"",
+        "id": "128qnq2pu12ih69kc423m12nlm_20240305T080000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MTI4cW5xMnB1MTJpaDY5a2M0MjNtMTJubG1fMjAyNDAzMDVUMDgwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "created": "2024-02-07T11:26:34.000Z",
+        "updated": "2024-02-07T11:26:34.490Z",
+        "summary": "PSS Jhb Tue Group 1",
+        "creator": {
+          "email": "latoya@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-05T10:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-05T11:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "recurringEventId": "128qnq2pu12ih69kc423m12nlm",
+        "originalStartTime": {
+          "dateTime": "2024-03-05T10:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "128qnq2pu12ih69kc423m12nlm@google.com",
+        "sequence": 0,
+        "hangoutLink": "https://meet.google.com/wwc-bfeb-xmg",
+        "conferenceData": {
+          "entryPoints": [
+            {
+              "entryPointType": "video",
+              "uri": "https://meet.google.com/wwc-bfeb-xmg",
+              "label": "meet.google.com/wwc-bfeb-xmg"
+            },
+            {
+              "entryPointType": "more",
+              "uri": "https://tel.meet/wwc-bfeb-xmg?pin=5204693043235",
+              "pin": "5204693043235"
+            },
+            {
+              "regionCode": "ZA",
+              "entryPointType": "phone",
+              "uri": "tel:+27-10-823-0487",
+              "label": "+27 10 823 0487",
+              "pin": "664016485"
+            }
+          ],
+          "conferenceSolution": {
+            "key": {
+              "type": "hangoutsMeet"
+            },
+            "name": "Google Meet",
+            "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+          },
+          "conferenceId": "wwc-bfeb-xmg"
+        },
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3414610213354000\"",
+        "id": "2mltvn6gtrt0d6ll9vnjavcar8_20240305T090000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=Mm1sdHZuNmd0cnQwZDZsbDl2bmphdmNhcjhfMjAyNDAzMDVUMDkwMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "created": "2024-02-07T11:25:06.000Z",
+        "updated": "2024-02-07T11:25:06.677Z",
+        "summary": "Psychosocial Support (Group 1)",
+        "location": "kitchen area",
+        "creator": {
+          "email": "latoya@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-05T11:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-05T12:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "recurringEventId": "2mltvn6gtrt0d6ll9vnjavcar8",
+        "originalStartTime": {
+          "dateTime": "2024-03-05T11:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "2mltvn6gtrt0d6ll9vnjavcar8@google.com",
+        "sequence": 0,
+        "hangoutLink": "https://meet.google.com/muq-rauu-knb",
+        "conferenceData": {
+          "entryPoints": [
+            {
+              "entryPointType": "video",
+              "uri": "https://meet.google.com/muq-rauu-knb",
+              "label": "meet.google.com/muq-rauu-knb"
+            }
+          ],
+          "conferenceSolution": {
+            "key": {
+              "type": "hangoutsMeet"
+            },
+            "name": "Google Meet",
+            "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+          },
+          "conferenceId": "muq-rauu-knb"
+        },
+        "guestsCanInviteOthers": false,
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      },
+      {
+        "kind": "calendar#event",
+        "etag": "\"3414630156866000\"",
+        "id": "6cudqbobgp3jq3dqm2l0e2gdu2_20240306T093000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NmN1ZHFib2JncDNqcTNkcW0ybDBlMmdkdTJfMjAyNDAzMDZUMDkzMDAwWiBjXzk2NWI1Njk2YTE5MDNjNzEwMTFhMjVhOGViNzFlOTdiM2Q4NDc0MTBmOGVlOTE5NzY0Y2Q0NmU1ODVkMWM1MjhAZw",
+        "created": "2024-02-07T14:11:18.000Z",
+        "updated": "2024-02-07T14:11:18.433Z",
+        "summary": "PSS Jhb Wed Group 1",
+        "creator": {
+          "email": "latoya@wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com",
+          "displayName": "Cohort 2023",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-06T11:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-06T13:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "recurringEventId": "6cudqbobgp3jq3dqm2l0e2gdu2",
+        "originalStartTime": {
+          "dateTime": "2024-03-06T11:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "6cudqbobgp3jq3dqm2l0e2gdu2@google.com",
+        "sequence": 0,
+        "hangoutLink": "https://meet.google.com/okh-smzi-whk",
+        "conferenceData": {
+          "entryPoints": [
+            {
+              "entryPointType": "video",
+              "uri": "https://meet.google.com/okh-smzi-whk",
+              "label": "meet.google.com/okh-smzi-whk"
+            },
+            {
+              "entryPointType": "more",
+              "uri": "https://tel.meet/okh-smzi-whk?pin=5899777818418",
+              "pin": "5899777818418"
+            },
+            {
+              "regionCode": "ZA",
+              "entryPointType": "phone",
+              "uri": "tel:+27-10-823-1117",
+              "label": "+27 10 823 1117",
+              "pin": "185239539"
+            }
+          ],
+          "conferenceSolution": {
+            "key": {
+              "type": "hangoutsMeet"
+            },
+            "name": "Google Meet",
+            "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+          },
+          "conferenceId": "okh-smzi-whk"
+        },
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      }
+    ],
+    "id": "c_965b5696a1903c71011a25a8eb71e97b3d847410f8ee919764cd46e585d1c528@group.calendar.google.com"
+  }
+}

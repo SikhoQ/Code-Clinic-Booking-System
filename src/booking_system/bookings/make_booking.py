@@ -4,6 +4,7 @@ import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.slot_utilities as slot_utilities
 
 CODE_CLINIC_CALENDAR = "code clinic"
+PRIMARY_CALENDAR = "primary"
 
 
 def book_slot(service, start_datetime_str, calendars, email):
