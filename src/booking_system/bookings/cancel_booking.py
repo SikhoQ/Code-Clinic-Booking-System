@@ -27,11 +27,11 @@ def cancel_booking(service, calendars):
             calendar_utilities.update_calendar_data_file(service, calendars)
         except Exception:
             raise
-    elif not existing_event:
-        print("No volunteer slot for given time.", end=" ")
-
     else:
-        print("No booking found for volunteer slot.")
+        if not existing_event:
+            print("No volunteer slot for given time.", end=" ")
+        else:
+            print("No booking found for volunteer slot.")
         if inquirer.confirm(message="Select another slot?"):
             cancel_booking(service, calendars)
 
