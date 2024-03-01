@@ -1,12 +1,92 @@
 {
   "primary": {
-    "etag": "\"p320dbfkpub9880o\"",
-    "events": [],
+    "etag": "\"p32cb3u71un9880o\"",
+    "events": [
+      {
+        "kind": "calendar#event",
+        "etag": "\"3418582314398000\"",
+        "id": "8mpg8j344rg7e3lih52a4mgtm4",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=OG1wZzhqMzQ0cmc3ZTNsaWg1MmE0bWd0bTQgbmJoZW5ndTAyM0BzdHVkZW50LndldGhpbmtjb2RlLmNvLnph",
+        "created": "2024-03-01T11:05:08.000Z",
+        "updated": "2024-03-01T11:05:57.199Z",
+        "summary": "Code Clinic",
+        "description": "Booked Slot",
+        "creator": {
+          "email": "nbhengu023@student.wethinkcode.co.za",
+          "self": true
+        },
+        "organizer": {
+          "email": "nbhengu023@student.wethinkcode.co.za",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-01T15:00:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-01T15:30:00+02:00",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "8mpg8j344rg7e3lih52a4mgtm4@google.com",
+        "sequence": 0,
+        "attendees": [
+          {
+            "email": "s@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          }
+        ],
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      }
+    ],
     "id": "nbhengu023@student.wethinkcode.co.za"
   },
   "code clinic": {
-    "etag": "\"p324bj14oub9880o\"",
-    "events": [],
+    "etag": "\"p33g8tlf0un9880o\"",
+    "events": [
+      {
+        "kind": "calendar#event",
+        "etag": "\"3418582309048000\"",
+        "id": "8mpg8j344rg7e3lih52a4mgtm4",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=OG1wZzhqMzQ0cmc3ZTNsaWg1MmE0bWd0bTQgY181ZWVjOTYyYTc0N2U0NjI5Zjg4YTQ0MWYzYjE3MTAxNmVmM2FkYWRkNGJmM2JiMTYyOGNjMDYxMWUwYmFlZWZjQGc",
+        "created": "2024-03-01T11:05:05.000Z",
+        "updated": "2024-03-01T11:05:54.524Z",
+        "summary": "Code Clinic",
+        "description": "Booked Slot",
+        "creator": {
+          "email": "nbhengu023@student.wethinkcode.co.za"
+        },
+        "organizer": {
+          "email": "c_5eec962a747e4629f88a441f3b171016ef3adadd4bf3bb1628cc0611e0baeefc@group.calendar.google.com",
+          "displayName": "Coding Clinic",
+          "self": true
+        },
+        "start": {
+          "dateTime": "2024-03-01T13:00:00Z",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "end": {
+          "dateTime": "2024-03-01T13:30:00Z",
+          "timeZone": "Africa/Johannesburg"
+        },
+        "iCalUID": "8mpg8j344rg7e3lih52a4mgtm4@google.com",
+        "sequence": 0,
+        "attendees": [
+          {
+            "email": "s@student.wethinkcode.co.za",
+            "responseStatus": "needsAction"
+          }
+        ],
+        "reminders": {
+          "useDefault": true
+        },
+        "eventType": "default"
+      }
+    ],
     "id": "c_5eec962a747e4629f88a441f3b171016ef3adadd4bf3bb1628cc0611e0baeefc@group.calendar.google.com"
   },
   "cohort 2023": {

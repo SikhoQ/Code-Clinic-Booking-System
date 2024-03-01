@@ -7,6 +7,14 @@ import pytz
 
 
 def validate_date(value):
+    """Validates if the entered date is within the next 7 days including today.
+
+    Args:
+        value (str): Date string in the format "%Y-%m-%d".
+
+    Returns:
+        bool: True if the entered date is valid (today or within the next 7 days), False otherwise.
+    """
     try:
         date = datetime.strptime(value, "%Y-%m-%d").date()
         today = datetime.today().date()
@@ -22,6 +30,16 @@ def validate_date(value):
 
 
 def time_handler(date_str):
+    """
+    Generates time choices for booking slots based on the given date.
+
+    Args:
+        date_str (str): Date string in the format '%Y-%m-%d'.
+
+    Returns:
+        list: List of time choices in '%H:%M' format.
+
+    """
     choices = []
 
     utc_now = datetime.utcnow().replace(tzinfo=pytz.UTC)  # Get current UTC time
@@ -34,19 +52,6 @@ def time_handler(date_str):
         start_time = start_time.replace(hour=7, minute=30, second=0, microsecond=0)
     end_time = start_time.replace(hour=17, minute=30, second=0, microsecond=0)
     interval = timedelta(minutes=30)
-
-    # if start_time.hour < 8 or start_time.hour >= 17:
-    #     print("Closed!")
-
-    #     book_next = inquirer.confirm(message="\nDo you wish to book a different date?").execute()
-
-    #     if book_next:
-    #         start_time = start_time.replace(hour=8, minute=0, second=0, microsecond=0)
-    #         end_time = end_time.replace(hour=17, minute=0, second=0, microsecond=0)
-
-    #     else:
-    #         main()  # Returns to main if the user decides not to book
-
     if start_time.minute > 30:
         start_time = start_time.replace(hour=start_time.hour + 1, minute=0, second=0, microsecond=0)
     else:

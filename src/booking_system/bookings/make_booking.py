@@ -11,7 +11,11 @@ def book_slot(service, start_datetime_str, calendars, email):
     calendar_data = calendar_utilities.read_calendar_data(calendars)
 
     # Change these to use .get
-    calendar_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
+    clinic_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
+    primary_id = calendar_data[PRIMARY_CALENDAR]["id"]
+
+    id_list = [clinic_id, primary_id]
+
     clinic_events = calendar_data[CODE_CLINIC_CALENDAR]["events"]
 
     # Assuming start_datetime is in Africa/Johannesburg timezone
@@ -32,15 +36,18 @@ def book_slot(service, start_datetime_str, calendars, email):
             break
 
     if slot_utilities.is_slot_available(clinic_events, start_time_sast, email, "booking"):
-        try:
-            event["attendees"] = [{"email": email}]
-            event["description"] = "Booked Slot"
-            service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
-            calendar_utilities.update_calendar_data_file(service, calendars)
+        for calendar_id in id_list:
+            try:
+                event["attendees"] = [{"email": email}]
+                event["description"] = "Booked Slot"
+                service.events().update(calendarId=calendar_id, eventId=event_id, body=event).execute()
+                calendar_utilities.update_calendar_data_file(service, calendars)
 
-        except Exception:
-            raise
+            except Exception:
+                raise
 
+        print(f"Booking successful\n")
+        
 
 def do_booking(service, calendars):
     try:

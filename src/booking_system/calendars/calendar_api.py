@@ -13,6 +13,11 @@ SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
 def authorise_google_calendar():
+    """ Authorizes access to Google Calendar API.
+
+    Returns:
+        service:  Google Calendar service object. 
+    """
     credentials = None
 
     if os.path.exists(TOKEN_FILE):

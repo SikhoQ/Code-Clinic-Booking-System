@@ -1,22 +1,11 @@
 from datetime import datetime, timedelta
 from booking_system.calendars import calendar_utilities, slot_utilities
-import pytz
 
 CODE_CLINIC_CALENDAR = "code clinic"
 PRIMARY_CALENDAR = "primary"
 
 
-<<<<<<< HEAD
-def volunteer_for_slot(service, start_datetime, calendars, email):
-    calendar_data = calendar_utilities.read_calendar_data(calendars)
-    calendar_info = calendar_data.get(CODE_CLINIC_CALENDAR, {})
-
-    calendar_id = calendar_info.get("id")
-    clinic_events = calendar_info.get("events")
-
-=======
-def volunteer_for_slot(service, date, start_datetime, calendars, volunteer_email):
->>>>>>> 126a455 (work)
+def volunteer_for_slot(service, date, start_datetime, calendars, email):
     end_datetime = start_datetime + timedelta(minutes=30)
 
     calendar_data = calendar_utilities.read_calendar_data(calendars)
@@ -59,7 +48,7 @@ def do_volunteering(service, calendars):
         (date, time_choice, email) = slot_utilities.get_booking_info()
         start_datetime = f"{date} {time_choice}"
         start_datetime_str = datetime.strptime(start_datetime, "%Y-%m-%d %H:%M")
-        volunteer_for_slot(service, start_datetime_str, calendars, email)
+        volunteer_for_slot(service, date, start_datetime_str, calendars, email)
 
     except Exception:
         raise

@@ -8,25 +8,32 @@ import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
 from main import main
 
+CODE_CLINIC_CALENDAR = "code clinic"
+PRIMARY_CALENDAR = "primary"
+
 
 def cancel_booking(service, calendars):
     (date, time_choice, email) = slot_utilities.get_booking_info()
     calendar_data = calendar_utilities.read_calendar_data(calendars)
-    clinic_events = calendar_data["code clinic"]["events"]
-    calendar_id = calendar_data["code clinic"]["id"]
+    clinic_events = calendar_data[CODE_CLINIC_CALENDAR]["events"]
+
+    clinic_id = calendar_data[CODE_CLINIC_CALENDAR]["id"]
+    primary_id = calendar_data[PRIMARY_CALENDAR]["id"]
+
+    id_list = [clinic_id, primary_id]
 
     event_id, existing_event = slot_utilities.find_existing_event(clinic_events, date, time_choice)
 
     if existing_event and slot_utilities.is_booked_slot(existing_event):
-        try:
-            del existing_event["attendees"]
-            existing_event["description"] = "Volunteer Slot"
-            existing_event = service.events().update(calendarId=calendar_id, eventId=event_id, body=existing_event).execute()
-            print("Booking cancellation successful!\n")
-
-            calendar_utilities.update_calendar_data_file(service, calendars)
-        except Exception:
-            raise
+        for calendar_id in id_list:
+            try:
+                del existing_event["attendees"]
+                existing_event["description"] = "Volunteer Slot"
+                existing_event = service.events().update(calendarId=calendar_id, eventId=event_id, body=existing_event).execute()
+                calendar_utilities.update_calendar_data_file(service, calendars)
+            except Exception:
+                raise
+        print("Booking cancellation successful!\n")
     else:
         if not existing_event:
             print("No volunteer slot for given time.", end=" ")
