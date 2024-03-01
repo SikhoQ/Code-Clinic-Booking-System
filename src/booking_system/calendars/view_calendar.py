@@ -51,6 +51,7 @@ def get_next_7_days():
     next_7_days = [today + timedelta(days=i) for i in range(7)]
     return next_7_days
 
+<<<<<<< HEAD
 
 def calendar_layout(calendars):
     """
@@ -63,11 +64,39 @@ def calendar_layout(calendars):
         list: List of slots.
 
     """
+=======
+def code_clinic_calendar(calendars):
+>>>>>>> 245ef4f (updated main and view cal modules)
     table = PrettyTable()
     table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
 
     slots = []
     calendar_data = calendar_utilities.read_calendar_data(calendars)["code clinic"]["events"]
+
+    next_7_days = get_next_7_days()
+
+    for day in next_7_days:
+        day_str = day.strftime("%d-%m-%Y")
+        events_on_day = [event for event in calendar_data if day <= datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S%z') < day + timedelta(days=1)]
+
+        if not events_on_day:
+            # If no events on this day, display "No events" and "N/A"
+            table.add_row([calendar.day_name[day.weekday()], day_str, 'No events', 'N/A', 'N/A'])
+        else:
+            for event in events_on_day:
+                formatted = format_data(event)
+                table.add_row([calendar.day_name[day.weekday()], day_str, formatted[0], f'{formatted[1]} - {formatted[2]}', event["description"]])
+                table.align["Day"] = "l"
+
+    print(table)
+    return slots
+
+def primary_calendar(calendars):
+    table = PrettyTable()
+    table.field_names = ['Day', 'Date', 'Summary', 'Duration', 'Status']
+
+    slots = []
+    calendar_data = calendar_utilities.read_calendar_data(calendars)["primary"]["events"]
 
     next_7_days = get_next_7_days()
 

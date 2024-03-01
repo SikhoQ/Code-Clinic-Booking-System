@@ -48,7 +48,14 @@ def print_welcome():
 
 
 def usage():
-    pass
+    print('''This program allows you to:
+    > View calendar - Displays next 7 calendar days
+    > Volunteer - Allows you to volunteer
+    > Book session - Allows you to participate in a session
+    > Cancel Booking - Cancel booked session
+    > Cancel volunteer slot - Cancel volunteer session
+    > Verify configuration - verifies connection of available calendars
+    > Quit - Exits the program''')
 
 
 def menu_selection():
@@ -67,6 +74,14 @@ def menu_selection():
     ).execute()
 
     return (menu)
+
+def calendar_selection():
+    available_calendars = inquirer.select(
+        message="Select",
+        choices=["Code Clinic", "Primary"]
+    ).execute()
+
+    return (available_calendars)
 
 
 def main():
@@ -121,7 +136,15 @@ def main():
 
         elif menu == 'view calendar':
             print("Downloading calendars...\n")
-            view_calendar.calendar_layout(calendars)
+            avilable_calendars = calendar_selection()
+            
+            if avilable_calendars == "Code Clinic":
+                view_calendar.code_clinic_calendar(calendars)
+            if avilable_calendars == "Primary":
+                view_calendar.primary_calendar(calendars)
+                
+            
+            
 
         elif menu == 'volunteer':
             try:
