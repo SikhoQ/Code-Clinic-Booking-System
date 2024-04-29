@@ -3,6 +3,7 @@ from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 import os
+import time
 import sys
 from InquirerPy import inquirer
 
@@ -17,7 +18,12 @@ def authorise_google_calendar():
 
     Returns:
         service:  Google Calendar service object. 
+
     """
+
+    print("Checking Google authentication and authorization...")
+    time.sleep(2)
+
     credentials = None
 
     if os.path.exists(TOKEN_FILE):
@@ -44,10 +50,13 @@ def authorise_google_calendar():
                     sys.exit(f"There was an error during authentication: {e}\n\nQuitting...")
 
                 sys.stdout = original_stdout
+                os.system("clear")
 
         with open(TOKEN_FILE, 'w') as token_file:
             token_file.write(credentials.to_json())
 
     service = build('calendar', 'v3', credentials=credentials)
+
+    os.system("clear")
 
     return service

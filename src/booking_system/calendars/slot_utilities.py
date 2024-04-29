@@ -1,8 +1,6 @@
 # import booking_system.calendars.calendar_utilities as calendar_utilities
 from datetime import timedelta, datetime
 from InquirerPy import inquirer
-from InquirerPy.validator import EmptyInputValidator
-# from main import main
 import pytz
 
 
@@ -27,6 +25,12 @@ def validate_date(value):
         return False
 
     return False
+
+def EmptyValidator(value):
+    if value is None or value.strip() == '':
+        return False  # Input is empty or contains only whitespace
+    else:
+        return True  # Input is not empty
 
 
 def time_handler(date_str):
@@ -73,7 +77,7 @@ def get_booking_info():
 
     username = inquirer.text(
         message="Username:",
-        validate=EmptyInputValidator,
+        validate=EmptyValidator,
         invalid_message="Username cannot be empty"
     ).execute()
 

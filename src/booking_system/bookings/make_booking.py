@@ -2,6 +2,8 @@ from datetime import datetime
 import pytz
 import booking_system.calendars.calendar_utilities as calendar_utilities
 import booking_system.calendars.slot_utilities as slot_utilities
+import os
+import time
 
 CODE_CLINIC_CALENDAR = "code clinic"
 PRIMARY_CALENDAR = "primary"
@@ -56,8 +58,10 @@ def book_slot(service, start_datetime_str, calendars, email):
             except Exception:
                 raise
 
-        print(f"Booking successful\n")
-        
+        print("Booking successful\n")
+        time.sleep(2)
+        os.system("clear")
+
 
 def do_booking(service, calendars):
     """

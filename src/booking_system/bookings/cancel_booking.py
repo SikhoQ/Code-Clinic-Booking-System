@@ -1,12 +1,8 @@
 import booking_system.calendars.calendar_utilities as calendar_utilities
 from prettytable import PrettyTable 
 import booking_system.calendars.slot_utilities as slot_utilities
-import booking_system.calendars.view_calendar as view_calendar
-from datetime import datetime, timedelta
-import calendar
-import booking_system.calendars.calendar_api as api
 from InquirerPy import inquirer
-from main import main
+
 
 CODE_CLINIC_CALENDAR = "code clinic"
 PRIMARY_CALENDAR = "primary"
@@ -37,10 +33,10 @@ def cancel_booking(service, calendars):
                 del existing_event["attendees"]
                 existing_event["description"] = "Volunteer Slot"
                 existing_event = service.events().update(calendarId=calendar_id, eventId=event_id, body=existing_event).execute()
+                print("Booking cancellation successful!\n")
                 calendar_utilities.update_calendar_data_file(service, calendars)
             except Exception:
                 raise
-        print("Booking cancellation successful!\n")
     else:
         if not existing_event:
             print("No volunteer slot for given time.", end=" ")

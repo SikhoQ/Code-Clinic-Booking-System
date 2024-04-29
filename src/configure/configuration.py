@@ -17,6 +17,7 @@ def print_config_message():
     Prints a message indicating the absence of a config file and prompts the user for input.
     """
     print("You do not appear to have a config file defined, so let me ask you some questions\n")
+    input("Press [ENTER] key to continue")
 
 
 def write_config(config_data):
@@ -73,7 +74,11 @@ def do_configuration():
         print("Error: Google Calendar API credentials not found.\nQuitting...")
         sys.exit()
 
+    os.system("clear")
+
     first_name, last_name, campus, student_email = get_student_info()
+
+    os.system("clear")
 
     config_data = {
         "student_info": {
@@ -99,5 +104,11 @@ def do_configuration():
 def first_run_setup():
     """Performs the setup for the first run of the application.
     """
+
     print_config_message()
+
+    os.system("clear")
+
     do_configuration()
+
+    os.system("clear")

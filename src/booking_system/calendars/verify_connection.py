@@ -19,9 +19,9 @@ def verify_calendar_connection(service, calendars):
 
     try:
         for user_calendar in user_calendars:
-            print(f"Verifying connection to {user_calendar.title()} Calendar...")
+            print(f"Verifying connection to {user_calendar.title()} Calendar...\n")
             calendar = service.calendars().get(calendarId=user_calendars[user_calendar]["id"]).execute()
-            print("Connection verification successful\n")
+            print("Connection verification successful")
             time.sleep(2)
             os.system("clear")
         return True
